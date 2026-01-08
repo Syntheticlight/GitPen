@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "include": ["/*"],
+  "exclude": [
+    "/static/*",
+    "/assets/*",
+    "/themes/*",
+    "/landing/*",
+    "/oauth2/callback.html",
+    "/sitemap.xml",
+    "/*.ico",
+    "/*.png",
+    "/*.svg",
+    "/*.js",
+    "/*.css",
+    "/*.gz",
+    "/*.map"
+  ]
+}
