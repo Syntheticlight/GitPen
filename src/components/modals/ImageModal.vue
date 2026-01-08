@@ -78,10 +78,6 @@
         <template v-slot:icon><icon-provider provider-id="custom"></icon-provider></template>
         <span>添加自定义图床账号</span>
       </menu-entry>
-      <menu-entry @click.native="addGiteaImgStorage">
-        <template v-slot:icon><icon-provider provider-id="gitea"></icon-provider></template>
-        <span>添加Gitea图床仓库</span>
-      </menu-entry>
       <menu-entry @click.native="addGithubImgStorage">
         <template v-slot:icon><icon-provider provider-id="github"></icon-provider></template>
         <span>添加GitHub图床仓库</span>
@@ -97,7 +93,6 @@ import MenuEntry from '../menus/common/MenuEntry';
 import MenuItem from '../menus/common/MenuItem';
 import smmsHelper from '../../services/providers/helpers/smmsHelper';
 import store from '../../store';
-import giteaHelper from '../../services/providers/helpers/giteaHelper';
 import githubHelper from '../../services/providers/helpers/githubHelper';
 import customHelper from '../../services/providers/helpers/customHelper';
 import utils from '../../services/utils';
@@ -145,11 +140,6 @@ export default modalTemplate({
     },
     tokensImgStorages() {
       const providerTokens = [
-        ...Object.values(store.getters['data/giteaTokensBySub']).map(token => ({
-          token,
-          providerId: 'gitea',
-          providerName: 'Gitea图床',
-        })),
         ...Object.values(store.getters['data/githubTokensBySub']).map(token => ({
           token,
           providerId: 'github',
@@ -170,7 +160,7 @@ export default modalTemplate({
             uname: it.token.name,
             providerId: it.providerId,
             providerName: it.providerName,
-            repoUrl: it.providerId === 'gitea' ? `${it.token.serverUrl}/${storage.repoUri}` : `${storage.owner}/${storage.repo}`,
+            repoUrl: `${storage.owner}/${storage.repo}`,
           }));
         });
       return imgStorages;
@@ -223,8 +213,6 @@ export default modalTemplate({
           await store.dispatch('data/patchTokensByType', {
             [proivderId]: tokensBySub,
           });
-        } else if (proivderId === 'gitea') {
-          giteaHelper.removeTokenImgStorage(item.token, item.sid);
         } else if (proivderId === 'github') {
           githubHelper.removeTokenImgStorage(item.token, item.sid);
         }
@@ -246,17 +234,6 @@ export default modalTemplate({
     async addCustomAccount() {
       const accountInfo = await store.dispatch('modal/open', { type: 'customAccount' });
       await customHelper.addAccount(accountInfo);
-    },
-    async addGiteaImgStorage() {
-      try {
-        const applicationInfo = await store.dispatch('modal/open', { type: 'giteaAccount' });
-        const token = await giteaHelper.addAccount(applicationInfo);
-        const imgStorageInfo = await store.dispatch('modal/open', {
-          type: 'giteaImgStorage',
-          token,
-        });
-        giteaHelper.updateToken(token, imgStorageInfo);
-      } catch (e) { /* Cancel */ }
     },
     async addGithubImgStorage() {
       try {

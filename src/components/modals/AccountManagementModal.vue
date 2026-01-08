@@ -4,8 +4,8 @@
       <div class="modal__image">
         <icon-key></icon-key>
       </div>
-      <p v-if="entries.length">StackEdit中文版可以访问以下外部账号：</p>
-      <p v-else>StackEdit中文版尚未访问任何外部账号。</p>
+      <p v-if="entries.length">GitPen可以访问以下外部账号：</p>
+      <p v-else>GitPen尚未访问任何外部账号。</p>
       <div>
         <div class="account-entry flex flex--column" v-for="entry in entries" :key="entry.token.sub">
           <div class="account-entry__header flex flex--row flex--align-center">
@@ -45,14 +45,6 @@
           </div>
         </div>
       </div>
-      <menu-entry @click.native="addBloggerAccount">
-        <template v-slot:icon><icon-provider provider-id="blogger"></icon-provider></template>
-        <span>添加Blogger账号</span>
-      </menu-entry>
-      <menu-entry @click.native="addDropboxAccount">
-        <template v-slot:icon><icon-provider provider-id="dropbox"></icon-provider></template>
-        <span>添加Dropbox账号</span>
-      </menu-entry>
       <menu-entry @click.native="addGithubAccount">
         <template v-slot:icon><icon-provider provider-id="github"></icon-provider></template>
         <span>添加GitHub账号</span>
@@ -60,30 +52,6 @@
       <menu-entry @click.native="addGiteeAccount">
         <template v-slot:icon><icon-provider provider-id="gitee"></icon-provider></template>
         <span>添加Gitee账号</span>
-      </menu-entry>
-      <menu-entry @click.native="addGitlabAccount">
-        <template v-slot:icon><icon-provider provider-id="gitlab"></icon-provider></template>
-        <span>添加GitLab账号</span>
-      </menu-entry>
-      <menu-entry @click.native="addGiteaAccount">
-        <template v-slot:icon><icon-provider provider-id="gitea"></icon-provider></template>
-        <span>添加Gitea账号</span>
-      </menu-entry>
-      <menu-entry @click.native="addGoogleDriveAccount">
-        <template v-slot:icon><icon-provider provider-id="googleDrive"></icon-provider></template>
-        <span>添加Google Drive账号</span>
-      </menu-entry>
-      <menu-entry @click.native="addGooglePhotosAccount">
-        <template v-slot:icon><icon-provider provider-id="googlePhotos"></icon-provider></template>
-        <span>添加Google Photos账号</span>
-      </menu-entry>
-      <menu-entry @click.native="addWordpressAccount">
-        <template v-slot:icon><icon-provider provider-id="wordpress"></icon-provider></template>
-        <span>添加WordPress账号</span>
-      </menu-entry>
-      <menu-entry @click.native="addZendeskAccount">
-        <template v-slot:icon><icon-provider provider-id="zendesk"></icon-provider></template>
-        <span>添加Zendesk账号</span>
       </menu-entry>
       <menu-entry @click.native="addSmmsAccount">
         <template v-slot:icon><icon-provider provider-id="smms"></icon-provider></template>
@@ -106,14 +74,8 @@ import ModalInner from './common/ModalInner';
 import MenuEntry from '../menus/common/MenuEntry';
 import store from '../../store';
 import utils from '../../services/utils';
-import googleHelper from '../../services/providers/helpers/googleHelper';
-import dropboxHelper from '../../services/providers/helpers/dropboxHelper';
 import githubHelper from '../../services/providers/helpers/githubHelper';
 import giteeHelper from '../../services/providers/helpers/giteeHelper';
-import gitlabHelper from '../../services/providers/helpers/gitlabHelper';
-import giteaHelper from '../../services/providers/helpers/giteaHelper';
-import wordpressHelper from '../../services/providers/helpers/wordpressHelper';
-import zendeskHelper from '../../services/providers/helpers/zendeskHelper';
 import smmsHelper from '../../services/providers/helpers/smmsHelper';
 import customHelper from '../../services/providers/helpers/customHelper';
 import badgeSvc from '../../services/badgeSvc';
@@ -129,26 +91,6 @@ export default {
     ]),
     entries() {
       return [
-        ...Object.values(store.getters['data/googleTokensBySub']).map(token => ({
-          token,
-          providerId: 'google',
-          userId: token.sub,
-          name: token.name,
-          scopes: ['openid', 'profile', ...token.scopes
-            .map(scope => scope.replace(/^https:\/\/www.googleapis.com\/auth\//, ''))],
-        })),
-        ...Object.values(store.getters['data/couchdbTokensBySub']).map(token => ({
-          token,
-          providerId: 'couchdb',
-          url: token.dbUrl,
-          name: token.name,
-        })),
-        ...Object.values(store.getters['data/dropboxTokensBySub']).map(token => ({
-          token,
-          providerId: 'dropbox',
-          userId: token.sub,
-          name: token.name,
-        })),
         ...Object.values(store.getters['data/githubTokensBySub']).map(token => ({
           token,
           providerId: 'github',
@@ -162,37 +104,6 @@ export default {
           userId: token.sub,
           name: token.name,
           scopes: ['projects', 'pull_requests'],
-        })),
-        ...Object.values(store.getters['data/gitlabTokensBySub']).map(token => ({
-          token,
-          providerId: 'gitlab',
-          url: token.serverUrl,
-          userId: token.sub,
-          name: token.name,
-          scopes: ['api'],
-        })),
-        ...Object.values(store.getters['data/giteaTokensBySub']).map(token => ({
-          token,
-          providerId: 'gitea',
-          url: token.serverUrl,
-          userId: token.sub,
-          name: token.name,
-          scopes: ['api'],
-        })),
-        ...Object.values(store.getters['data/wordpressTokensBySub']).map(token => ({
-          token,
-          providerId: 'wordpress',
-          userId: token.sub,
-          name: token.name,
-          scopes: ['global'],
-        })),
-        ...Object.values(store.getters['data/zendeskTokensBySub']).map(token => ({
-          token,
-          providerId: 'zendesk',
-          url: `https://${token.subdomain}.zendesk.com/`,
-          userId: token.sub,
-          name: token.name,
-          scopes: ['read', 'hc:write'],
         })),
         ...Object.values(store.getters['data/smmsTokensBySub']).map(token => ({
           token,
@@ -223,17 +134,6 @@ export default {
       });
       badgeSvc.addBadge('removeAccount');
     },
-    async addBloggerAccount() {
-      try {
-        await googleHelper.addBloggerAccount();
-      } catch (e) { /* cancel */ }
-    },
-    async addDropboxAccount() {
-      try {
-        await store.dispatch('modal/open', { type: 'dropboxAccount' });
-        await dropboxHelper.addAccount(!store.getters['data/localSettings'].dropboxRestrictedAccess);
-      } catch (e) { /* cancel */ }
-    },
     async addGithubAccount() {
       try {
         await store.dispatch('modal/open', { type: 'githubAccount' });
@@ -244,40 +144,6 @@ export default {
       try {
         await store.dispatch('modal/open', { type: 'giteeAccount' });
         await giteeHelper.addAccount();
-      } catch (e) { /* cancel */ }
-    },
-    async addGitlabAccount() {
-      try {
-        const { serverUrl, applicationId, applicationSecret } = await store.dispatch('modal/open', { type: 'gitlabAccount' });
-        await gitlabHelper.addAccount(serverUrl, applicationId, applicationSecret);
-      } catch (e) { /* cancel */ }
-    },
-    async addGiteaAccount() {
-      try {
-        const applicationInfo = await store.dispatch('modal/open', { type: 'giteaAccount' });
-        await giteaHelper.addAccount(applicationInfo);
-      } catch (e) { /* cancel */ }
-    },
-    async addGoogleDriveAccount() {
-      try {
-        await store.dispatch('modal/open', { type: 'googleDriveAccount' });
-        await googleHelper.addDriveAccount(!store.getters['data/localSettings'].googleDriveRestrictedAccess);
-      } catch (e) { /* cancel */ }
-    },
-    async addGooglePhotosAccount() {
-      try {
-        await googleHelper.addPhotosAccount();
-      } catch (e) { /* cancel */ }
-    },
-    async addWordpressAccount() {
-      try {
-        await wordpressHelper.addAccount();
-      } catch (e) { /* cancel */ }
-    },
-    async addZendeskAccount() {
-      try {
-        const { subdomain, clientId } = await store.dispatch('modal/open', { type: 'zendeskAccount' });
-        await zendeskHelper.addAccount(subdomain, clientId);
       } catch (e) { /* cancel */ }
     },
     async addSmmsAccount() {

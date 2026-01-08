@@ -3,7 +3,6 @@ import store from '../store';
 import utils from './utils';
 import localDbSvc from './localDbSvc';
 import smmsHelper from '../services/providers/helpers/smmsHelper';
-import giteaHelper from '../services/providers/helpers/giteaHelper';
 import githubHelper from '../services/providers/helpers/githubHelper';
 import customHelper from '../services/providers/helpers/customHelper';
 
@@ -66,17 +65,7 @@ export default {
       }
       const checkStorage = checkStorages[0];
       const path = getImagePath(checkStorage.path, imgFile.type);
-      if (currStorage.provider === 'gitea') {
-        const result = await giteaHelper.uploadFile({
-          token,
-          projectId: checkStorage.repoUri,
-          branch: checkStorage.branch,
-          path,
-          content: imgFile,
-          isImg: true,
-        });
-        url = result.content.download_url;
-      } else if (currStorage.provider === 'github') {
+      if (currStorage.provider === 'github') {
         const result = await githubHelper.uploadFile({
           token,
           owner: checkStorage.owner,
