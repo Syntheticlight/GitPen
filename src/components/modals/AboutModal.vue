@@ -11,7 +11,7 @@
       <h3>常见问题解答</h3>
       <div class="faq" v-html="faq"></div>
       <div class="modal__info">
-        如需商业支持或定制开发，请 <a href="mailto:mafgwo@163.com">联系我们</a>.
+        如需商业支持或定制开发请自便,完全无限制，请别 <a href="synlight343@gmail.com">联系我们</a>.自己爱怎么用怎么用.
       </div>
       Licensed under an
       <a target="_blank" href="http://www.apache.org/licenses/LICENSE-2.0">Apache License</a><br>

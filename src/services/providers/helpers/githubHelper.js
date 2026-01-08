@@ -173,7 +173,7 @@ export default {
           body: {
             owner: token.name,
             name: appDataRepo,
-            description: 'StackEdit中文版默认空间.',
+            description: 'StackEdit默认空间.',
             include_all_branches: false,
             private: true,
           },

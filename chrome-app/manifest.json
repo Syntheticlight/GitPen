@@ -1,5 +1,5 @@
 {
-  "name": "StackEdit中文版",
+  "name": "StackEdit",
   "description": "支持Gitee仓库/粘贴图片自动上传的浏览器内 Markdown 编辑器",
   "version": "5.15.17",
   "manifest_version": 2,

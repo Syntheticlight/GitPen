@@ -1,6 +1,6 @@
 # GitHub应用配置说明
 
-> StackEdit中文版部署如果需要支持GitHub，则需要到GitHub创建一个应用，并复制其中的clientId和clientSecret填充到环境变量 GITHUB_CLIENT_ID 和 GITHUB_CLIENT_SECRET 中。
+> StackEdit部署如果需要支持GitHub，则需要到GitHub创建一个应用，并复制其中的clientId和clientSecret填充到环境变量 GITHUB_CLIENT_ID 和 GITHUB_CLIENT_SECRET 中。
 
 
 # 如何创建GitHub应用

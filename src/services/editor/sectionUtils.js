@@ -42,14 +42,40 @@ const normalizeTocDimensions = dimensionNormalizer('tocDimension');
 
 export default {
   measureSectionDimensions(editorSvc) {
+    const { sectionDescList } = editorSvc.previewCtx;
+
+    // Handle empty list
+    if (!sectionDescList || sectionDescList.length === 0) {
+      return;
+    }
+
     let editorSectionOffset = 0;
     let previewSectionOffset = 0;
     let tocSectionOffset = 0;
-    let sectionDesc = editorSvc.previewCtx.sectionDescList[0];
+
+    // Handle single section case
+    if (sectionDescList.length === 1) {
+      const sectionDesc = sectionDescList[0];
+      sectionDesc.editorDimension = new SectionDimension(
+        0,
+        editorSvc.editorElt.scrollHeight,
+      );
+      sectionDesc.previewDimension = new SectionDimension(
+        0,
+        editorSvc.previewElt.scrollHeight,
+      );
+      sectionDesc.tocDimension = new SectionDimension(
+        0,
+        editorSvc.tocElt.scrollHeight,
+      );
+      return;
+    }
+
+    let sectionDesc = sectionDescList[0];
     let nextSectionDesc;
     let i = 1;
-    for (; i < editorSvc.previewCtx.sectionDescList.length; i += 1) {
-      nextSectionDesc = editorSvc.previewCtx.sectionDescList[i];
+    for (; i < sectionDescList.length; i += 1) {
+      nextSectionDesc = sectionDescList[i];
 
       // Measure editor section
       let newEditorSectionOffset = nextSectionDesc.editorElt
@@ -91,7 +117,7 @@ export default {
     }
 
     // Last section
-    sectionDesc = editorSvc.previewCtx.sectionDescList[i - 1];
+    sectionDesc = sectionDescList[i - 1];
     if (sectionDesc) {
       sectionDesc.editorDimension = new SectionDimension(
         editorSectionOffset,

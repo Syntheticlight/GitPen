@@ -37,6 +37,13 @@ const doScrollSync = () => {
   if (!store.getters['data/layoutSettings'].scrollSync || sectionDescList.length === 0) {
     return;
   }
+
+  // Validate that sectionDescList has valid dimensions
+  const firstSection = sectionDescList[0];
+  if (!firstSection || !firstSection.editorDimension || !firstSection.previewDimension) {
+    return;
+  }
+
   let editorScrollTop = editorScrollerElt.scrollTop;
   if (editorScrollTop < 0) {
     editorScrollTop = 0;
@@ -46,7 +53,10 @@ const doScrollSync = () => {
   if (isScrollEditor) {
     // Scroll the preview
     isScrollEditor = false;
-    sectionDescList.some((sectionDesc) => {
+    const found = sectionDescList.some((sectionDesc) => {
+      if (!sectionDesc.editorDimension || !sectionDesc.previewDimension) {
+        return false;
+      }
       if (editorScrollTop > sectionDesc.editorDimension.endOffset) {
         return false;
       }
@@ -56,6 +66,20 @@ const doScrollSync = () => {
         + (sectionDesc.previewDimension.height * posInSection));
       return true;
     });
+
+    // If no section found (scrolled past end), use the last section's end
+    if (!found && sectionDescList.length > 0) {
+      const lastSection = sectionDescList[sectionDescList.length - 1];
+      if (lastSection.previewDimension) {
+        scrollTo = lastSection.previewDimension.endOffset;
+      }
+    }
+
+    // Don't scroll if scrollTo is still undefined or invalid
+    if (scrollTo === undefined || scrollTo === null || Number.isNaN(scrollTo)) {
+      return;
+    }
+
     scrollTo = Math.min(
       scrollTo,
       previewScrollerElt.scrollHeight - previewScrollerElt.offsetHeight,
@@ -77,7 +101,10 @@ const doScrollSync = () => {
   } else if (!store.getters['layout/styles'].showEditor || isScrollPreview) {
     // Scroll the editor
     isScrollPreview = false;
-    sectionDescList.some((sectionDesc) => {
+    const found = sectionDescList.some((sectionDesc) => {
+      if (!sectionDesc.editorDimension || !sectionDesc.previewDimension) {
+        return false;
+      }
       if (previewScrollTop > sectionDesc.previewDimension.endOffset) {
         return false;
       }
@@ -87,6 +114,20 @@ const doScrollSync = () => {
         + (sectionDesc.editorDimension.height * posInSection));
       return true;
     });
+
+    // If no section found (scrolled past end), use the last section's end
+    if (!found && sectionDescList.length > 0) {
+      const lastSection = sectionDescList[sectionDescList.length - 1];
+      if (lastSection.editorDimension) {
+        scrollTo = lastSection.editorDimension.endOffset;
+      }
+    }
+
+    // Don't scroll if scrollTo is still undefined or invalid
+    if (scrollTo === undefined || scrollTo === null || Number.isNaN(scrollTo)) {
+      return;
+    }
+
     scrollTo = Math.min(
       scrollTo,
       editorScrollerElt.scrollHeight - editorScrollerElt.offsetHeight,

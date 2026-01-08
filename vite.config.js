@@ -38,12 +38,12 @@ export default defineConfig({
     }),
     // 暂时禁用 favicon 插件，后续修复
     // vitePluginFaviconsInject('src/assets/favicon.png', {
-    //   appName: 'StackEdit中文版', // 应用名称
+    //   appName: 'StackEdit', // 应用名称
     //   appDescription: '笔记利器，在线Markdown编辑器。', // 应用描述
     // }),
     VitePWA({
       manifest: {
-        name: 'StackEdit中文版', // 应用名称
+        name: 'StackEdit', // 应用名称
         description: '笔记利器，在线Markdown编辑器。', // 应用描述
         display: 'standalone', // 显示模式
         orientation: 'any', // 屏幕方向

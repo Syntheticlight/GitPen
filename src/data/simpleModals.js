@@ -129,7 +129,7 @@ export default {
     '好的',
   ),
   workspaceGoogleRedirection: simpleModal(
-    '<p>StackEdit中文版需要完整的Google Drive访问才能打开此文档空间。</p>',
+    '<p>StackEdit需要完整的Google Drive访问才能打开此文档空间。</p>',
     '取消',
     '确认授权',
   ),
