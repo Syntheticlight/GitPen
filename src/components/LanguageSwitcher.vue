@@ -2,12 +2,12 @@
   <div class="language-switcher" ref="switcher">
     <button 
       class="navigation-bar__button navigation-bar__button--language button" 
-      @click="toggleDropdown" 
+      @click.stop="toggleDropdown" 
       v-title="'切换语言 / Switch Language'"
     >
       <icon-language></icon-language>
     </button>
-    <div class="language-switcher__dropdown" v-if="showDropdown">
+    <div class="language-switcher__dropdown" v-if="showDropdown" @click.stop>
       <button 
         v-for="locale in supportedLocales" 
         :key="locale.code"
@@ -45,11 +45,8 @@ export default {
     toggleDropdown() {
       this.showDropdown = !this.showDropdown;
     },
-    closeDropdown(event) {
-      // Check if click is outside the component
-      if (this.$refs.switcher && !this.$refs.switcher.contains(event.target)) {
-        this.showDropdown = false;
-      }
+    closeDropdown() {
+      this.showDropdown = false;
     },
     switchLanguage(locale) {
       this.switchLocale(locale);
