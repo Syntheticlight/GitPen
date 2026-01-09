@@ -266,8 +266,11 @@ export default {
     window.addEventListener('keyup', this.onKeyup);
 
     // Unselect class applier when focus is out of the panel
-    this.onFocusIn = () => this.$refs.findReplaceRoot.contains(document.activeElement) ||
-      setTimeout(() => this.unselectClassApplier(), 15);
+    this.onFocusIn = () => {
+      if (!this.$refs.findReplaceRoot) return;
+      this.$refs.findReplaceRoot.contains(document.activeElement) ||
+        setTimeout(() => this.unselectClassApplier(), 15);
+    };
     window.addEventListener('focusin', this.onFocusIn);
   },
   destroyed() {

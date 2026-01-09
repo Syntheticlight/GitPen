@@ -61,7 +61,7 @@ export default {
   mounted() {
     document.addEventListener('click', this.closeDropdown);
   },
-  beforeUnmount() {
+  beforeDestroy() {
     document.removeEventListener('click', this.closeDropdown);
   },
 };
