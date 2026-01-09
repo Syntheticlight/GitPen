@@ -95,10 +95,13 @@ export default {
       try {
         const success = await this.switchLocale(locale);
         console.log('[LanguageSwitcher] switchLocale result:', success);
+        console.log('[LanguageSwitcher] localStorage check:', localStorage.getItem('gitpen-locale'));
         if (success) {
           this.showDropdown = false;
-          // Reload the page to apply translations
-          window.location.reload();
+          // Small delay to ensure localStorage is written before reload
+          setTimeout(() => {
+            window.location.reload();
+          }, 100);
         }
       } catch (err) {
         console.error('[LanguageSwitcher] Error switching language:', err);
