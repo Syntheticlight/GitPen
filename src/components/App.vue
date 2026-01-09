@@ -86,6 +86,9 @@ export default {
   async created() {
     window.viewFileByPath = this.viewFileByPath;
     try {
+      // Initialize i18n first
+      await store.dispatch('i18n/initLocale');
+      
       await syncSvc.init();
       await networkSvc.init();
       this.ready = true;

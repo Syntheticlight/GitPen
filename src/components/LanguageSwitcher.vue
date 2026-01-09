@@ -2,29 +2,33 @@
   <div class="language-switcher" ref="switcher">
     <button 
       ref="button"
+      type="button"
       class="navigation-bar__button navigation-bar__button--language button" 
-      @click.stop="toggleDropdown" 
+      @click.stop.prevent="toggleDropdown" 
       v-title="'切换语言 / Switch Language'"
     >
       <icon-language></icon-language>
     </button>
-    <div 
-      class="language-switcher__dropdown" 
-      v-if="showDropdown" 
-      :style="dropdownStyle"
-      @click.stop
-    >
-      <button 
-        v-for="locale in supportedLocales" 
-        :key="locale.code"
-        class="language-switcher__option"
-        :class="{ 'language-switcher__option--active': locale.code === currentLocale }"
-        @click="switchLanguage(locale.code)"
+    <teleport to="body">
+      <div 
+        v-if="showDropdown"
+        class="language-switcher__dropdown" 
+        :style="dropdownStyle"
+        @click.stop
       >
-        <span class="language-switcher__native-name">{{ locale.nativeName }}</span>
-        <span class="language-switcher__name">{{ locale.name }}</span>
-      </button>
-    </div>
+        <button 
+          v-for="locale in supportedLocales" 
+          :key="locale.code"
+          type="button"
+          class="language-switcher__option"
+          :class="{ 'language-switcher__option--active': locale.code === currentLocale }"
+          @click.stop="switchLanguage(locale.code)"
+        >
+          <span class="language-switcher__native-name">{{ locale.nativeName }}</span>
+          <span class="language-switcher__name">{{ locale.name }}</span>
+        </button>
+      </div>
+    </teleport>
   </div>
 </template>
 
@@ -50,7 +54,9 @@ export default {
       'switchLocale',
     ]),
     toggleDropdown() {
+      console.log('[LanguageSwitcher] toggleDropdown called, current state:', this.showDropdown);
       this.showDropdown = !this.showDropdown;
+      console.log('[LanguageSwitcher] new state:', this.showDropdown);
       if (this.showDropdown) {
         this.$nextTick(() => {
           this.updateDropdownPosition();
@@ -61,25 +67,50 @@ export default {
       if (this.$refs.button) {
         const rect = this.$refs.button.getBoundingClientRect();
         this.dropdownStyle = {
+          position: 'fixed',
           top: `${rect.bottom + 4}px`,
           left: `${rect.left}px`,
+          zIndex: 10000,
         };
+        console.log('[LanguageSwitcher] dropdown position:', this.dropdownStyle);
       }
     },
-    closeDropdown() {
-      this.showDropdown = false;
+    closeDropdown(event) {
+      // Don't close if clicking on the toggle button (it handles its own toggle)
+      if (this.$refs.button && this.$refs.button.contains(event.target)) {
+        return;
+      }
+      // Don't close if clicking inside the dropdown
+      const dropdown = document.querySelector('.language-switcher__dropdown');
+      if (dropdown && dropdown.contains(event.target)) {
+        return;
+      }
+      if (this.showDropdown) {
+        console.log('[LanguageSwitcher] closeDropdown called');
+        this.showDropdown = false;
+      }
     },
-    switchLanguage(locale) {
-      this.switchLocale(locale);
-      this.showDropdown = false;
-      // Reload the page to apply translations
-      window.location.reload();
+    async switchLanguage(locale) {
+      console.log('[LanguageSwitcher] switchLanguage called with:', locale);
+      try {
+        const success = await this.switchLocale(locale);
+        console.log('[LanguageSwitcher] switchLocale result:', success);
+        if (success) {
+          this.showDropdown = false;
+          // Reload the page to apply translations
+          window.location.reload();
+        }
+      } catch (err) {
+        console.error('[LanguageSwitcher] Error switching language:', err);
+      }
     },
   },
   mounted() {
+    console.log('[LanguageSwitcher] mounted, currentLocale:', this.currentLocale);
+    console.log('[LanguageSwitcher] supportedLocales:', this.supportedLocales);
     document.addEventListener('click', this.closeDropdown);
   },
-  beforeDestroy() {
+  beforeUnmount() {
     document.removeEventListener('click', this.closeDropdown);
   },
 };
@@ -106,9 +137,7 @@ export default {
 
 .language-switcher__dropdown {
   position: fixed;
-  top: 44px;
-  right: auto;
-  z-index: 1000;
+  z-index: 10000;
   min-width: 160px;
   padding: 4px 0;
   background-color: $navbar-bg;

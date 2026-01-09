@@ -58,9 +58,9 @@ export default {
      * 
      * @param {Object} context - Vuex action context
      * @param {string} locale - The locale code to switch to
-     * @returns {boolean} True if locale was switched successfully
+     * @returns {Promise<boolean>} True if locale was switched successfully
      */
-    switchLocale({ commit }, locale) {
+    async switchLocale({ commit }, locale) {
       const success = i18nSvc.setLocale(locale);
       if (success) {
         commit('setLocale', locale);
