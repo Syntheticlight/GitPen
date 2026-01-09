@@ -1,5 +1,5 @@
 <template>
-  <pre ref="codeEditorRoot" class="code-editor textfield prism" :disabled="isDisabled"></pre>
+  <pre ref="codeEditorRoot" class="code-editor textfield prism" :disabled="disabled"></pre>
 </template>
 
 <script>
@@ -8,28 +8,6 @@ import cledit from '../services/editor/cledit';
 
 export default {
   props: ['value', 'lang', 'disabled', 'scrollClass'],
-  data() {
-    return {
-      clEditor: null,
-    };
-  },
-  computed: {
-    isDisabled() {
-      // Handle both boolean and string "true"/"false"
-      return this.disabled === true || this.disabled === 'true';
-    },
-  },
-  watch: {
-    value: {
-      handler(newValue) {
-        // Update content when value prop changes
-        if (this.clEditor && newValue !== undefined && newValue !== null) {
-          this.clEditor.setContent(newValue);
-        }
-      },
-      immediate: false,
-    },
-  },
   mounted() {
     const preElt = this.$refs.codeEditorRoot;
     let scrollElt = preElt;
@@ -38,13 +16,13 @@ export default {
       scrollElt = scrollElt.parentNode;
     }
     if (scrollElt) {
-      this.clEditor = cledit(preElt, scrollElt);
-      this.clEditor.on('contentChanged', value => this.$emit('changed', value));
-      this.clEditor.init({
-        content: this.value || '',
+      const clEditor = cledit(preElt, scrollElt);
+      clEditor.on('contentChanged', value => this.$emit('changed', value));
+      clEditor.init({
+        content: this.value,
         sectionHighlighter: section => Prism.highlight(section.text, Prism.languages[this.lang], this.lang),
       });
-      this.clEditor.toggleEditable(!this.isDisabled);
+      clEditor.toggleEditable(!this.disabled);
     }
   },
 };

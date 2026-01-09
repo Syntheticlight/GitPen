@@ -36,7 +36,7 @@ import { mapGetters } from 'vuex';
 import ModalInner from './common/ModalInner';
 import Tab from './common/Tab';
 import CodeEditor from '../CodeEditor';
-import defaultSettingsYml from '../../data/defaults/defaultSettings.yml?raw';
+import defaultSettings from '../../data/defaults/defaultSettings.yml?raw';
 import store from '../../store';
 import badgeSvc from '../../services/badgeSvc';
 
@@ -50,6 +50,7 @@ export default {
   },
   data: () => ({
     tab: 'custom',
+    defaultSettings,
     customSettings: null,
     error: null,
   }),
@@ -57,9 +58,6 @@ export default {
     ...mapGetters('modal', [
       'config',
     ]),
-    defaultSettings() {
-      return defaultSettingsYml || '';
-    },
     strippedCustomSettings() {
       return this.customSettings === emptySettings ? '\n' : this.customSettings.replace(/\t/g, '  ');
     },
