@@ -2,14 +2,14 @@
   <nav class="navigation-bar" :class="{'navigation-bar--editor': styles.showEditor && !revisionContent, 'navigation-bar--light': light}">
     <!-- Explorer -->
     <div class="navigation-bar__inner navigation-bar__inner--left navigation-bar__inner--button">
-      <button class="navigation-bar__button navigation-bar__button--close button" v-if="light" @click="close()" v-title="'关闭StackEdit'"><icon-check-circle></icon-check-circle></button>
-      <button class="navigation-bar__button navigation-bar__button--explorer-toggler button" v-else tour-step-anchor="explorer" @click="toggleExplorer()" v-title="'切换资源管理器'"><icon-folder></icon-folder></button>
+      <button class="navigation-bar__button navigation-bar__button--close button" v-if="light" @click="close()" :v-title="$t('navigation.closeStackEdit')"><icon-check-circle></icon-check-circle></button>
+      <button class="navigation-bar__button navigation-bar__button--explorer-toggler button" v-else tour-step-anchor="explorer" @click="toggleExplorer()" :v-title="$t('navigation.toggleExplorer')"><icon-folder></icon-folder></button>
     </div>
     <!-- Side bar -->
     <div class="navigation-bar__inner navigation-bar__inner--right navigation-bar__inner--button">
-      <button class="navigation-bar__button navigation-bar__button--theme button" v-title="'切换主题'" tour-step-anchor="theme" @click="switchTheme"><icon-switch-theme></icon-switch-theme></button>
-      <a class="navigation-bar__button navigation-bar__button--stackedit button" v-if="light" href="app" target="_blank" v-title="'打开StackEdit'"><icon-provider provider-id="stackedit"></icon-provider></a>
-      <button class="navigation-bar__button navigation-bar__button--stackedit button" v-else tour-step-anchor="menu" @click="toggleSideBar()" v-title="'切换侧边栏'"><icon-provider provider-id="stackedit"></icon-provider></button>
+      <language-switcher></language-switcher>
+      <a class="navigation-bar__button navigation-bar__button--stackedit button" v-if="light" href="app" target="_blank" :v-title="$t('navigation.openStackEdit')"><icon-provider provider-id="stackedit"></icon-provider></a>
+      <button class="navigation-bar__button navigation-bar__button--stackedit button" v-else tour-step-anchor="menu" @click="toggleSideBar()" :v-title="$t('navigation.toggleSideBar')"><icon-provider provider-id="stackedit"></icon-provider></button>
     </div>
     <div class="navigation-bar__inner navigation-bar__inner--right navigation-bar__inner--title flex flex--row">
       <!-- Spinner -->
@@ -23,20 +23,21 @@
       <input ref="titleInputElt" class="navigation-bar__title navigation-bar__title--input text-input" :class="{'navigation-bar__title--focus': titleFocus, 'navigation-bar__title--scrolling': titleScrolling}" :style="{width: titleWidth + 'px'}" @focus="editTitle(true)" @blur="editTitle(false)" @keydown.enter="submitTitle(false)" @keydown.esc.stop="submitTitle(true)" @mouseenter="titleHover = true" @mouseleave="titleHover = false" v-model="title">
       <!-- Sync/Publish -->
       <div class="flex flex--row" :class="{'navigation-bar__hidden': styles.hideLocations}">
-        <a class="navigation-bar__button navigation-bar__button--location button" :class="{'navigation-bar__button--blink': location.id === currentLocation.id}" v-for="location in syncLocations" :key="location.id" :href="location.url" target="_blank" v-title="'同步位置'"><icon-provider :provider-id="location.providerId"></icon-provider></a>
-        <button class="navigation-bar__button navigation-bar__button--sync button" :disabled="!isSyncPossible || isSyncRequested || offline" @click="requestSync" v-title="'立即同步'"><icon-sync></icon-sync></button>
-        <a class="navigation-bar__button navigation-bar__button--location button" :class="{'navigation-bar__button--blink': location.id === currentLocation.id}" v-for="location in publishLocations" :key="location.id" :href="location.url" target="_blank" v-title="'发布位置'"><icon-provider :provider-id="location.providerId"></icon-provider></a>
-        <button class="navigation-bar__button navigation-bar__button--publish button" :disabled="!publishLocations.length || isPublishRequested || offline" @click="requestPublish" v-title="'立即发布'"><icon-upload></icon-upload></button>
+        <a class="navigation-bar__button navigation-bar__button--location button" :class="{'navigation-bar__button--blink': location.id === currentLocation.id}" v-for="location in syncLocations" :key="location.id" :href="location.url" target="_blank" :v-title="$t('navigation.syncLocation')"><icon-provider :provider-id="location.providerId"></icon-provider></a>
+        <button class="navigation-bar__button navigation-bar__button--sync button" :disabled="!isSyncPossible || isSyncRequested || offline" @click="requestSync" :v-title="$t('navigation.syncNow')"><icon-sync></icon-sync></button>
+        <a class="navigation-bar__button navigation-bar__button--location button" :class="{'navigation-bar__button--blink': location.id === currentLocation.id}" v-for="location in publishLocations" :key="location.id" :href="location.url" target="_blank" :v-title="$t('navigation.publishLocation')"><icon-provider :provider-id="location.providerId"></icon-provider></a>
+        <button class="navigation-bar__button navigation-bar__button--publish button" :disabled="!publishLocations.length || isPublishRequested || offline" @click="requestPublish" :v-title="$t('navigation.publishNow')"><icon-upload></icon-upload></button>
       </div>
       <!-- Revision -->
       <div class="flex flex--row" v-if="revisionContent">
-        <button class="navigation-bar__button navigation-bar__button--revision navigation-bar__button--restore button" @click="restoreRevision">恢复</button>
-        <button class="navigation-bar__button navigation-bar__button--revision button" @click="setRevisionContent()" v-title="'关闭修订'"><icon-close></icon-close></button>
+        <button class="navigation-bar__button navigation-bar__button--revision navigation-bar__button--restore button" @click="restoreRevision">{{ $t('common.restore') }}</button>
+        <button class="navigation-bar__button navigation-bar__button--revision button" @click="setRevisionContent()" :v-title="$t('navigation.closeRevision')"><icon-close></icon-close></button>
       </div>
     </div>
     <div class="navigation-bar__inner navigation-bar__inner--edit-pagedownButtons">
-      <button class="navigation-bar__button button" @click="undo" v-title="'回退'" :disabled="!canUndo"><icon-undo></icon-undo></button>
-      <button class="navigation-bar__button button" @click="redo" v-title="'重做'" :disabled="!canRedo"><icon-redo></icon-redo></button>
+      <button class="navigation-bar__button button" @click="undo" :v-title="$t('navigation.undo')" :disabled="!canUndo"><icon-undo></icon-undo></button>
+      <button class="navigation-bar__button button" @click="redo" :v-title="$t('navigation.redo')" :disabled="!canRedo"><icon-redo></icon-redo></button>
+      <button class="navigation-bar__button button" @click="showFindReplace" :v-title="$t('navigation.findReplace')"><icon-find-replace></icon-find-replace></button>
       <div v-for="button in pagedownButtons" :key="button.method">
         <button class="navigation-bar__button button" v-if="button.method" @click="pagedownClick(button.method)" v-title="button.titleWithShortcut">
           <component :is="button.iconClass"></component>
@@ -59,6 +60,8 @@ import pagedownButtons from '../data/pagedownButtons';
 import store from '../store';
 import workspaceSvc from '../services/workspaceSvc';
 import badgeSvc from '../services/badgeSvc';
+import LanguageSwitcher from './LanguageSwitcher.vue';
+import i18nSvc from '../services/i18nSvc';
 
 // According to mousetrap
 const mod = /Mac|iPod|iPhone|iPad/.test(navigator.platform) ? 'Meta' : 'Ctrl';
@@ -81,6 +84,9 @@ const getShortcut = (method) => {
 };
 
 export default {
+  components: {
+    LanguageSwitcher,
+  },
   data: () => ({
     mounted: false,
     title: '',
@@ -175,11 +181,21 @@ export default {
       'toggleExplorer',
       'toggleSideBar',
     ]),
+    $t(key, params) {
+      return i18nSvc.t(key, params);
+    },
     undo() {
       return editorSvc.clEditor.undoMgr.undo();
     },
     redo() {
       return editorSvc.clEditor.undoMgr.redo();
+    },
+    showFindReplace() {
+      store.dispatch('findReplace/open', {
+        type: 'replace',
+        findText: editorSvc.clEditor.selectionMgr.hasFocus() &&
+          editorSvc.clEditor.selectionMgr.getSelectedText(),
+      });
     },
     requestSync() {
       if (this.isSyncPossible && !this.isSyncRequested) {
@@ -190,9 +206,6 @@ export default {
       if (this.publishLocations.length && !this.isPublishRequested) {
         publishSvc.requestPublish();
       }
-    },
-    switchTheme() {
-      store.dispatch('data/switchThemeSetting');
     },
     pagedownClick(name) {
       if (store.getters['content/isCurrentEditable']) {
@@ -315,18 +328,6 @@ export default {
   .navigation-bar__inner--button & {
     padding: 0 4px;
     width: 38px;
-
-    &.navigation-bar__button--theme {
-      width: 34px;
-      padding: 0 7px;
-      opacity: 0.85;
-
-      &:active,
-      &:focus,
-      &:hover {
-        opacity: 1;
-      }
-    }
 
     &.navigation-bar__button--stackedit {
       opacity: 0.85;

@@ -1,8 +1,26 @@
 import utils from './utils';
 import store from '../store';
 import welcomeFile from '../data/welcomeFile.md?raw';
+import welcomeFileEn from '../data/welcomeFile.en.md?raw';
+import welcomeFileJa from '../data/welcomeFile.ja.md?raw';
+import welcomeFileZhTW from '../data/welcomeFile.zh-TW.md?raw';
 import workspaceSvc from './workspaceSvc';
 import constants from '../data/constants';
+import i18nSvc from './i18nSvc';
+
+/**
+ * Get the welcome file content based on the current locale
+ * @returns {string} The welcome file content for the current locale
+ */
+const getWelcomeFileByLocale = (locale) => {
+  const welcomeFiles = {
+    'en': welcomeFileEn,
+    'ja': welcomeFileJa,
+    'zh-TW': welcomeFileZhTW,
+    'zh-CN': welcomeFile, // Default Chinese file is zh-CN
+  };
+  return welcomeFiles[locale] || welcomeFileEn;
+};
 
 const deleteMarkerMaxAge = 1000;
 const dbVersion = 3;
@@ -435,10 +453,12 @@ const localDbSvc = {
           if (recentFile.id) {
             store.commit('file/setCurrentId', recentFile.id);
           } else {
-            // If still no ID, create a new file
+            // If still no ID, create a new file with locale-specific welcome content
+            const currentLocale = i18nSvc.currentLocale;
+            const welcomeContent = getWelcomeFileByLocale(currentLocale);
             const newFile = await workspaceSvc.createFile({
               name: 'Welcome file',
-              text: welcomeFile,
+              text: welcomeContent,
             }, true);
             // Set it as the current file
             store.commit('file/setCurrentId', newFile.id);
@@ -506,3 +526,6 @@ localDbSvc.loadSyncedContent = loader('syncedContent');
 localDbSvc.loadContentState = loader('contentState');
 
 export default localDbSvc;
+
+// Export for testing
+export { getWelcomeFileByLocale };

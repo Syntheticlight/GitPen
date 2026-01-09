@@ -2,31 +2,31 @@
   <div class="explorer flex flex--column">
     <div class="side-title flex flex--row flex--space-between">
       <div class="flex flex--row" v-if="!showSearch">
-        <button class="side-title__button side-title__button--new-file button" @click="newItem()" v-title="'创建文件'">
+        <button class="side-title__button side-title__button--new-file button" @click="newItem()" :v-title="$t('explorer.newFile')">
           <icon-file-plus></icon-file-plus>
         </button>
-        <button class="side-title__button side-title__button--new-folder button" @click="newItem(true)" v-title="'创建文件夹'">
+        <button class="side-title__button side-title__button--new-folder button" @click="newItem(true)" :v-title="$t('explorer.newFolder')">
           <icon-folder-plus></icon-folder-plus>
         </button>
-        <button class="side-title__button side-title__button--delete button" @click="deleteItem()" v-title="'删除'">
+        <button class="side-title__button side-title__button--delete button" @click="deleteItem()" :v-title="$t('explorer.delete')">
           <icon-delete></icon-delete>
         </button>
-        <button class="side-title__button side-title__button--rename button" @click="editItem()" v-title="'重命名'">
+        <button class="side-title__button side-title__button--rename button" @click="editItem()" :v-title="$t('explorer.rename')">
           <icon-pen></icon-pen>
         </button>
-        <button class="side-title__button side-title__button--search button" @click="toSearch()" v-title="'搜索文件'">
+        <button class="side-title__button side-title__button--search button" @click="toSearch()" :v-title="$t('explorer.searchFile')">
           <icon-file-search></icon-file-search>
         </button>
       </div>
       <div class="flex flex--row" v-else>
-        <button class="side-title__button button" @click="back()" v-title="'返回资源管理器'">
+        <button class="side-title__button button" @click="back()" :v-title="$t('explorer.backToExplorer')">
           <icon-dots-horizontal></icon-dots-horizontal>
         </button>
         <div class="side-title__title">
-          搜索文件
+          {{ $t('explorer.searchTitle') }}
         </div>
       </div>
-      <button class="side-title__button side-title__button--close button" @click="toggleExplorer(false)" v-title="'关闭资源管理器'">
+      <button class="side-title__button side-title__button--close button" @click="toggleExplorer(false)" :v-title="$t('explorer.closeExplorer')">
         <icon-close></icon-close>
       </button>
     </div>
@@ -34,14 +34,14 @@
       <explorer-node :node="rootNode" :depth="0"></explorer-node>
     </div>
     <div class="explorer__search" tabindex="0" v-if="!light && showSearch">
-      <input type="text" v-model="searchText" class="text-input" placeholder="请输入关键字回车" @keyup.enter="search" />
+      <input type="text" v-model="searchText" class="text-input" :placeholder="$t('explorer.searchPlaceholder')" @keyup.enter="search" />
       <div class="explorer__search-list">
-        <div class="search-tips" v-if="searching">正在查询中...</div>
+        <div class="search-tips" v-if="searching">{{ $t('explorer.searching') }}</div>
         <a class="menu-entry button flex flex--row flex--align-center" :class="{'search-node--selected': currentFileId === fileItem.id}"
             v-for="fileItem in searchItems" :key="fileItem.id" @click="clickSearch(fileItem)" href="javascript:void(0)">
           {{ fileItem.name }}
         </a>
-        <div class="search-tips">最多返回匹配的50个文档</div>
+        <div class="search-tips">{{ $t('explorer.searchTips') }}</div>
       </div>
     </div>
   </div>
@@ -55,6 +55,7 @@ import store from '../store';
 import MenuEntry from './menus/common/MenuEntry';
 import localDbSvc from '../services/localDbSvc';
 import badgeSvc from '../services/badgeSvc';
+import i18nSvc from '../services/i18nSvc';
 
 export default {
   components: {
@@ -85,6 +86,9 @@ export default {
     ...mapActions('data', [
       'toggleExplorer',
     ]),
+    $t(key, params) {
+      return i18nSvc.t(key, params);
+    },
     newItem: isFolder => explorerSvc.newItem(isFolder),
     deleteItem: () => explorerSvc.deleteItem(),
     editItem() {

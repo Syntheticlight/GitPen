@@ -1,58 +1,58 @@
 <template>
   <div class="side-bar__panel side-bar__panel--menu">
     <div class="side-bar__info" v-if="isCurrentTemp">
-      <p>{{currentFileName}} 无法发布，因为它是一个临时文件。</p>
+      <p>{{currentFileName}} {{ $t('publish.cannotPublish') }}</p>
     </div>
     <div v-else>
       <div class="side-bar__info" v-if="publishLocations.length">
-        <p>{{currentFileName}} 已经发布。</p>
+        <p>{{currentFileName}} {{ $t('publish.alreadyPublished') }}</p>
         <menu-entry @click.native="requestPublish">
           <template v-slot:icon><icon-upload></icon-upload></template>
-          <div>立即发布</div>
-          <span>发布 {{currentFileName}} 的更新。</span>
+          <div>{{ $t('publish.publishNow') }}</div>
+          <span>{{ $t('publish.publishNowDesc') }}</span>
         </menu-entry>
         <menu-entry @click.native="managePublish">
           <template v-slot:icon><icon-view-list></icon-view-list></template>
-          <div><div class="menu-entry__label menu-entry__label--count">{{locationCount}}</div> 文件发布</div>
-          <span>管理 {{currentFileName}} 的发布位置。</span>
+          <div><div class="menu-entry__label menu-entry__label--count">{{locationCount}}</div> {{ $t('publish.filePublish') }}</div>
+          <span>{{ $t('publish.filePublishDesc') }}</span>
         </menu-entry>
       </div>
       <div class="side-bar__info" v-else-if="noToken">
-        <p>您必须链接一个账号才能开始发布文件。</p>
+        <p>{{ $t('publish.mustLinkAccount') }}</p>
       </div>
       <hr>
       <div v-for="token in githubTokens" :key="token.sub">
         <menu-entry @click.native="publishGist(token)">
           <template v-slot:icon><icon-provider provider-id="gist"></icon-provider></template>
-          <div>发布到 GitHubGist</div>
+          <div>{{ $t('publish.publishToGist') }}</div>
           <span>{{token.name}}</span>
         </menu-entry>
         <menu-entry @click.native="publishGithub(token)">
           <template v-slot:icon><icon-provider provider-id="github"></icon-provider></template>
-          <div>发布到 GitHub</div>
+          <div>{{ $t('publish.publishToGithub') }}</div>
           <span>{{token.name}}</span>
         </menu-entry>
       </div>
       <div v-for="token in giteeTokens" :key="token.sub">
         <menu-entry @click.native="publishGiteeGist(token)">
           <template v-slot:icon><icon-provider provider-id="giteegist"></icon-provider></template>
-          <div>发布到 GiteeGist</div>
+          <div>{{ $t('publish.publishToGiteeGist') }}</div>
           <span>{{token.name}}</span>
         </menu-entry>
         <menu-entry @click.native="publishGitee(token)">
           <template v-slot:icon><icon-provider provider-id="gitee"></icon-provider></template>
-          <div>发布到 Gitee</div>
+          <div>{{ $t('publish.publishToGitee') }}</div>
           <span>{{token.name}}</span>
         </menu-entry>
       </div>
       <hr>
       <menu-entry @click.native="addGithubAccount">
         <template v-slot:icon><icon-provider provider-id="github"></icon-provider></template>
-        <span>添加 GitHub 账号</span>
+        <span>{{ $t('publish.addGithubAccount') }}</span>
       </menu-entry>
       <menu-entry @click.native="addGiteeAccount">
         <template v-slot:icon><icon-provider provider-id="gitee"></icon-provider></template>
-        <span>添加 Gitee 账号</span>
+        <span>{{ $t('publish.addGiteeAccount') }}</span>
       </menu-entry>
     </div>
   </div>
@@ -65,6 +65,7 @@ import githubHelper from '../../services/providers/helpers/githubHelper';
 import giteeHelper from '../../services/providers/helpers/giteeHelper';
 import publishSvc from '../../services/publishSvc';
 import store from '../../store';
+import i18nSvc from '../../services/i18nSvc';
 
 const tokensToArray = (tokens, filter = () => true) => Object.values(tokens)
   .filter(token => filter(token))
@@ -112,6 +113,9 @@ export default {
     },
   },
   methods: {
+    $t(key, params) {
+      return i18nSvc.t(key, params);
+    },
     requestPublish() {
       if (!this.isPublishRequested) {
         publishSvc.requestPublish();

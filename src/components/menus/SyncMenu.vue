@@ -1,68 +1,68 @@
 <template>
   <div class="side-bar__panel side-bar__panel--menu">
     <div class="side-bar__info" v-if="isCurrentTemp">
-      <p>{{currentFileName}} 无法同步，因为它是临时文件。</p>
+      <p>{{currentFileName}} {{ $t('sync.cannotSync') }}</p>
     </div>
     <div v-else>
       <div class="side-bar__info" v-if="syncLocations.length">
-        <p>{{currentFileName}} 已同步。</p>
+        <p>{{currentFileName}} {{ $t('sync.alreadySynced') }}</p>
         <menu-entry @click.native="requestSync">
           <template v-slot:icon><icon-sync></icon-sync></template>
-          <div>立即同步</div>
-          <span>下载/上载文件更改。</span>
+          <div>{{ $t('sync.syncNow') }}</div>
+          <span>{{ $t('sync.syncNowDesc') }}</span>
         </menu-entry>
         <menu-entry @click.native="manageSync">
           <template v-slot:icon><icon-view-list></icon-view-list></template>
-          <div><div class="menu-entry__label menu-entry__label--count">{{locationCount}}</div> 文件同步</div>
-          <span>管理 {{currentFileName}} 的同步位置。</span>
+          <div><div class="menu-entry__label menu-entry__label--count">{{locationCount}}</div> {{ $t('sync.fileSync') }}</div>
+          <span>{{ $t('sync.fileSyncDesc') }}</span>
         </menu-entry>
       </div>
       <div class="side-bar__info" v-else-if="noToken">
-        <p>您必须链接一个账号才能开始同步文件。</p>
+        <p>{{ $t('sync.mustLinkAccount') }}</p>
       </div>
       <hr>
       <div v-for="token in githubTokens" :key="token.sub">
         <menu-entry @click.native="openGithub(token)">
           <template v-slot:icon><icon-provider provider-id="github"></icon-provider></template>
-          <div>从 GitHub 打开</div>
+          <div>{{ $t('sync.openFromGithub') }}</div>
           <span>{{token.name}}</span>
         </menu-entry>
         <menu-entry @click.native="saveGithub(token)">
           <template v-slot:icon><icon-provider provider-id="github"></icon-provider></template>
-          <div>在GitHub上保存</div>
+          <div>{{ $t('sync.saveOnGithub') }}</div>
           <span>{{token.name}}</span>
         </menu-entry>
         <menu-entry @click.native="saveGist(token)">
           <template v-slot:icon><icon-provider provider-id="gist"></icon-provider></template>
-          <div>在GitHubGist上保存</div>
+          <div>{{ $t('sync.saveOnGist') }}</div>
           <span>{{token.name}}</span>
         </menu-entry>
       </div>
       <div v-for="token in giteeTokens" :key="token.sub">
         <menu-entry @click.native="openGitee(token)">
           <template v-slot:icon><icon-provider provider-id="gitee"></icon-provider></template>
-          <div>从 Gitee 打开</div>
+          <div>{{ $t('sync.openFromGitee') }}</div>
           <span>{{token.name}}</span>
         </menu-entry>
         <menu-entry @click.native="saveGitee(token)">
           <template v-slot:icon><icon-provider provider-id="gitee"></icon-provider></template>
-          <div>在Gitee上保存</div>
+          <div>{{ $t('sync.saveOnGitee') }}</div>
           <span>{{token.name}}</span>
         </menu-entry>
         <menu-entry @click.native="saveGiteeGist(token)">
           <template v-slot:icon><icon-provider provider-id="giteegist"></icon-provider></template>
-          <div>在GiteeGist上保存</div>
+          <div>{{ $t('sync.saveOnGiteeGist') }}</div>
           <span>{{token.name}}</span>
         </menu-entry>
       </div>
       <hr>
       <menu-entry @click.native="addGithubAccount">
         <template v-slot:icon><icon-provider provider-id="github"></icon-provider></template>
-        <span>添加 GitHub 账号</span>
+        <span>{{ $t('sync.addGithubAccount') }}</span>
       </menu-entry>
       <menu-entry @click.native="addGiteeAccount">
         <template v-slot:icon><icon-provider provider-id="gitee"></icon-provider></template>
-        <span>添加 Gitee 账号</span>
+        <span>{{ $t('sync.addGiteeAccount') }}</span>
       </menu-entry>
     </div>
   </div>
@@ -78,6 +78,7 @@ import giteeProvider from '../../services/providers/giteeProvider';
 import syncSvc from '../../services/syncSvc';
 import store from '../../store';
 import badgeSvc from '../../services/badgeSvc';
+import i18nSvc from '../../services/i18nSvc';
 
 const tokensToArray = (tokens, filter = () => true) => Object.values(tokens)
   .filter(token => filter(token))
@@ -123,6 +124,9 @@ export default {
     },
   },
   methods: {
+    $t(key, params) {
+      return i18nSvc.t(key, params);
+    },
     requestSync() {
       if (!this.isSyncRequested) {
         syncSvc.requestSync(true);

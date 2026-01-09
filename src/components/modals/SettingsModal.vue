@@ -1,31 +1,31 @@
 <template>
-  <modal-inner class="modal__inner-1--settings" aria-label="Settings">
+  <modal-inner class="modal__inner-1--settings" :aria-label="$t('modals.settings.title')">
     <div class="modal__content">
       <div class="tabs flex flex--row">
         <tab :active="tab === 'custom'" @click="tab = 'custom'">
-          自定义配置
+          {{ $t('modals.settings.customSettings') }}
         </tab>
         <tab :active="tab === 'default'" @click="tab = 'default'">
-          默认配置
+          {{ $t('modals.settings.defaultSettings') }}
         </tab>
       </div>
-      <div class="form-entry" v-if="tab === 'custom'" role="tabpanel" aria-label="自定义配置">
+      <div class="form-entry" v-if="tab === 'custom'" role="tabpanel" :aria-label="$t('modals.settings.customSettings')">
         <label class="form-entry__label">YAML</label>
         <div class="form-entry__field form-entry__field--code-editor">
           <code-editor lang="yaml" :value="customSettings" key="custom-settings" @changed="setCustomSettings"></code-editor>
         </div>
       </div>
-      <div class="form-entry" v-else-if="tab === 'default'" role="tabpanel" aria-label="默认配置">
+      <div class="form-entry" v-else-if="tab === 'default'" role="tabpanel" :aria-label="$t('modals.settings.defaultSettings')">
         <label class="form-entry__label">YAML</label>
         <div class="form-entry__field form-entry__field--code-editor">
-          <code-editor lang="yaml" :value="defaultSettings" key="default-settings" disabled="true"></code-editor>
+          <code-editor lang="yaml" :value="defaultSettings" key="default-settings" :disabled="true"></code-editor>
         </div>
       </div>
       <div class="modal__error modal__error--settings">{{error}}</div>
     </div>
     <div class="modal__button-bar">
-      <button class="button" @click="config.reject()">取消</button>
-      <button class="button button--resolve" @click="resolve">确认</button>
+      <button class="button" @click="config.reject()">{{ $t('common.cancel') }}</button>
+      <button class="button button--resolve" @click="resolve">{{ $t('common.confirm') }}</button>
     </div>
   </modal-inner>
 </template>
@@ -39,6 +39,7 @@ import CodeEditor from '../CodeEditor';
 import defaultSettings from '../../data/defaults/defaultSettings.yml?raw';
 import store from '../../store';
 import badgeSvc from '../../services/badgeSvc';
+import i18nSvc from '../../services/i18nSvc';
 
 const emptySettings = '# 增加您的自定义配置覆盖默认配置';
 
@@ -67,6 +68,9 @@ export default {
     this.setCustomSettings(settings === '\n' ? emptySettings : settings);
   },
   methods: {
+    $t(key, params) {
+      return i18nSvc.t(key, params);
+    },
     setCustomSettings(value) {
       this.customSettings = value;
       try {

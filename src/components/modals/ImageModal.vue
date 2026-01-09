@@ -1,16 +1,16 @@
 <template>
-  <modal-inner aria-label="插入图像">
+  <modal-inner :aria-label="$t('modals.image.title')">
     <div class="modal__content">
-      <p>请为您的图像提供<b> url </b>。<span v-if="uploading">(图片上传中...)</span></p>
-      <form-entry label="URL" error="url">
+      <p>{{ $t('modals.image.url') }}<span v-if="uploading">({{ $t('common.loading') }})</span></p>
+      <form-entry :label="$t('modals.image.url')" error="url">
         <template v-slot:field><input class="textfield" type="text" v-model.trim="url" @keydown.enter="resolve"></template>
       </form-entry>
     </div>
     <div class="modal__button-bar">
       <input class="hidden-file" id="upload-image-file-input" type="file" accept="image/*" :disabled="uploading" @change="uploadImage">
       <label for="upload-image-file-input"><a class="button">上传图片</a></label>
-      <button class="button" @click="reject()">取消</button>
-      <button class="button button--resolve" @click="resolve" :disabled="uploading">确认</button>
+      <button class="button" @click="reject()">{{ $t('common.cancel') }}</button>
+      <button class="button button--resolve" @click="resolve" :disabled="uploading">{{ $t('common.confirm') }}</button>
     </div>
     <div>
       <hr />
@@ -25,7 +25,7 @@
           <template v-slot:icon><icon-provider :provider-id="currentWorkspace.providerId"></icon-provider></template>
           <div>
             当前文档空间图片路径
-            <button class="menu-item__button button" @click.stop="removeByPath(path)" v-title="'删除'">
+            <button class="menu-item__button button" @click.stop="removeByPath(path)" :v-title="$t('common.delete')">
               <icon-delete></icon-delete>
             </button>
           </div>
@@ -41,7 +41,7 @@
           <template v-slot:icon><icon-provider :provider-id="token.providerId"></icon-provider></template>
           <div>
             {{ token.remark }}
-            <button class="menu-item__button button" @click.stop="remove(token.providerId, token)" v-title="'删除'">
+            <button class="menu-item__button button" @click.stop="remove(token.providerId, token)" :v-title="$t('common.delete')">
               <icon-delete></icon-delete>
             </button>
           </div>
@@ -59,7 +59,7 @@
         <menu-item>
           <template v-slot:icon><icon-provider :provider-id="tokenStorage.providerId"></icon-provider></template>
           <div>{{tokenStorage.providerName}}
-            <button class="menu-item__button button" @click.stop="remove(tokenStorage.providerId, tokenStorage)" v-title="'删除'">
+            <button class="menu-item__button button" @click.stop="remove(tokenStorage.providerId, tokenStorage)" :v-title="$t('common.delete')">
               <icon-delete></icon-delete>
             </button>
           </div>
@@ -97,6 +97,7 @@ import githubHelper from '../../services/providers/helpers/githubHelper';
 import customHelper from '../../services/providers/helpers/customHelper';
 import utils from '../../services/utils';
 import imageSvc from '../../services/imageSvc';
+import i18nSvc from '../../services/i18nSvc';
 
 export default modalTemplate({
   components: {
@@ -167,6 +168,9 @@ export default modalTemplate({
     },
   },
   methods: {
+    $t(key, params) {
+      return i18nSvc.t(key, params);
+    },
     resolve(evt) {
       evt.preventDefault(); // Fixes https://github.com/mafgwo/stackedit/issues/1503
       if (!this.url) {

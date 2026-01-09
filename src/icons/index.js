@@ -64,6 +64,7 @@ import SelectTheme from './SelectTheme';
 import Copy from './Copy';
 import Ellipsis from './Ellipsis';
 import Share from './Share';
+import Language from './Language';
 
 export default ({
   'iconProvider': Provider,
@@ -132,4 +133,5 @@ export default ({
   'iconCopy': Copy,
   'iconEllipsis': Ellipsis,
   'iconShare': Share,
+  'iconLanguage': Language,
 });

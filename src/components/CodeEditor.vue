@@ -4,6 +4,12 @@
 
 <script>
 import Prism from 'prismjs';
+// Import language components for syntax highlighting
+import 'prismjs/components/prism-yaml';
+import 'prismjs/components/prism-javascript';
+import 'prismjs/components/prism-markup';
+import 'prismjs/components/prism-markup-templating'; // Required by handlebars
+import 'prismjs/components/prism-handlebars';
 import cledit from '../services/editor/cledit';
 
 export default {
@@ -18,9 +24,13 @@ export default {
     if (scrollElt) {
       const clEditor = cledit(preElt, scrollElt);
       clEditor.on('contentChanged', value => this.$emit('changed', value));
+      
+      // Get the grammar, fallback to markup if language not found
+      const grammar = Prism.languages[this.lang] || Prism.languages.markup;
+      
       clEditor.init({
         content: this.value,
-        sectionHighlighter: section => Prism.highlight(section.text, Prism.languages[this.lang], this.lang),
+        sectionHighlighter: section => Prism.highlight(section.text, grammar, this.lang),
       });
       clEditor.toggleEditable(!this.disabled);
     }

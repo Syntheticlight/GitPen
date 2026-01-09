@@ -1,5 +1,5 @@
 <template>
-  <modal-inner class="modal__inner-1--about-modal" aria-label="About">
+  <modal-inner class="modal__inner-1--about-modal" :aria-label="$t('modals.about.title')">
     <div class="modal__content">
       <div class="logo-background"></div>
       GitPen 在 <a target="_blank" href="https://github.com/Syntheticlight/GitPen">GitHub</a> 上
@@ -18,7 +18,7 @@
       <a target="_blank" href="privacy_policy.html">隐私策略</a>
     </div>
     <div class="modal__button-bar">
-      <button class="button button--resolve" @click="config.resolve()">关闭</button>
+      <button class="button button--resolve" @click="config.resolve()">{{ $t('common.close') }}</button>
     </div>
   </modal-inner>
 </template>
@@ -29,6 +29,7 @@ import ModalInner from './common/ModalInner';
 import markdownConversionSvc from '../../services/markdownConversionSvc';
 import faq from '../../data/faq.md?raw';
 import pkg from '@/../package.json'
+import i18nSvc from '../../services/i18nSvc';
 
 export default {
   components: {
@@ -43,6 +44,11 @@ export default {
     ]),
     faq() {
       return markdownConversionSvc.defaultConverter.render(faq);
+    },
+  },
+  methods: {
+    $t(key, params) {
+      return i18nSvc.t(key, params);
     },
   },
 };

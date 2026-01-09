@@ -9,6 +9,7 @@ import explorer from './explorer';
 import file from './file';
 import findReplace from './findReplace';
 import folder from './folder';
+import i18n from './i18n';
 import layout from './layout';
 import modal from './modal';
 import notification from './notification';
@@ -17,7 +18,6 @@ import syncedContent from './syncedContent';
 import userInfo from './userInfo';
 import workspace from './workspace';
 import img from './img';
-import theme from './theme';
 import locationTemplate from './locationTemplate';
 import emptyPublishLocation from '../data/empties/emptyPublishLocation';
 import emptySyncLocation from '../data/empties/emptySyncLocation';
@@ -36,6 +36,7 @@ const store = createStore({
     file,
     findReplace,
     folder,
+    i18n,
     layout,
     modal,
     notification,
@@ -46,7 +47,6 @@ const store = createStore({
     userInfo,
     workspace,
     img,
-    theme,
   },
   state: {
     light: false,

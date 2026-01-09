@@ -1,13 +1,13 @@
 <template>
   <div class="side-bar flex flex--column">
     <div class="side-title flex flex--row">
-      <button v-if="panel !== 'menu'" class="side-title__button button" @click="setPanel('menu')" v-title="'主菜单'">
+      <button v-if="panel !== 'menu'" class="side-title__button button" @click="setPanel('menu')" :v-title="$t('sideBar.mainMenu')">
         <icon-dots-horizontal></icon-dots-horizontal>
       </button>
       <div class="side-title__title">
         {{panelName}}
       </div>
-      <button class="side-title__button button" @click="toggleSideBar(false)" v-title="'关闭侧边栏'">
+      <button class="side-title__button button" @click="toggleSideBar(false)" :v-title="$t('sideBar.closeSideBar')">
         <icon-close></icon-close>
       </button>
     </div>
@@ -23,8 +23,6 @@
       <div v-else-if="panel === 'help'" class="side-bar__panel side-bar__panel--help">
         <pre class="markdown-highlighting" v-html="markdownSample"></pre>
       </div>
-      <edit-theme-menu v-else-if="panel === 'editTheme'"></edit-theme-menu>
-      <preview-theme-menu v-else-if="panel === 'previewTheme'"></preview-theme-menu>
       <div class="side-bar__panel side-bar__panel--toc" :class="{'side-bar__panel--hidden': panel !== 'toc'}">
         <toc>
         </toc>
@@ -43,24 +41,21 @@ import PublishMenu from './menus/PublishMenu';
 import HistoryMenu from './menus/HistoryMenu';
 import ImportExportMenu from './menus/ImportExportMenu';
 import WorkspaceBackupMenu from './menus/WorkspaceBackupMenu';
-import EditThemeMenu from './menus/EditThemeMenu';
-import PreviewThemeMenu from './menus/PreviewThemeMenu';
 import markdownSample from '../data/markdownSample.md?raw';
 import markdownConversionSvc from '../services/markdownConversionSvc';
 import store from '../store';
+import i18nSvc from '../services/i18nSvc';
 
-const panelNames = {
-  menu: '菜单',
-  workspaces: '文档空间',
-  help: 'Markdown 帮助',
-  toc: '目录',
-  sync: '同步',
-  publish: '发布',
-  history: '文件历史',
-  importExport: '导入/导出',
-  workspaceBackups: '文档空间备份',
-  editTheme: '编辑区主题',
-  previewTheme: '预览区主题',
+const panelKeys = {
+  menu: 'sideBar.panels.menu',
+  workspaces: 'sideBar.panels.workspaces',
+  help: 'sideBar.panels.help',
+  toc: 'sideBar.panels.toc',
+  sync: 'sideBar.panels.sync',
+  publish: 'sideBar.panels.publish',
+  history: 'sideBar.panels.history',
+  importExport: 'sideBar.panels.importExport',
+  workspaceBackups: 'sideBar.panels.workspaceBackups',
 };
 
 export default {
@@ -73,8 +68,6 @@ export default {
     HistoryMenu,
     ImportExportMenu,
     WorkspaceBackupMenu,
-    EditThemeMenu,
-    PreviewThemeMenu,
   },
   data: () => ({
     markdownSample: markdownConversionSvc.highlight(markdownSample),
@@ -85,10 +78,10 @@ export default {
         return null; // No menu in light mode
       }
       const result = store.getters['data/layoutSettings'].sideBarPanel;
-      return panelNames[result] ? result : 'menu';
+      return panelKeys[result] ? result : 'menu';
     },
     panelName() {
-      return panelNames[this.panel];
+      return i18nSvc.t(panelKeys[this.panel]);
     },
   },
   methods: {
@@ -98,6 +91,9 @@ export default {
     ...mapActions('data', {
       setPanel: 'setSideBarPanel',
     }),
+    $t(key, params) {
+      return i18nSvc.t(key, params);
+    },
   },
 };
 </script>
