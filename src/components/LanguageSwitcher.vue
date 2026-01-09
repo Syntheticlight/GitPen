@@ -1,13 +1,19 @@
 <template>
   <div class="language-switcher" ref="switcher">
     <button 
+      ref="button"
       class="navigation-bar__button navigation-bar__button--language button" 
       @click.stop="toggleDropdown" 
       v-title="'切换语言 / Switch Language'"
     >
       <icon-language></icon-language>
     </button>
-    <div class="language-switcher__dropdown" v-if="showDropdown" @click.stop>
+    <div 
+      class="language-switcher__dropdown" 
+      v-if="showDropdown" 
+      :style="dropdownStyle"
+      @click.stop
+    >
       <button 
         v-for="locale in supportedLocales" 
         :key="locale.code"
@@ -30,6 +36,7 @@ export default {
   data() {
     return {
       showDropdown: false,
+      dropdownStyle: {},
     };
   },
   computed: {
@@ -44,6 +51,20 @@ export default {
     ]),
     toggleDropdown() {
       this.showDropdown = !this.showDropdown;
+      if (this.showDropdown) {
+        this.$nextTick(() => {
+          this.updateDropdownPosition();
+        });
+      }
+    },
+    updateDropdownPosition() {
+      if (this.$refs.button) {
+        const rect = this.$refs.button.getBoundingClientRect();
+        this.dropdownStyle = {
+          top: `${rect.bottom + 4}px`,
+          left: `${rect.left}px`,
+        };
+      }
     },
     closeDropdown() {
       this.showDropdown = false;
@@ -70,6 +91,7 @@ export default {
 .language-switcher {
   position: relative;
   display: inline-block;
+  z-index: 200;
 }
 
 .navigation-bar__button--language {
@@ -83,12 +105,11 @@ export default {
 }
 
 .language-switcher__dropdown {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  z-index: 100;
+  position: fixed;
+  top: 44px;
+  right: auto;
+  z-index: 1000;
   min-width: 160px;
-  margin-top: 4px;
   padding: 4px 0;
   background-color: $navbar-bg;
   border-radius: $border-radius-base;
