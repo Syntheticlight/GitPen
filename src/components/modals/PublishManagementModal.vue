@@ -1,11 +1,11 @@
 <template>
-  <modal-inner class="modal__inner-1--publish-management" aria-label="Manage publication locations">
+  <modal-inner class="modal__inner-1--publish-management" :aria-label="$t('modals.publishManagement.title')">
     <div class="modal__content">
       <div class="modal__image">
         <icon-upload></icon-upload>
       </div>
-      <p v-if="publishLocations.length"><b>{{currentFileName}}</b> 被发布到了以下位置:</p>
-      <p v-else><b>{{currentFileName}}</b> 还没有被发布.</p>
+      <p v-if="publishLocations.length"><b>{{currentFileName}}</b> {{ $t('modals.publishManagement.publishedTo') }}</p>
+      <p v-else><b>{{currentFileName}}</b> {{ $t('modals.publishManagement.notPublished') }}</p>
       <div>
         <div class="publish-entry flex flex--column" v-for="location in publishLocations" :key="location.id">
           <div class="publish-entry__header flex flex--row flex--align-center">
@@ -16,7 +16,7 @@
               {{location.description}}
             </div>
             <div class="publish-entry__buttons flex flex--row flex--center">
-              <button class="publish-entry__button button" @click="remove(location)" v-title="'删除位置'">
+              <button class="publish-entry__button button" @click="remove(location)" :v-title="$t('modals.publishManagement.deleteLocation')">
                 <icon-delete></icon-delete>
               </button>
             </div>
@@ -26,23 +26,23 @@
               {{location.url}}
             </div>
             <div class="publish-entry__buttons flex flex--row flex--center" v-if="location.url">
-              <button class="publish-entry__button button" v-clipboard="location.url" @click="info('位置URL已复制到剪贴板!')" v-title="'复制URL'">
+              <button class="publish-entry__button button" v-clipboard="location.url" @click="info($t('modals.publishManagement.urlCopied'))" :v-title="$t('modals.publishManagement.copyUrl')">
                 <icon-content-copy></icon-content-copy>
               </button>
-              <a class="publish-entry__button button" v-if="location.url" :href="location.url" target="_blank" v-title="'打开位置'">
+              <a class="publish-entry__button button" v-if="location.url" :href="location.url" target="_blank" :v-title="$t('modals.publishManagement.openLocation')">
                 <icon-open-in-new></icon-open-in-new>
               </a>
             </div>
           </div>
           <div class="publish-entry__row flex flex--row flex--align-center" v-if="shareUrl(location)">
             <div class="publish-entry__url">
-              分享链接: {{shareUrl(location)}}
+              {{ $t('modals.publishManagement.shareLink') }}: {{shareUrl(location)}}
             </div>
             <div class="publish-entry__buttons flex flex--row flex--center">
-              <button class="publish-entry__button button" v-clipboard="shareUrl(location)" @click="info('分享URL已复制到剪贴板!')" v-title="'复制分享URL'">
+              <button class="publish-entry__button button" v-clipboard="shareUrl(location)" @click="info($t('modals.publishManagement.shareUrlCopied'))" :v-title="$t('modals.publishManagement.copyShareUrl')">
                 <icon-content-copy></icon-content-copy>
               </button>
-              <a class="publish-entry__button button" :href="shareUrl(location)" target="_blank" v-title="'打开分享'">
+              <a class="publish-entry__button button" :href="shareUrl(location)" target="_blank" :v-title="$t('modals.publishManagement.openShare')">
                 <icon-open-in-new></icon-open-in-new>
               </a>
             </div>
@@ -50,11 +50,11 @@
         </div>
       </div>
       <div class="modal__info" v-if="publishLocations.length">
-        <b>提示:</b> 删除位置不会删除任何文件。
+        {{ $t('modals.publishManagement.tip') }}
       </div>
     </div>
     <div class="modal__button-bar">
-      <button class="button button--resolve" @click="config.resolve()">关闭</button>
+      <button class="button button--resolve" @click="config.resolve()">{{ $t('common.close') }}</button>
     </div>
   </modal-inner>
 </template>
@@ -64,6 +64,7 @@ import { mapGetters, mapActions } from 'vuex';
 import ModalInner from './common/ModalInner';
 import store from '../../store';
 import badgeSvc from '../../services/badgeSvc';
+import i18nSvc from '../../services/i18nSvc';
 
 export default {
   components: {
@@ -84,6 +85,9 @@ export default {
     ...mapActions('notification', [
       'info',
     ]),
+    $t(key, params) {
+      return i18nSvc.t(key, params);
+    },
     remove(location) {
       store.commit('publishLocation/deleteItem', location.id);
       badgeSvc.addBadge('removePublishLocation');

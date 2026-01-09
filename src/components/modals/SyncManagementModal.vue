@@ -1,11 +1,11 @@
 <template>
-  <modal-inner class="modal__inner-1--sync-management" aria-label="Manage synchronized locations">
+  <modal-inner class="modal__inner-1--sync-management" :aria-label="$t('modals.syncManagement.title')">
     <div class="modal__content">
       <div class="modal__image">
         <icon-sync></icon-sync>
       </div>
-      <p v-if="syncLocations.length"><b>{{currentFileName}}</b> 与以下位置同步：</p>
-      <p v-else><b>{{currentFileName}}</b>尚未同步。</p>
+      <p v-if="syncLocations.length"><b>{{currentFileName}}</b> {{ $t('modals.syncManagement.syncedWith') }}</p>
+      <p v-else><b>{{currentFileName}}</b> {{ $t('modals.syncManagement.notSynced') }}</p>
       <div>
         <div class="sync-entry flex flex--column" v-for="location in syncLocations" :key="location.id">
           <div class="sync-entry__header flex flex--row flex--align-center">
@@ -16,7 +16,7 @@
               {{location.description}}
             </div>
             <div class="sync-entry__buttons flex flex--row flex--center">
-              <button class="sync-entry__button button" @click="remove(location)" v-title="'删除位置'">
+              <button class="sync-entry__button button" @click="remove(location)" :v-title="$t('modals.syncManagement.deleteLocation')">
                 <icon-delete></icon-delete>
               </button>
             </div>
@@ -26,10 +26,10 @@
               {{location.url || 'Gitee app data'}}
             </div>
             <div class="sync-entry__buttons flex flex--row flex--center" v-if="location.url">
-              <button class="sync-entry__button button" v-clipboard="location.url" @click="info('位置URL复制到剪贴板！')" v-title="'复制URL'">
+              <button class="sync-entry__button button" v-clipboard="location.url" @click="info($t('modals.syncManagement.urlCopied'))" :v-title="$t('modals.syncManagement.copyUrl')">
                 <icon-content-copy></icon-content-copy>
               </button>
-              <a class="sync-entry__button button" v-if="location.url" :href="location.url" target="_blank" v-title="'打开位置'">
+              <a class="sync-entry__button button" v-if="location.url" :href="location.url" target="_blank" :v-title="$t('modals.syncManagement.openLocation')">
                 <icon-open-in-new></icon-open-in-new>
               </a>
             </div>
@@ -37,11 +37,11 @@
         </div>
       </div>
       <div class="modal__info" v-if="syncLocations.length">
-        <b>提示:</b> 删除位置不会删除任何文件。
+        {{ $t('modals.syncManagement.tip') }}
       </div>
     </div>
     <div class="modal__button-bar">
-      <button class="button button--resolve" @click="config.resolve()">关闭</button>
+      <button class="button button--resolve" @click="config.resolve()">{{ $t('common.close') }}</button>
     </div>
   </modal-inner>
 </template>
@@ -51,6 +51,7 @@ import { mapGetters, mapActions } from 'vuex';
 import ModalInner from './common/ModalInner';
 import store from '../../store';
 import badgeSvc from '../../services/badgeSvc';
+import i18nSvc from '../../services/i18nSvc';
 
 export default {
   components: {
@@ -71,6 +72,9 @@ export default {
     ...mapActions('notification', [
       'info',
     ]),
+    $t(key, params) {
+      return i18nSvc.t(key, params);
+    },
     remove(location) {
       if (location.id === 'main') {
         this.info('This location can not be removed.');

@@ -267,11 +267,19 @@ export default {
 
     // Unselect class applier when focus is out of the panel
     this.onFocusIn = () => {
-      if (!this.$refs.findReplaceRoot) return;
+      if (!this.$refs.findReplaceRoot || this.state === 'destroyed') return;
       this.$refs.findReplaceRoot.contains(document.activeElement) ||
-        setTimeout(() => this.unselectClassApplier(), 15);
+        setTimeout(() => {
+          if (this.state !== 'destroyed') {
+            this.unselectClassApplier();
+          }
+        }, 15);
     };
     window.addEventListener('focusin', this.onFocusIn);
+  },
+  beforeDestroy() {
+    // Mark as destroyed before cleanup
+    this.state = 'destroyed';
   },
   destroyed() {
     // Unregister listeners

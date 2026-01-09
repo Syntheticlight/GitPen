@@ -1,5 +1,6 @@
 import emptyFile from '../data/empties/emptyFile';
 import emptyFolder from '../data/empties/emptyFolder';
+import i18nSvc from '../services/i18nSvc';
 
 const setter = propertyName => (state, value) => {
   state[propertyName] = value;
@@ -88,7 +89,7 @@ export default {
       // Create Trash node
       const trashFolderNode = new Node(emptyFolder(), [], true);
       trashFolderNode.item.id = 'trash';
-      trashFolderNode.item.name = '回收站';
+      trashFolderNode.item.name = i18nSvc.t('explorer.trash');
       trashFolderNode.noDrag = true;
       trashFolderNode.isTrash = true;
       trashFolderNode.parentNode = rootNode;
@@ -96,7 +97,7 @@ export default {
       // Create Temp node
       const tempFolderNode = new Node(emptyFolder(), [], true);
       tempFolderNode.item.id = 'temp';
-      tempFolderNode.item.name = '临时目录';
+      tempFolderNode.item.name = i18nSvc.t('explorer.tempFolder');
       tempFolderNode.noDrag = true;
       tempFolderNode.noDrop = true;
       tempFolderNode.isTemp = true;

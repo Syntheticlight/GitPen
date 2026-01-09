@@ -8,13 +8,13 @@
     </div>
     <div class="modal__button-bar">
       <input class="hidden-file" id="upload-image-file-input" type="file" accept="image/*" :disabled="uploading" @change="uploadImage">
-      <label for="upload-image-file-input"><a class="button">上传图片</a></label>
+      <label for="upload-image-file-input"><a class="button">{{ $t('modals.imgStorage.uploadImage') }}</a></label>
       <button class="button" @click="reject()">{{ $t('common.cancel') }}</button>
       <button class="button button--resolve" @click="resolve" :disabled="uploading">{{ $t('common.confirm') }}</button>
     </div>
     <div>
       <hr />
-      <p>添加并选择图床后可在编辑区中粘贴/拖拽图片自动上传</p>
+      <p>{{ $t('modals.imgStorage.addAfterSelect') }}</p>
 
       <menu-entry @click.native="checkedImgDest(path)" v-for="path in workspaceImgPath" :key="path">
         <template v-slot:icon>
@@ -24,12 +24,12 @@
         <menu-item>
           <template v-slot:icon><icon-provider :provider-id="currentWorkspace.providerId"></icon-provider></template>
           <div>
-            当前文档空间图片路径
+            {{ $t('modals.imgStorage.currentWorkspacePath') }}
             <button class="menu-item__button button" @click.stop="removeByPath(path)" :v-title="$t('common.delete')">
               <icon-delete></icon-delete>
             </button>
           </div>
-          <span>路径：{{path}}</span>
+          <span>{{ $t('modals.imgStorage.path') }}：{{path}}</span>
         </menu-item>
       </menu-entry>
       <menu-entry @click.native="checkedImgDest(token.sub, token.providerId)" v-for="token in imageTokens" :key="token.sub">
@@ -46,9 +46,9 @@
             </button>
           </div>
           <span>{{token.name}}</span>
-          <span class="line-entry" v-if="token.uploadUrl">上传地址：{{token.uploadUrl}}</span>
-          <span class="line-entry" v-if="token.headers">自定义请求头：{{token.headers}}</span>
-          <span class="line-entry" v-if="token.params">自定义Form参数：{{token.params}}</span>
+          <span class="line-entry" v-if="token.uploadUrl">{{ $t('modals.imgStorage.uploadUrl') }}：{{token.uploadUrl}}</span>
+          <span class="line-entry" v-if="token.headers">{{ $t('modals.imgStorage.customHeaders') }}：{{token.headers}}</span>
+          <span class="line-entry" v-if="token.params">{{ $t('modals.imgStorage.customParams') }}：{{token.params}}</span>
         </menu-item>
       </menu-entry>
       <menu-entry @click.native="checkedImgDest(tokenStorage.token.sub, tokenStorage.providerId, tokenStorage.sid)" v-for="tokenStorage in tokensImgStorages" :key="tokenStorage.sid">
@@ -63,24 +63,24 @@
               <icon-delete></icon-delete>
             </button>
           </div>
-          <span> {{tokenStorage.uname}}, 仓库URL: {{tokenStorage.repoUrl}}, 路径: {{tokenStorage.path}}, 分支: {{tokenStorage.branch}}</span>
+          <span> {{tokenStorage.uname}}, {{ $t('modals.imgStorage.repo') }}: {{tokenStorage.repoUrl}}, {{ $t('modals.imgStorage.path') }}: {{tokenStorage.path}}, {{ $t('modals.imgStorage.branch') }}: {{tokenStorage.branch}}</span>
         </menu-item>
       </menu-entry>
       <menu-entry @click.native="addWorkspaceImgPath">
         <template v-slot:icon><icon-provider :provider-id="currentWorkspace.providerId"></icon-provider></template>
-        <span>添加当前文档空间图片路径</span>
+        <span>{{ $t('modals.imgStorage.addWorkspacePath') }}</span>
       </menu-entry>
       <menu-entry @click.native="addSmmsAccount">
         <template v-slot:icon><icon-provider provider-id="smms"></icon-provider></template>
-        <span>添加SM.MS图床账号</span>
+        <span>{{ $t('modals.imgStorage.addSmms') }}</span>
       </menu-entry>
       <menu-entry @click.native="addCustomAccount">
         <template v-slot:icon><icon-provider provider-id="custom"></icon-provider></template>
-        <span>添加自定义图床账号</span>
+        <span>{{ $t('modals.imgStorage.addCustom') }}</span>
       </menu-entry>
       <menu-entry @click.native="addGithubImgStorage">
         <template v-slot:icon><icon-provider provider-id="github"></icon-provider></template>
-        <span>添加GitHub图床仓库</span>
+        <span>{{ $t('modals.imgStorage.addGithub') }}</span>
       </menu-entry>
     </div>
   </modal-inner>

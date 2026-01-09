@@ -14,7 +14,7 @@
       </div>
       <explorer-node v-for="node in node.files" :key="node.item.id" :node="node" :depth="depth + 1"></explorer-node>
     </div>
-    <button ref="copyId" v-clipboard="copyPath()" @click="info('路径已复制到剪切板!')" style="display: none;"></button>
+    <button ref="copyId" v-clipboard="copyPath()" @click="info($t('explorer.pathCopied'))" style="display: none;"></button>
   </div>
 </template>
 
@@ -25,6 +25,7 @@ import explorerSvc from '../services/explorerSvc';
 import store from '../store';
 import badgeSvc from '../services/badgeSvc';
 import utils from '../services/utils';
+import i18nSvc from '../services/i18nSvc';
 
 export default {
   name: 'explorer-node', // Required for recursivity
@@ -85,6 +86,9 @@ export default {
     ...mapActions('notification', [
       'info',
     ]),
+    $t(key, params) {
+      return i18nSvc.t(key, params);
+    },
     equalNode(node1, node2) {
       if (!node1 || !node2) {
         return false;
@@ -188,24 +192,24 @@ export default {
             top: evt.clientY,
           },
           items: [{
-            name: '新建文件',
+            name: this.$t('contextMenu.newFile'),
             disabled: !this.node.isFolder || this.node.isTrash,
             perform: () => explorerSvc.newItem(false),
           }, {
-            name: '新建文件夹',
+            name: this.$t('contextMenu.newFolder'),
             disabled: !this.node.isFolder || this.node.isTrash || this.node.isTemp,
             perform: () => explorerSvc.newItem(true),
           }, {
             type: 'separator',
           }, {
-            name: '重命名',
+            name: this.$t('contextMenu.rename'),
             disabled: this.node.isTrash || this.node.isTemp,
             perform: () => this.setEditingId(this.node.item.id),
           }, {
-            name: '删除',
+            name: this.$t('contextMenu.delete'),
             perform: () => explorerSvc.deleteItem(),
           }, {
-            name: '复制路径',
+            name: this.$t('contextMenu.copyPath'),
             disabled: this.node.isTrash || this.node.isTemp,
             perform: () => this.$refs.copyId.click(),
           }],
