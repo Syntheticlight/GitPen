@@ -66,8 +66,6 @@ GitPen
 
 ### デプロイ手順
 
-#### 方法1：Cloudflare Dashboardからデプロイ
-
 1. このリポジトリをあなたのGitHubアカウントにフォーク
 2. [Cloudflare Dashboard](https://dash.cloudflare.com)にログイン
 3. **Workers & Pages** > **Create application** > **Pages**に移動
@@ -76,24 +74,7 @@ GitPen
    - **Framework preset**: None
    - **Build command**: `npm run build`
    - **Build output directory**: `dist`
-   - **Root directory**: `stackedit-master/stackedit-master`（プロジェクトがサブディレクトリにある場合）
 6. **Save and Deploy**をクリック
-
-#### 方法2：Wrangler CLIからデプロイ
-
-```bash
-# Wrangler CLIをインストール
-npm install -g wrangler
-
-# Cloudflareにログイン
-wrangler login
-
-# プロジェクトをビルド
-npm run build
-
-# Cloudflare Pagesにデプロイ
-wrangler pages deploy dist --project-name=gitpen
-```
 
 ### 環境変数の設定
 

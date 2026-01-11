@@ -66,8 +66,6 @@ GitPen
 
 ### 部署步驟
 
-#### 方式一：透過 Cloudflare Dashboard 部署
-
 1. Fork 本儲存庫到您的 GitHub 帳號
 2. 登入 [Cloudflare Dashboard](https://dash.cloudflare.com)
 3. 進入 **Workers & Pages** > **Create application** > **Pages**
@@ -76,24 +74,7 @@ GitPen
    - **Framework preset**: None
    - **Build command**: `npm run build`
    - **Build output directory**: `dist`
-   - **Root directory**: `stackedit-master/stackedit-master`（如果專案在子目錄）
 6. 點擊 **Save and Deploy**
-
-#### 方式二：透過 Wrangler CLI 部署
-
-```bash
-# 安裝 Wrangler CLI
-npm install -g wrangler
-
-# 登入 Cloudflare
-wrangler login
-
-# 建置專案
-npm run build
-
-# 部署到 Cloudflare Pages
-wrangler pages deploy dist --project-name=gitpen
-```
 
 ### 設定環境變數
 

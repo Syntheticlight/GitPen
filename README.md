@@ -66,8 +66,6 @@ GitPen
 
 ### Deployment Steps
 
-#### Method 1: Deploy via Cloudflare Dashboard
-
 1. Fork this repository to your GitHub account
 2. Log in to [Cloudflare Dashboard](https://dash.cloudflare.com)
 3. Go to **Workers & Pages** > **Create application** > **Pages**
@@ -76,24 +74,7 @@ GitPen
    - **Framework preset**: None
    - **Build command**: `npm run build`
    - **Build output directory**: `dist`
-   - **Root directory**: `stackedit-master/stackedit-master` (if project is in subdirectory)
 6. Click **Save and Deploy**
-
-#### Method 2: Deploy via Wrangler CLI
-
-```bash
-# Install Wrangler CLI
-npm install -g wrangler
-
-# Login to Cloudflare
-wrangler login
-
-# Build the project
-npm run build
-
-# Deploy to Cloudflare Pages
-wrangler pages deploy dist --project-name=gitpen
-```
 
 ### Configuring Environment Variables
 
