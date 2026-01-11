@@ -322,4 +322,456 @@ export default {
     'zh-TW': '繁體中文',
     'zh-CN': '简体中文',
   },
+  badges: {
+    title: 'Manage Badges',
+    earnedCount: 'Earned {count} badges',
+    expand: 'Expand',
+    close: 'Close',
+    features: {
+      navigationBar: {
+        name: 'Rich Navigation Bar',
+        description: 'Master the navigation bar by formatting some Markdown and renaming the current file.',
+      },
+      formatButtons: {
+        name: 'Formatting',
+        description: 'Use the formatting buttons to change the format in a Markdown file.',
+      },
+      editCurrentFileName: {
+        name: 'Rename',
+        description: 'Use the name field in the navigation bar to rename the current file.',
+      },
+      toggleExplorer: {
+        name: 'Explorer Toggle',
+        description: 'Use the navigation bar to toggle the explorer.',
+      },
+      toggleSideBar: {
+        name: 'Side Bar Toggle',
+        description: 'Use the navigation bar to toggle the side bar.',
+      },
+      explorer: {
+        name: 'Explorer',
+        description: 'Use the file explorer to manage files and folders in your workspace.',
+      },
+      createFile: {
+        name: 'File Creation',
+        description: 'Use the file explorer to create a new file in your workspace.',
+      },
+      switchFile: {
+        name: 'File Switch',
+        description: 'Use the file explorer to switch from one file to another in your workspace.',
+      },
+      createFolder: {
+        name: 'Folder Creation',
+        description: 'Use the file explorer to create a new folder in your workspace.',
+      },
+      moveFile: {
+        name: 'File Move',
+        description: 'Drag a file to another folder in the file explorer.',
+      },
+      moveFolder: {
+        name: 'Folder Move',
+        description: 'Drag a folder to another folder in the file explorer.',
+      },
+      renameFile: {
+        name: 'File Rename',
+        description: 'Use the file explorer to rename a file in your workspace.',
+      },
+      renameFolder: {
+        name: 'Folder Rename',
+        description: 'Use the file explorer to rename a folder in your workspace.',
+      },
+      removeFile: {
+        name: 'File Delete',
+        description: 'Use the file explorer to delete a file in your workspace.',
+      },
+      removeFolder: {
+        name: 'Folder Delete',
+        description: 'Use the file explorer to delete a folder in your workspace.',
+      },
+      searchFile: {
+        name: 'File Search',
+        description: 'Use the file explorer to search for files in your workspace.',
+      },
+      buttonBar: {
+        name: 'Button Bar',
+        description: 'Use the button bar to customize the editor layout and toggle features.',
+      },
+      toggleNavigationBar: {
+        name: 'Navigation Bar Toggle',
+        description: 'Use the button bar to toggle the navigation bar.',
+      },
+      toggleSidePreview: {
+        name: 'Side Preview Toggle',
+        description: 'Use the button bar to toggle the side preview.',
+      },
+      toggleEditor: {
+        name: 'Editor Toggle',
+        description: 'Use the button bar to toggle the editor.',
+      },
+      toggleFocusMode: {
+        name: 'Focus Mode Toggle',
+        description: 'Use the button bar to toggle focus mode. This mode centers the cursor vertically while typing.',
+      },
+      toggleScrollSync: {
+        name: 'Scroll Sync Toggle',
+        description: 'Use the button bar to toggle scroll sync. This feature links the editor and preview scrollbars.',
+      },
+      toggleStatusBar: {
+        name: 'Status Bar Toggle',
+        description: 'Use the button bar to toggle the status bar.',
+      },
+      signIn: {
+        name: 'Sign In',
+        description: 'Sign in with Gitee to sync your main workspace and unlock features.',
+      },
+      syncMainWorkspace: {
+        name: 'Main Workspace Synced',
+        description: 'Sign in with Gitee to sync your main workspace with your default stackedit-app-data repository.',
+      },
+      sponsor: {
+        name: 'Sponsor',
+        description: 'Sign in with Gitee and sponsor GitPen to unlock premium features. (Not yet supported)',
+      },
+      githubSignIn: {
+        name: 'Sign In',
+        description: 'Sign in with GitHub to sync your main workspace and unlock features.',
+      },
+      githubSyncMainWorkspace: {
+        name: 'Main Workspace Synced',
+        description: 'Sign in with GitHub to sync your main workspace with your default stackedit-app-data repository.',
+      },
+      workspaces: {
+        name: 'Workspace Menu',
+        description: 'Use the workspace menu to create and manage various workspaces.',
+      },
+      addCouchdbWorkspace: {
+        name: 'Create CouchDB Workspace',
+        description: 'Use the workspace menu to create a CouchDB workspace.',
+      },
+      addGithubWorkspace: {
+        name: 'Create GitHub Workspace',
+        description: 'Use the workspace menu to create a GitHub workspace.',
+      },
+      addGiteeWorkspace: {
+        name: 'Create Gitee Workspace',
+        description: 'Use the workspace menu to create a Gitee workspace.',
+      },
+      addGitlabWorkspace: {
+        name: 'Create GitLab Workspace',
+        description: 'Use the workspace menu to create a GitLab workspace.',
+      },
+      addGiteaWorkspace: {
+        name: 'Create Gitea Workspace',
+        description: 'Use the workspace menu to create a Gitea workspace.',
+      },
+      addGoogleDriveWorkspace: {
+        name: 'Create Google Drive Workspace',
+        description: 'Use the workspace menu to create a Google Drive workspace.',
+      },
+      renameWorkspace: {
+        name: 'Workspace Rename',
+        description: 'Use the "Manage Workspaces" dialog to rename a workspace.',
+      },
+      removeWorkspace: {
+        name: 'Workspace Delete',
+        description: 'Use the "Manage Workspaces" dialog to delete a workspace locally.',
+      },
+      autoSyncWorkspace: {
+        name: 'Workspace Auto Sync Enable',
+        description: 'Use the "Manage Workspaces" dialog to enable auto sync.',
+      },
+      stopAutoSyncWorkspace: {
+        name: 'Workspace Auto Sync Disable',
+        description: 'Use the "Manage Workspaces" dialog to disable auto sync.',
+      },
+      manageAccounts: {
+        name: 'Account Management',
+        description: 'Link various external accounts and manage them using the "Accounts" dialog.',
+      },
+      addBloggerAccount: {
+        name: 'Blogger Account',
+        description: 'Link your Blogger account to StackEdit.',
+      },
+      addDropboxAccount: {
+        name: 'Dropbox Account',
+        description: 'Link your Dropbox account to StackEdit.',
+      },
+      addGitHubAccount: {
+        name: 'GitHub Account',
+        description: 'Link your GitHub account to StackEdit.',
+      },
+      addGiteeAccount: {
+        name: 'Gitee Account',
+        description: 'Link your Gitee account to StackEdit.',
+      },
+      addGitLabAccount: {
+        name: 'GitLab Account',
+        description: 'Link your GitLab account to StackEdit.',
+      },
+      addGiteaAccount: {
+        name: 'Gitea Account',
+        description: 'Link your Gitea account to StackEdit.',
+      },
+      addGoogleDriveAccount: {
+        name: 'Google Drive Account',
+        description: 'Link your Google Drive account to StackEdit.',
+      },
+      addGooglePhotosAccount: {
+        name: 'Google Photos Account',
+        description: 'Link your Google Photos account to StackEdit.',
+      },
+      addWordpressAccount: {
+        name: 'WordPress Account',
+        description: 'Link your WordPress account to StackEdit.',
+      },
+      addZendeskAccount: {
+        name: 'Zendesk Account',
+        description: 'Link your Zendesk account to StackEdit.',
+      },
+      addSmmsAccount: {
+        name: 'SM.MS Account',
+        description: 'Link your SM.MS account to StackEdit.',
+      },
+      addCustomAccount: {
+        name: 'Custom Image Hosting Account',
+        description: 'Link your custom image hosting account to StackEdit.',
+      },
+      removeAccount: {
+        name: 'Remove Account',
+        description: 'Use the "Accounts" dialog to remove access to an external account.',
+      },
+      syncFiles: {
+        name: 'File Sync',
+        description: 'Master the "Sync" menu by opening and saving files from various external accounts.',
+      },
+      openFromDropbox: {
+        name: 'Dropbox Reader',
+        description: 'Use the "Sync" menu to open files from your Dropbox account.',
+      },
+      saveOnDropbox: {
+        name: 'Dropbox Save',
+        description: 'Use the "Sync" menu to save files to your Dropbox account.',
+      },
+      openFromGithub: {
+        name: 'GitHub Reader',
+        description: 'Use the "Sync" menu to open files from a GitHub repository.',
+      },
+      saveOnGithub: {
+        name: 'GitHub Save',
+        description: 'Use the "Sync" menu to save files to a GitHub repository.',
+      },
+      saveOnGist: {
+        name: 'GitHub Gist Save',
+        description: 'Use the "Sync" menu to save files to GitHub Gist.',
+      },
+      openFromGitee: {
+        name: 'Gitee Reader',
+        description: 'Use the "Sync" menu to open files from a Gitee repository.',
+      },
+      saveOnGitee: {
+        name: 'Gitee Save',
+        description: 'Use the "Sync" menu to save files to a Gitee repository.',
+      },
+      saveOnGiteeGist: {
+        name: 'Gitee Gist Save',
+        description: 'Use the "Sync" menu to save files to Gitee Gist.',
+      },
+      openFromGitlab: {
+        name: 'GitLab Reader',
+        description: 'Use the "Sync" menu to open files from a GitLab repository.',
+      },
+      saveOnGitlab: {
+        name: 'GitLab Save',
+        description: 'Use the "Sync" menu to save files to a GitLab repository.',
+      },
+      openFromGitea: {
+        name: 'Gitea Reader',
+        description: 'Use the "Sync" menu to open files from a Gitea repository.',
+      },
+      saveOnGitea: {
+        name: 'Gitea Save',
+        description: 'Use the "Sync" menu to save files to a Gitea repository.',
+      },
+      openFromGoogleDrive: {
+        name: 'Google Drive Reader',
+        description: 'Use the "Sync" menu to open files from your Google Drive account.',
+      },
+      saveOnGoogleDrive: {
+        name: 'Google Drive Save',
+        description: 'Use the "Sync" menu to save files to your Google Drive account.',
+      },
+      triggerSync: {
+        name: 'Sync Trigger',
+        description: 'Use the "Sync" menu or navigation bar to manually trigger sync.',
+      },
+      syncMultipleLocations: {
+        name: 'Multi-location Sync',
+        description: 'Use the "Sync" menu to sync files with multiple external locations.',
+      },
+      removeSyncLocation: {
+        name: 'Remove Sync',
+        description: 'Use the "File Sync" dialog to remove a sync location.',
+      },
+      publishFiles: {
+        name: 'File Publish',
+        description: 'Master the "Publish" menu by publishing files to various external accounts.',
+      },
+      publishToBlogger: {
+        name: 'Blogger Publish',
+        description: 'Use the "Publish" menu to publish blog posts.',
+      },
+      publishToBloggerPage: {
+        name: 'Blogger Page Publish',
+        description: 'Use the "Publish" menu to publish Blogger pages.',
+      },
+      publishToDropbox: {
+        name: 'Dropbox Publish',
+        description: 'Use the "Publish" menu to publish files to your Dropbox account.',
+      },
+      publishToGithub: {
+        name: 'GitHub Publish',
+        description: 'Use the "Publish" menu to publish files to a GitHub repository.',
+      },
+      publishToGist: {
+        name: 'GitHub Gist Publish',
+        description: 'Use the "Publish" menu to publish files to GitHub Gist.',
+      },
+      publishToGitee: {
+        name: 'Gitee Publish',
+        description: 'Use the "Publish" menu to publish files to a Gitee repository.',
+      },
+      publishToGiteeGist: {
+        name: 'Gitee Gist Publish',
+        description: 'Use the "Publish" menu to publish files to Gitee Gist.',
+      },
+      publishToGitlab: {
+        name: 'GitLab Publish',
+        description: 'Use the "Publish" menu to publish files to a GitLab repository.',
+      },
+      publishToGitea: {
+        name: 'Gitea Publish',
+        description: 'Use the "Publish" menu to publish files to a Gitea repository.',
+      },
+      publishToGoogleDrive: {
+        name: 'Google Drive Publish',
+        description: 'Use the "Publish" menu to publish files to your Google Drive account.',
+      },
+      publishToWordPress: {
+        name: 'WordPress Publish',
+        description: 'Use the "Publish" menu to publish WordPress posts.',
+      },
+      publishToZendesk: {
+        name: 'Zendesk Publish',
+        description: 'Use the "Publish" menu to publish Zendesk help center articles.',
+      },
+      triggerPublish: {
+        name: 'Update Publish',
+        description: 'Use the "Publish" menu or navigation bar to manually update publications.',
+      },
+      publishMultipleLocations: {
+        name: 'Multi-location Publish',
+        description: 'Use the "Publish" menu to publish files to multiple external locations.',
+      },
+      removePublishLocation: {
+        name: 'Remove Publish',
+        description: 'Use the "File Publish" dialog to remove a publish location.',
+      },
+      manageHistory: {
+        name: 'File History',
+        description: 'Use the "File History" menu to view version history and restore old versions of the current file.',
+      },
+      restoreVersion: {
+        name: 'Restore',
+        description: 'Use the "File History" menu to restore an old version of the current file.',
+      },
+      chooseHistory: {
+        name: 'History Selection',
+        description: 'Select different history for files synced with multiple external locations.',
+      },
+      manageProperties: {
+        name: 'File Properties',
+        description: 'Use the "File Properties" dialog to change properties of the current file.',
+      },
+      setMetadata: {
+        name: 'Metadata Setting',
+        description: 'Use the "File Properties" dialog to set metadata for the current file.',
+      },
+      changePreset: {
+        name: 'Preset Change',
+        description: 'Use the "File Properties" dialog to change the Markdown engine preset.',
+      },
+      changeExtension: {
+        name: 'Extension Configuration',
+        description: 'Use the "File Properties" dialog to enable, disable, or configure Markdown engine extensions.',
+      },
+      comment: {
+        name: 'Comments',
+        description: 'Add and remove annotations, add and remove comments.',
+      },
+      createDiscussion: {
+        name: 'Add Annotation',
+        description: 'Use the "Annotation" button icon to add a new annotation.',
+      },
+      addComment: {
+        name: 'Add Comment',
+        description: 'Use the "Comment" button to add a comment to an existing annotation.',
+      },
+      removeComment: {
+        name: 'Remove Comment',
+        description: 'Use the "Remove Comment" button icon to remove a comment.',
+      },
+      removeDiscussion: {
+        name: 'Remove Annotation',
+        description: 'Use the "Remove Annotation" button icon to remove an annotation.',
+      },
+      importExport: {
+        name: 'Import/Export',
+        description: 'Use the "Import/Export" menu to import and export files.',
+      },
+      importMarkdown: {
+        name: 'Markdown Import',
+        description: 'Use the "Import/Export" menu to import Markdown files from disk.',
+      },
+      exportMarkdown: {
+        name: 'Markdown Export',
+        description: 'Use the "Import/Export" menu to export Markdown files to disk.',
+      },
+      importHtml: {
+        name: 'HTML Import',
+        description: 'Use the "Import/Export" menu to import HTML files from disk and convert them to Markdown.',
+      },
+      exportHtml: {
+        name: 'HTML Export',
+        description: 'Use the "Import/Export" menu and Handlebars templates to export files to disk as HTML.',
+      },
+      manageSettings: {
+        name: 'Manage Settings',
+        description: 'Use the "Settings" dialog to adjust application behavior and change keyboard shortcuts.',
+      },
+      changeSettings: {
+        name: 'Update Settings',
+        description: 'Use the "Settings" dialog to adjust application behavior.',
+      },
+      switchTheme: {
+        name: 'Switch Theme',
+        description: 'Use the "Theme Switch" button to switch themes.',
+      },
+      changeShortcuts: {
+        name: 'Edit Shortcuts',
+        description: 'Use the "Settings" dialog to change keyboard shortcuts.',
+      },
+      manageTemplates: {
+        name: 'Manage Templates',
+        description: 'Use the "Templates" dialog to create, delete, or modify Handlebars templates.',
+      },
+      addTemplate: {
+        name: 'Template Creation',
+        description: 'Use the "Templates" dialog to create a Handlebars template.',
+      },
+      removeTemplate: {
+        name: 'Template Delete',
+        description: 'Use the "Templates" dialog to delete a Handlebars template.',
+      },
+    },
+  },
 };

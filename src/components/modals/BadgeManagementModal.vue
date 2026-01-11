@@ -1,18 +1,17 @@
 <template>
-  <modal-inner class="modal__inner-1--badge-management" aria-label="管理徽章">
+  <modal-inner class="modal__inner-1--badge-management" :aria-label="$t('badges.title')">
     <div class="modal__content">
       <div class="modal__image">
         <icon-seal></icon-seal>
       </div>
-      <p v-if="badgeCount > 1">获得了{{badgeCount}}徽章</p>
-      <p v-else>获得了{{badgeCount}}徽章</p>
+      <p>{{ $t('badges.earnedCount', { count: badgeCount }) }}</p>
       <div class="badge-entry" v-for="badge in badgeTree" :key="badge.featureId">
         <div class="flex flex--row">
           <icon-seal class="badge-entry__icon" :class="{'badge-entry__icon--earned': badge.isEarned, 'badge-entry__icon--some-earned': badge.hasSomeEarned}"></icon-seal>
           <div>
             <span class="badge-entry__name" :class="{'badge-entry__name--earned': badge.isEarned, 'badge-entry__name--some-earned': badge.hasSomeEarned}">{{badge.name}}</span>
             <span class="badge-entry__description">&mdash; {{badge.description}}</span>
-            <a href="javascript:void(0)" v-if="!shown[badge.featureId]" @click="show(badge.featureId)">展开</a>
+            <a href="javascript:void(0)" v-if="!shown[badge.featureId]" @click="show(badge.featureId)">{{ $t('badges.expand') }}</a>
             <div class="badge-entry" v-else v-for="child in badge.children" :key="child.featureId">
               <div class="flex flex--row">
                 <icon-seal class="badge-entry__icon" :class="{'badge-entry__icon--earned': child.isEarned}"></icon-seal>
@@ -27,7 +26,7 @@
       </div>
     </div>
     <div class="modal__button-bar">
-      <button class="button button--resolve" @click="config.resolve()">关闭</button>
+      <button class="button button--resolve" @click="config.resolve()">{{ $t('common.close') }}</button>
     </div>
   </modal-inner>
 </template>
@@ -37,6 +36,7 @@ import { reactive } from 'vue';
 import { mapGetters } from 'vuex';
 import ModalInner from './common/ModalInner';
 import store from '../../store';
+import i18nSvc from '../../services/i18nSvc';
 
 export default {
   components: {
@@ -62,6 +62,9 @@ export default {
   methods: {
     show(featureId) {
       this.shown[featureId] = true;
+    },
+    $t(key, params) {
+      return i18nSvc.t(key, params);
     },
   },
 };

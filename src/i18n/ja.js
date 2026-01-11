@@ -322,4 +322,456 @@ export default {
     'zh-TW': '繁體中文',
     'zh-CN': '简体中文',
   },
+  badges: {
+    title: 'バッジ管理',
+    earnedCount: '{count}個のバッジを獲得しました',
+    expand: '展開',
+    close: '閉じる',
+    features: {
+      navigationBar: {
+        name: 'リッチナビゲーションバー',
+        description: 'Markdownのフォーマットと現在のファイルの名前変更でナビゲーションバーをマスターします。',
+      },
+      formatButtons: {
+        name: 'フォーマット',
+        description: 'フォーマットボタンを使用してMarkdownファイルのフォーマットを変更します。',
+      },
+      editCurrentFileName: {
+        name: '名前変更',
+        description: 'ナビゲーションバーの名前フィールドを使用して現在のファイルの名前を変更します。',
+      },
+      toggleExplorer: {
+        name: 'エクスプローラー切り替え',
+        description: 'ナビゲーションバーを使用してエクスプローラーを切り替えます。',
+      },
+      toggleSideBar: {
+        name: 'サイドバー切り替え',
+        description: 'ナビゲーションバーを使用してサイドバーを切り替えます。',
+      },
+      explorer: {
+        name: 'エクスプローラー',
+        description: 'ファイルエクスプローラーを使用してワークスペース内のファイルとフォルダを管理します。',
+      },
+      createFile: {
+        name: 'ファイル作成',
+        description: 'ファイルエクスプローラーを使用してワークスペースに新しいファイルを作成します。',
+      },
+      switchFile: {
+        name: 'ファイル切り替え',
+        description: 'ファイルエクスプローラーを使用してワークスペース内のファイルを切り替えます。',
+      },
+      createFolder: {
+        name: 'フォルダ作成',
+        description: 'ファイルエクスプローラーを使用してワークスペースに新しいフォルダを作成します。',
+      },
+      moveFile: {
+        name: 'ファイル移動',
+        description: 'ファイルエクスプローラーでファイルを別のフォルダにドラッグします。',
+      },
+      moveFolder: {
+        name: 'フォルダ移動',
+        description: 'ファイルエクスプローラーでフォルダを別のフォルダにドラッグします。',
+      },
+      renameFile: {
+        name: 'ファイル名変更',
+        description: 'ファイルエクスプローラーを使用してワークスペース内のファイルの名前を変更します。',
+      },
+      renameFolder: {
+        name: 'フォルダ名変更',
+        description: 'ファイルエクスプローラーを使用してワークスペース内のフォルダの名前を変更します。',
+      },
+      removeFile: {
+        name: 'ファイル削除',
+        description: 'ファイルエクスプローラーを使用してワークスペース内のファイルを削除します。',
+      },
+      removeFolder: {
+        name: 'フォルダ削除',
+        description: 'ファイルエクスプローラーを使用してワークスペース内のフォルダを削除します。',
+      },
+      searchFile: {
+        name: 'ファイル検索',
+        description: 'ファイルエクスプローラーを使用してワークスペース内のファイルを検索します。',
+      },
+      buttonBar: {
+        name: 'ボタンバー',
+        description: 'ボタンバーを使用してエディターレイアウトをカスタマイズし、機能を切り替えます。',
+      },
+      toggleNavigationBar: {
+        name: 'ナビゲーションバー切り替え',
+        description: 'ボタンバーを使用してナビゲーションバーを切り替えます。',
+      },
+      toggleSidePreview: {
+        name: 'サイドプレビュー切り替え',
+        description: 'ボタンバーを使用してサイドプレビューを切り替えます。',
+      },
+      toggleEditor: {
+        name: 'エディター切り替え',
+        description: 'ボタンバーを使用してエディターを切り替えます。',
+      },
+      toggleFocusMode: {
+        name: 'フォーカスモード切り替え',
+        description: 'ボタンバーを使用してフォーカスモードを切り替えます。このモードは入力時にカーソルを垂直方向に中央に配置します。',
+      },
+      toggleScrollSync: {
+        name: 'スクロール同期切り替え',
+        description: 'ボタンバーを使用してスクロール同期を切り替えます。この機能はエディターとプレビューのスクロールバーをリンクします。',
+      },
+      toggleStatusBar: {
+        name: 'ステータスバー切り替え',
+        description: 'ボタンバーを使用してステータスバーを切り替えます。',
+      },
+      signIn: {
+        name: 'サインイン',
+        description: 'Giteeでサインインしてメインワークスペースを同期し、機能をアンロックします。',
+      },
+      syncMainWorkspace: {
+        name: 'メインワークスペース同期済み',
+        description: 'Giteeでサインインしてメインワークスペースをデフォルトのstackedit-app-dataリポジトリと同期します。',
+      },
+      sponsor: {
+        name: 'スポンサー',
+        description: 'GiteeでサインインしてGitPenをスポンサーし、プレミアム機能をアンロックします。（まだサポートされていません）',
+      },
+      githubSignIn: {
+        name: 'サインイン',
+        description: 'GitHubでサインインしてメインワークスペースを同期し、機能をアンロックします。',
+      },
+      githubSyncMainWorkspace: {
+        name: 'メインワークスペース同期済み',
+        description: 'GitHubでサインインしてメインワークスペースをデフォルトのstackedit-app-dataリポジトリと同期します。',
+      },
+      workspaces: {
+        name: 'ワークスペースメニュー',
+        description: 'ワークスペースメニューを使用して様々なワークスペースを作成・管理します。',
+      },
+      addCouchdbWorkspace: {
+        name: 'CouchDBワークスペース作成',
+        description: 'ワークスペースメニューを使用してCouchDBワークスペースを作成します。',
+      },
+      addGithubWorkspace: {
+        name: 'GitHubワークスペース作成',
+        description: 'ワークスペースメニューを使用してGitHubワークスペースを作成します。',
+      },
+      addGiteeWorkspace: {
+        name: 'Giteeワークスペース作成',
+        description: 'ワークスペースメニューを使用してGiteeワークスペースを作成します。',
+      },
+      addGitlabWorkspace: {
+        name: 'GitLabワークスペース作成',
+        description: 'ワークスペースメニューを使用してGitLabワークスペースを作成します。',
+      },
+      addGiteaWorkspace: {
+        name: 'Giteaワークスペース作成',
+        description: 'ワークスペースメニューを使用してGiteaワークスペースを作成します。',
+      },
+      addGoogleDriveWorkspace: {
+        name: 'Google Driveワークスペース作成',
+        description: 'ワークスペースメニューを使用してGoogle Driveワークスペースを作成します。',
+      },
+      renameWorkspace: {
+        name: 'ワークスペース名変更',
+        description: '「ワークスペース管理」ダイアログを使用してワークスペースの名前を変更します。',
+      },
+      removeWorkspace: {
+        name: 'ワークスペース削除',
+        description: '「ワークスペース管理」ダイアログを使用してワークスペースをローカルで削除します。',
+      },
+      autoSyncWorkspace: {
+        name: 'ワークスペース自動同期有効化',
+        description: '「ワークスペース管理」ダイアログを使用して自動同期を有効にします。',
+      },
+      stopAutoSyncWorkspace: {
+        name: 'ワークスペース自動同期無効化',
+        description: '「ワークスペース管理」ダイアログを使用して自動同期を無効にします。',
+      },
+      manageAccounts: {
+        name: 'アカウント管理',
+        description: '様々な外部アカウントをリンクし、「アカウント」ダイアログを使用して管理します。',
+      },
+      addBloggerAccount: {
+        name: 'Bloggerアカウント',
+        description: 'BloggerアカウントをStackEditにリンクします。',
+      },
+      addDropboxAccount: {
+        name: 'Dropboxアカウント',
+        description: 'DropboxアカウントをStackEditにリンクします。',
+      },
+      addGitHubAccount: {
+        name: 'GitHubアカウント',
+        description: 'GitHubアカウントをStackEditにリンクします。',
+      },
+      addGiteeAccount: {
+        name: 'Giteeアカウント',
+        description: 'GiteeアカウントをStackEditにリンクします。',
+      },
+      addGitLabAccount: {
+        name: 'GitLabアカウント',
+        description: 'GitLabアカウントをStackEditにリンクします。',
+      },
+      addGiteaAccount: {
+        name: 'Giteaアカウント',
+        description: 'GiteaアカウントをStackEditにリンクします。',
+      },
+      addGoogleDriveAccount: {
+        name: 'Google Driveアカウント',
+        description: 'Google DriveアカウントをStackEditにリンクします。',
+      },
+      addGooglePhotosAccount: {
+        name: 'Google Photosアカウント',
+        description: 'Google PhotosアカウントをStackEditにリンクします。',
+      },
+      addWordpressAccount: {
+        name: 'WordPressアカウント',
+        description: 'WordPressアカウントをStackEditにリンクします。',
+      },
+      addZendeskAccount: {
+        name: 'Zendeskアカウント',
+        description: 'ZendeskアカウントをStackEditにリンクします。',
+      },
+      addSmmsAccount: {
+        name: 'SM.MSアカウント',
+        description: 'SM.MSアカウントをStackEditにリンクします。',
+      },
+      addCustomAccount: {
+        name: 'カスタム画像ホスティングアカウント',
+        description: 'カスタム画像ホスティングアカウントをStackEditにリンクします。',
+      },
+      removeAccount: {
+        name: 'アカウント削除',
+        description: '「アカウント」ダイアログを使用して外部アカウントへのアクセスを削除します。',
+      },
+      syncFiles: {
+        name: 'ファイル同期',
+        description: '様々な外部アカウントからファイルを開いて保存することで「同期」メニューをマスターします。',
+      },
+      openFromDropbox: {
+        name: 'Dropboxリーダー',
+        description: '「同期」メニューを使用してDropboxアカウントからファイルを開きます。',
+      },
+      saveOnDropbox: {
+        name: 'Dropbox保存',
+        description: '「同期」メニューを使用してDropboxアカウントにファイルを保存します。',
+      },
+      openFromGithub: {
+        name: 'GitHubリーダー',
+        description: '「同期」メニューを使用してGitHubリポジトリからファイルを開きます。',
+      },
+      saveOnGithub: {
+        name: 'GitHub保存',
+        description: '「同期」メニューを使用してGitHubリポジトリにファイルを保存します。',
+      },
+      saveOnGist: {
+        name: 'GitHub Gist保存',
+        description: '「同期」メニューを使用してGitHub Gistにファイルを保存します。',
+      },
+      openFromGitee: {
+        name: 'Giteeリーダー',
+        description: '「同期」メニューを使用してGiteeリポジトリからファイルを開きます。',
+      },
+      saveOnGitee: {
+        name: 'Gitee保存',
+        description: '「同期」メニューを使用してGiteeリポジトリにファイルを保存します。',
+      },
+      saveOnGiteeGist: {
+        name: 'Gitee Gist保存',
+        description: '「同期」メニューを使用してGitee Gistにファイルを保存します。',
+      },
+      openFromGitlab: {
+        name: 'GitLabリーダー',
+        description: '「同期」メニューを使用してGitLabリポジトリからファイルを開きます。',
+      },
+      saveOnGitlab: {
+        name: 'GitLab保存',
+        description: '「同期」メニューを使用してGitLabリポジトリにファイルを保存します。',
+      },
+      openFromGitea: {
+        name: 'Giteaリーダー',
+        description: '「同期」メニューを使用してGiteaリポジトリからファイルを開きます。',
+      },
+      saveOnGitea: {
+        name: 'Gitea保存',
+        description: '「同期」メニューを使用してGiteaリポジトリにファイルを保存します。',
+      },
+      openFromGoogleDrive: {
+        name: 'Google Driveリーダー',
+        description: '「同期」メニューを使用してGoogle Driveアカウントからファイルを開きます。',
+      },
+      saveOnGoogleDrive: {
+        name: 'Google Drive保存',
+        description: '「同期」メニューを使用してGoogle Driveアカウントにファイルを保存します。',
+      },
+      triggerSync: {
+        name: '同期トリガー',
+        description: '「同期」メニューまたはナビゲーションバーを使用して手動で同期をトリガーします。',
+      },
+      syncMultipleLocations: {
+        name: '複数場所同期',
+        description: '「同期」メニューを使用してファイルを複数の外部場所と同期します。',
+      },
+      removeSyncLocation: {
+        name: '同期削除',
+        description: '「ファイル同期」ダイアログを使用して同期場所を削除します。',
+      },
+      publishFiles: {
+        name: 'ファイル公開',
+        description: '様々な外部アカウントにファイルを公開することで「公開」メニューをマスターします。',
+      },
+      publishToBlogger: {
+        name: 'Blogger公開',
+        description: '「公開」メニューを使用してブログ記事を公開します。',
+      },
+      publishToBloggerPage: {
+        name: 'Bloggerページ公開',
+        description: '「公開」メニューを使用してBloggerページを公開します。',
+      },
+      publishToDropbox: {
+        name: 'Dropbox公開',
+        description: '「公開」メニューを使用してDropboxアカウントにファイルを公開します。',
+      },
+      publishToGithub: {
+        name: 'GitHub公開',
+        description: '「公開」メニューを使用してGitHubリポジトリにファイルを公開します。',
+      },
+      publishToGist: {
+        name: 'GitHub Gist公開',
+        description: '「公開」メニューを使用してGitHub Gistにファイルを公開します。',
+      },
+      publishToGitee: {
+        name: 'Gitee公開',
+        description: '「公開」メニューを使用してGiteeリポジトリにファイルを公開します。',
+      },
+      publishToGiteeGist: {
+        name: 'Gitee Gist公開',
+        description: '「公開」メニューを使用してGitee Gistにファイルを公開します。',
+      },
+      publishToGitlab: {
+        name: 'GitLab公開',
+        description: '「公開」メニューを使用してGitLabリポジトリにファイルを公開します。',
+      },
+      publishToGitea: {
+        name: 'Gitea公開',
+        description: '「公開」メニューを使用してGiteaリポジトリにファイルを公開します。',
+      },
+      publishToGoogleDrive: {
+        name: 'Google Drive公開',
+        description: '「公開」メニューを使用してGoogle Driveアカウントにファイルを公開します。',
+      },
+      publishToWordPress: {
+        name: 'WordPress公開',
+        description: '「公開」メニューを使用してWordPress記事を公開します。',
+      },
+      publishToZendesk: {
+        name: 'Zendesk公開',
+        description: '「公開」メニューを使用してZendeskヘルプセンター記事を公開します。',
+      },
+      triggerPublish: {
+        name: '公開更新',
+        description: '「公開」メニューまたはナビゲーションバーを使用して手動で公開を更新します。',
+      },
+      publishMultipleLocations: {
+        name: '複数場所公開',
+        description: '「公開」メニューを使用してファイルを複数の外部場所に公開します。',
+      },
+      removePublishLocation: {
+        name: '公開削除',
+        description: '「ファイル公開」ダイアログを使用して公開場所を削除します。',
+      },
+      manageHistory: {
+        name: 'ファイル履歴',
+        description: '「ファイル履歴」メニューを使用してバージョン履歴を表示し、現在のファイルの古いバージョンを復元します。',
+      },
+      restoreVersion: {
+        name: '復元',
+        description: '「ファイル履歴」メニューを使用して現在のファイルの古いバージョンを復元します。',
+      },
+      chooseHistory: {
+        name: '履歴選択',
+        description: '複数の外部場所と同期されたファイルの異なる履歴を選択します。',
+      },
+      manageProperties: {
+        name: 'ファイルプロパティ',
+        description: '「ファイルプロパティ」ダイアログを使用して現在のファイルのプロパティを変更します。',
+      },
+      setMetadata: {
+        name: 'メタデータ設定',
+        description: '「ファイルプロパティ」ダイアログを使用して現在のファイルのメタデータを設定します。',
+      },
+      changePreset: {
+        name: 'プリセット変更',
+        description: '「ファイルプロパティ」ダイアログを使用してMarkdownエンジンプリセットを変更します。',
+      },
+      changeExtension: {
+        name: '拡張機能設定',
+        description: '「ファイルプロパティ」ダイアログを使用してMarkdownエンジン拡張機能を有効化、無効化、または設定します。',
+      },
+      comment: {
+        name: 'コメント',
+        description: '注釈とコメントを追加・削除します。',
+      },
+      createDiscussion: {
+        name: '注釈追加',
+        description: '「注釈」ボタンアイコンを使用して新しい注釈を追加します。',
+      },
+      addComment: {
+        name: 'コメント追加',
+        description: '「コメント」ボタンを使用して既存の注釈にコメントを追加します。',
+      },
+      removeComment: {
+        name: 'コメント削除',
+        description: '「コメント削除」ボタンアイコンを使用してコメントを削除します。',
+      },
+      removeDiscussion: {
+        name: '注釈削除',
+        description: '「注釈削除」ボタンアイコンを使用して注釈を削除します。',
+      },
+      importExport: {
+        name: 'インポート/エクスポート',
+        description: '「インポート/エクスポート」メニューを使用してファイルをインポート・エクスポートします。',
+      },
+      importMarkdown: {
+        name: 'Markdownインポート',
+        description: '「インポート/エクスポート」メニューを使用してディスクからMarkdownファイルをインポートします。',
+      },
+      exportMarkdown: {
+        name: 'Markdownエクスポート',
+        description: '「インポート/エクスポート」メニューを使用してMarkdownファイルをディスクにエクスポートします。',
+      },
+      importHtml: {
+        name: 'HTMLインポート',
+        description: '「インポート/エクスポート」メニューを使用してディスクからHTMLファイルをインポートし、Markdownに変換します。',
+      },
+      exportHtml: {
+        name: 'HTMLエクスポート',
+        description: '「インポート/エクスポート」メニューとHandlebarsテンプレートを使用してファイルをHTMLとしてディスクにエクスポートします。',
+      },
+      manageSettings: {
+        name: '設定管理',
+        description: '「設定」ダイアログを使用してアプリの動作を調整し、キーボードショートカットを変更します。',
+      },
+      changeSettings: {
+        name: '設定更新',
+        description: '「設定」ダイアログを使用してアプリの動作を調整します。',
+      },
+      switchTheme: {
+        name: 'テーマ切り替え',
+        description: '「テーマ切り替え」ボタンを使用してテーマを切り替えます。',
+      },
+      changeShortcuts: {
+        name: 'ショートカット編集',
+        description: '「設定」ダイアログを使用してキーボードショートカットを変更します。',
+      },
+      manageTemplates: {
+        name: 'テンプレート管理',
+        description: '「テンプレート」ダイアログを使用してHandlebarsテンプレートを作成、削除、または変更します。',
+      },
+      addTemplate: {
+        name: 'テンプレート作成',
+        description: '「テンプレート」ダイアログを使用してHandlebarsテンプレートを作成します。',
+      },
+      removeTemplate: {
+        name: 'テンプレート削除',
+        description: '「テンプレート」ダイアログを使用してHandlebarsテンプレートを削除します。',
+      },
+    },
+  },
 };

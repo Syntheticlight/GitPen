@@ -322,4 +322,456 @@ export default {
     'zh-TW': '繁體中文',
     'zh-CN': '简体中文',
   },
+  badges: {
+    title: '管理徽章',
+    earnedCount: '获得了{count}个徽章',
+    expand: '展开',
+    close: '关闭',
+    features: {
+      navigationBar: {
+        name: '丰富的导航栏',
+        description: '通过格式化一些Markdown和重命名当前文件掌握导航栏',
+      },
+      formatButtons: {
+        name: '格式化',
+        description: '使用格式化按钮更改 Markdown 文件中的格式。',
+      },
+      editCurrentFileName: {
+        name: '重命名',
+        description: '使用导航栏中的名称字段重命名当前文件。',
+      },
+      toggleExplorer: {
+        name: '资源管理器切换',
+        description: '使用导航栏切换资源管理器。',
+      },
+      toggleSideBar: {
+        name: '切换侧边栏',
+        description: '使用导航栏来切换侧边栏。',
+      },
+      explorer: {
+        name: '资源管理器',
+        description: '使用文件资源管理器管理文档空间中的文件和文件夹。',
+      },
+      createFile: {
+        name: '文件创建',
+        description: '使用文件资源管理器在文档空间中创建一个新文件。',
+      },
+      switchFile: {
+        name: '文件切换',
+        description: '使用文件资源管理器在文档空间中从一个文件切换到另一个文件。',
+      },
+      createFolder: {
+        name: '文件夹创建',
+        description: '使用文件资源管理器在文档空间中创建一个新文件夹。',
+      },
+      moveFile: {
+        name: '文件移动',
+        description: '在文件管理器中拖动一个文件到另一个文件夹。',
+      },
+      moveFolder: {
+        name: '文件夹移动',
+        description: '在文件管理器中拖动一个文件夹到另一个文件夹。',
+      },
+      renameFile: {
+        name: '文件重命名',
+        description: '使用文件资源管理器重命名文档空间中的文件。',
+      },
+      renameFolder: {
+        name: '文件夹重命名',
+        description: '使用文件资源管理器重命名文档空间中的文件夹。',
+      },
+      removeFile: {
+        name: '文件删除',
+        description: '使用文件资源管理器删除文档空间中的文件。',
+      },
+      removeFolder: {
+        name: '文件夹删除',
+        description: '使用文件资源管理器删除文档空间中的文件夹。',
+      },
+      searchFile: {
+        name: '文件搜索',
+        description: '使用文件资源管理器搜索文档空间中的文件。',
+      },
+      buttonBar: {
+        name: '按钮栏',
+        description: '使用按钮栏自定义编辑器布局并切换功能。',
+      },
+      toggleNavigationBar: {
+        name: '导航栏切换',
+        description: '使用按钮栏切换导航栏。',
+      },
+      toggleSidePreview: {
+        name: '切换侧边预览',
+        description: '使用按钮栏切换侧边预览。',
+      },
+      toggleEditor: {
+        name: '切换编辑器',
+        description: '使用按钮栏切换编辑器。',
+      },
+      toggleFocusMode: {
+        name: '切换焦点模式',
+        description: '使用按钮栏切换焦点模式。此模式在键入时将其垂直居中。',
+      },
+      toggleScrollSync: {
+        name: '换滚动同步',
+        description: '使用按钮栏切换滚动同步功能。此功能链接编辑器和预览滚动条。',
+      },
+      toggleStatusBar: {
+        name: '状态栏切换器',
+        description: '使用按钮栏切换状态栏。',
+      },
+      signIn: {
+        name: '登录',
+        description: '使用 Gitee 登录，同步您的主文档空间并解锁功能。',
+      },
+      syncMainWorkspace: {
+        name: '主文档空间已同步',
+        description: '使用 Gitee 登录以将您的主文档空间与您的默认空间stackedit-app-data仓库数据同步。',
+      },
+      sponsor: {
+        name: '赞助',
+        description: '使用 Gitee 登录并赞助 GitPen 以解锁高级功能。（暂不支持赞助）',
+      },
+      githubSignIn: {
+        name: '登录',
+        description: '使用 GitHub 登录，同步您的主文档空间并解锁功能。',
+      },
+      githubSyncMainWorkspace: {
+        name: '主文档空间已同步',
+        description: '使用 GitHub 登录以将您的主文档空间与您的默认空间stackedit-app-data仓库数据同步。',
+      },
+      workspaces: {
+        name: '文档空间菜单',
+        description: '使用文档空间菜单创建各种文档空间并对其进行管理。',
+      },
+      addCouchdbWorkspace: {
+        name: '创建CouchDB文档空间',
+        description: '使用文档空间菜单创建CouchDB文档空间。',
+      },
+      addGithubWorkspace: {
+        name: '创建GitHub文档空间',
+        description: '使用文档空间菜单创建GitHub文档空间。',
+      },
+      addGiteeWorkspace: {
+        name: '创建Gitee文档空间',
+        description: '使用文档空间菜单创建Gitee文档空间。',
+      },
+      addGitlabWorkspace: {
+        name: '创建Gitlab文档空间',
+        description: '使用文档空间菜单创建GitLab文档空间。',
+      },
+      addGiteaWorkspace: {
+        name: '创建Gitea文档空间',
+        description: '使用文档空间菜单创建Gitea文档空间。',
+      },
+      addGoogleDriveWorkspace: {
+        name: '创建Google Drive文档空间',
+        description: '使用文档空间菜单创建Google Drive文档空间。',
+      },
+      renameWorkspace: {
+        name: '文档空间重命名',
+        description: '使用"管理文档空间"对话框重命名文档空间。',
+      },
+      removeWorkspace: {
+        name: '文档空间删除',
+        description: '使用"管理文档空间"对话框在本地删除文档空间。',
+      },
+      autoSyncWorkspace: {
+        name: '文档空间启用自动同步',
+        description: '使用"管理文档空间"对话框启用自动同步。',
+      },
+      stopAutoSyncWorkspace: {
+        name: '文档空间关闭自动同步',
+        description: '使用"管理文档空间"对话框关闭自动同步。',
+      },
+      manageAccounts: {
+        name: '账号管理',
+        description: '链接各种外部账号，并使用"账号"对话框来管理它们。',
+      },
+      addBloggerAccount: {
+        name: 'Blogger账号',
+        description: '将您的Blogger账号链接到StackEdit。',
+      },
+      addDropboxAccount: {
+        name: 'Dropbox账号',
+        description: '将您的Dropbox账号链接到StackEdit。',
+      },
+      addGitHubAccount: {
+        name: 'GitHub账号',
+        description: '将您的Github账号链接到StackEdit。',
+      },
+      addGiteeAccount: {
+        name: 'Gitee账号',
+        description: '将您的Gitee账号链接到StackEdit。',
+      },
+      addGitLabAccount: {
+        name: 'GitLab账号',
+        description: '将您的Gitlab账号链接到StackEdit。',
+      },
+      addGiteaAccount: {
+        name: 'Gitea账号',
+        description: '将您的Gitea账号链接到StackEdit。',
+      },
+      addGoogleDriveAccount: {
+        name: 'Google Drive账号',
+        description: '将您的Google Drive账号链接到StackEdit。',
+      },
+      addGooglePhotosAccount: {
+        name: 'Google Photos账号',
+        description: '将您的Google Photos账号链接到StackEdit。',
+      },
+      addWordpressAccount: {
+        name: 'WordPress账号',
+        description: '将您的WordPress账号链接到StackEdit。',
+      },
+      addZendeskAccount: {
+        name: 'Zendesk账号',
+        description: '将您的Zendesk账号链接到StackEdit。',
+      },
+      addSmmsAccount: {
+        name: 'SM.MS账号',
+        description: '将您的SM.MS账号链接到StackEdit。',
+      },
+      addCustomAccount: {
+        name: '自定义图床账号',
+        description: '将您的自定义图床账号链接到StackEdit。',
+      },
+      removeAccount: {
+        name: '移除账号',
+        description: '使用"账号"对话框删除对外部账号的访问。',
+      },
+      syncFiles: {
+        name: '文件同步器',
+        description: '通过打开和保存各种外部账号的文件来掌握"同步"菜单。',
+      },
+      openFromDropbox: {
+        name: 'Dropbox阅读器',
+        description: '使用"同步"菜单从您的Dropbox账号打开文件。',
+      },
+      saveOnDropbox: {
+        name: 'Dropbox保存',
+        description: '使用"同步"菜单将文件保存在您的Dropbox账号中。',
+      },
+      openFromGithub: {
+        name: 'Github阅读器',
+        description: '使用"同步"菜单从GitHub仓库打开文件。',
+      },
+      saveOnGithub: {
+        name: 'GitHub保存',
+        description: '使用"同步"菜单将文件保存在GitHub仓库中。',
+      },
+      saveOnGist: {
+        name: 'GitHubGist保存',
+        description: '使用"同步"菜单将文件保存在GitHubGist中。',
+      },
+      openFromGitee: {
+        name: 'Gitee阅读器',
+        description: '使用"同步"菜单从Gitee仓库打开文件。',
+      },
+      saveOnGitee: {
+        name: 'Gitee保存',
+        description: '使用"同步"菜单将文件保存在Gitee仓库中。',
+      },
+      saveOnGiteeGist: {
+        name: 'GiteeGist保存',
+        description: '使用"同步"菜单将文件保存在GiteeGist中。',
+      },
+      openFromGitlab: {
+        name: 'GitLab阅读器',
+        description: '使用"同步"菜单从GitLab仓库打开文件。',
+      },
+      saveOnGitlab: {
+        name: 'GitLab保存',
+        description: '使用"同步"菜单将文件保存在GitLab仓库中。',
+      },
+      openFromGitea: {
+        name: 'Gitea阅读器',
+        description: '使用"同步"菜单从Gitea仓库打开文件。',
+      },
+      saveOnGitea: {
+        name: 'Gitea保存',
+        description: '使用"同步"菜单将文件保存在Gitea仓库中。',
+      },
+      openFromGoogleDrive: {
+        name: 'Google Drive阅读器',
+        description: '使用"同步"菜单从您的Google Drive账号打开文件。',
+      },
+      saveOnGoogleDrive: {
+        name: 'Google Drive保存',
+        description: '使用"同步"菜单将文件保存在您的Google Drive账号中。',
+      },
+      triggerSync: {
+        name: '同步触发器',
+        description: '使用"同步"菜单或导航栏手动触发同步。',
+      },
+      syncMultipleLocations: {
+        name: '多方同步',
+        description: '使用"同步"菜单将文件与多个外部位置同步。',
+      },
+      removeSyncLocation: {
+        name: '删除同步',
+        description: '使用"文件同步"对话框删除同步位置。',
+      },
+      publishFiles: {
+        name: '文件发布',
+        description: '通过将文件发布到各种外部账号中来掌握"发布"菜单。',
+      },
+      publishToBlogger: {
+        name: 'Blogger发布',
+        description: '使用"发布"菜单发布博客文章。',
+      },
+      publishToBloggerPage: {
+        name: 'Blogger页面发布',
+        description: '使用"发布"菜单发布Blogger页面。',
+      },
+      publishToDropbox: {
+        name: 'Dropbox发布',
+        description: '使用"发布"菜单将文件发布到您的Dropbox账号。',
+      },
+      publishToGithub: {
+        name: 'GitHub发布',
+        description: '使用"发布"菜单将文件发布到GitHub仓库。',
+      },
+      publishToGist: {
+        name: 'GitHubGist发布',
+        description: '使用"发布"菜单将文件发布到GitHubGist。',
+      },
+      publishToGitee: {
+        name: 'Gitee发布',
+        description: '使用"发布"菜单将文件发布到Gitee仓库。',
+      },
+      publishToGiteeGist: {
+        name: 'GiteeGist发布',
+        description: '使用"发布"菜单将文件发布到GiteeGist。',
+      },
+      publishToGitlab: {
+        name: 'GitLab发布',
+        description: '使用"发布"菜单将文件发布到GitLab仓库中。',
+      },
+      publishToGitea: {
+        name: 'Gitea发布',
+        description: '使用"发布"菜单将文件发布到Gitea仓库。',
+      },
+      publishToGoogleDrive: {
+        name: 'Google Drive发布',
+        description: '使用"发布"菜单将文件发布到您的Google Drive账号。',
+      },
+      publishToWordPress: {
+        name: 'WordPress发布',
+        description: '使用"发布"菜单发布WordPress文章。',
+      },
+      publishToZendesk: {
+        name: 'Zendesk发布',
+        description: '使用"发布"菜单发布Zendesk帮助中心文章。',
+      },
+      triggerPublish: {
+        name: '更新发布',
+        description: '使用"发布"菜单或导航栏手动更新发布。',
+      },
+      publishMultipleLocations: {
+        name: '多方发布',
+        description: '使用"发布"菜单将文件发布到多个外部位置。',
+      },
+      removePublishLocation: {
+        name: '删除发布',
+        description: '使用"文件发布"对话框删除发布位置。',
+      },
+      manageHistory: {
+        name: '文件历史记录',
+        description: '使用"文件历史记录"菜单查看版本历史记录并恢复当前文件的旧版本。',
+      },
+      restoreVersion: {
+        name: '恢复',
+        description: '使用"文件历史记录"菜单来还原当前文件的旧版本。',
+      },
+      chooseHistory: {
+        name: '历史版本选择',
+        description: '选择与多个外部位置同步的文件的不同历史记录。',
+      },
+      manageProperties: {
+        name: '文件属性',
+        description: '使用"文件属性"对话框更改当前文件的属性。',
+      },
+      setMetadata: {
+        name: '元数据设置',
+        description: '使用"文件属性"对话框为当前文件设置元数据。',
+      },
+      changePreset: {
+        name: '预设更改',
+        description: '使用"文件属性"对话框更改Markdown引擎预设。',
+      },
+      changeExtension: {
+        name: '扩展配置',
+        description: '使用"文件属性"对话框启用，禁用或配置Markdown引擎扩展。',
+      },
+      comment: {
+        name: '评论',
+        description: '添加和删除批注，添加和删除评论。',
+      },
+      createDiscussion: {
+        name: '添加批注',
+        description: '使用"批注"按钮图标添加新的批注。',
+      },
+      addComment: {
+        name: '添加批注评论',
+        description: '使用"评论"按钮在现有批注中添加评论。',
+      },
+      removeComment: {
+        name: '删除批注评论',
+        description: '使用"删除评论"按钮图标删除批注评论。',
+      },
+      removeDiscussion: {
+        name: '删除批注',
+        description: '使用"删除批注"按钮图标删除批注。',
+      },
+      importExport: {
+        name: '导入/导出',
+        description: '使用"导入/导出"菜单以导入和导出文件。',
+      },
+      importMarkdown: {
+        name: 'Markdown导入',
+        description: '使用"导入/导出"菜单从磁盘导入Markdown文件。',
+      },
+      exportMarkdown: {
+        name: 'Markdown导出',
+        description: '使用"导入/导出"菜单将Markdown文件导出到磁盘。',
+      },
+      importHtml: {
+        name: 'HTML导入',
+        description: '使用"导入/导出"菜单从磁盘导入HTML文件，然后将其转换为Markdown。',
+      },
+      exportHtml: {
+        name: 'HTML导出',
+        description: '使用"导入/导出"菜单和Handlebars模板将文件导出到磁盘作为HTML文件。',
+      },
+      manageSettings: {
+        name: '管理设置',
+        description: '使用"设置"对话框调整应用程序行为并更改键盘快捷键。',
+      },
+      changeSettings: {
+        name: '更新设置',
+        description: '使用"设置"对话框调整应用程序行为。',
+      },
+      switchTheme: {
+        name: '切换主题',
+        description: '使用"主题切换"按钮切换主题。',
+      },
+      changeShortcuts: {
+        name: '编辑快捷键',
+        description: '使用"设置"对话框更改键盘快捷键。',
+      },
+      manageTemplates: {
+        name: '管理模板',
+        description: '使用"模板"对话框创建，删除或修改Handlebars模板。',
+      },
+      addTemplate: {
+        name: '模板创建',
+        description: '使用"模板"对话框创建一个Handlebars模板。',
+      },
+      removeTemplate: {
+        name: '模板删除',
+        description: '使用"模板"对话框删除Handlebars模板。',
+      },
+    },
+  },
 };

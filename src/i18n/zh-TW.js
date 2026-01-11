@@ -322,4 +322,456 @@ export default {
     'zh-TW': '繁體中文',
     'zh-CN': '简体中文',
   },
+  badges: {
+    title: '管理徽章',
+    earnedCount: '獲得了{count}個徽章',
+    expand: '展開',
+    close: '關閉',
+    features: {
+      navigationBar: {
+        name: '豐富的導覽列',
+        description: '透過格式化一些Markdown和重新命名目前檔案來掌握導覽列',
+      },
+      formatButtons: {
+        name: '格式化',
+        description: '使用格式化按鈕更改 Markdown 檔案中的格式。',
+      },
+      editCurrentFileName: {
+        name: '重新命名',
+        description: '使用導覽列中的名稱欄位重新命名目前檔案。',
+      },
+      toggleExplorer: {
+        name: '資源管理器切換',
+        description: '使用導覽列切換資源管理器。',
+      },
+      toggleSideBar: {
+        name: '切換側邊欄',
+        description: '使用導覽列來切換側邊欄。',
+      },
+      explorer: {
+        name: '資源管理器',
+        description: '使用檔案資源管理器管理文件空間中的檔案和資料夾。',
+      },
+      createFile: {
+        name: '檔案建立',
+        description: '使用檔案資源管理器在文件空間中建立一個新檔案。',
+      },
+      switchFile: {
+        name: '檔案切換',
+        description: '使用檔案資源管理器在文件空間中從一個檔案切換到另一個檔案。',
+      },
+      createFolder: {
+        name: '資料夾建立',
+        description: '使用檔案資源管理器在文件空間中建立一個新資料夾。',
+      },
+      moveFile: {
+        name: '檔案移動',
+        description: '在檔案管理器中拖動一個檔案到另一個資料夾。',
+      },
+      moveFolder: {
+        name: '資料夾移動',
+        description: '在檔案管理器中拖動一個資料夾到另一個資料夾。',
+      },
+      renameFile: {
+        name: '檔案重新命名',
+        description: '使用檔案資源管理器重新命名文件空間中的檔案。',
+      },
+      renameFolder: {
+        name: '資料夾重新命名',
+        description: '使用檔案資源管理器重新命名文件空間中的資料夾。',
+      },
+      removeFile: {
+        name: '檔案刪除',
+        description: '使用檔案資源管理器刪除文件空間中的檔案。',
+      },
+      removeFolder: {
+        name: '資料夾刪除',
+        description: '使用檔案資源管理器刪除文件空間中的資料夾。',
+      },
+      searchFile: {
+        name: '檔案搜尋',
+        description: '使用檔案資源管理器搜尋文件空間中的檔案。',
+      },
+      buttonBar: {
+        name: '按鈕列',
+        description: '使用按鈕列自訂編輯器佈局並切換功能。',
+      },
+      toggleNavigationBar: {
+        name: '導覽列切換',
+        description: '使用按鈕列切換導覽列。',
+      },
+      toggleSidePreview: {
+        name: '切換側邊預覽',
+        description: '使用按鈕列切換側邊預覽。',
+      },
+      toggleEditor: {
+        name: '切換編輯器',
+        description: '使用按鈕列切換編輯器。',
+      },
+      toggleFocusMode: {
+        name: '切換焦點模式',
+        description: '使用按鈕列切換焦點模式。此模式在輸入時將其垂直置中。',
+      },
+      toggleScrollSync: {
+        name: '換捲動同步',
+        description: '使用按鈕列切換捲動同步功能。此功能連結編輯器和預覽捲軸。',
+      },
+      toggleStatusBar: {
+        name: '狀態列切換器',
+        description: '使用按鈕列切換狀態列。',
+      },
+      signIn: {
+        name: '登入',
+        description: '使用 Gitee 登入，同步您的主文件空間並解鎖功能。',
+      },
+      syncMainWorkspace: {
+        name: '主文件空間已同步',
+        description: '使用 Gitee 登入以將您的主文件空間與您的預設空間stackedit-app-data儲存庫資料同步。',
+      },
+      sponsor: {
+        name: '贊助',
+        description: '使用 Gitee 登入並贊助 GitPen 以解鎖進階功能。（暫不支援贊助）',
+      },
+      githubSignIn: {
+        name: '登入',
+        description: '使用 GitHub 登入，同步您的主文件空間並解鎖功能。',
+      },
+      githubSyncMainWorkspace: {
+        name: '主文件空間已同步',
+        description: '使用 GitHub 登入以將您的主文件空間與您的預設空間stackedit-app-data儲存庫資料同步。',
+      },
+      workspaces: {
+        name: '文件空間選單',
+        description: '使用文件空間選單建立各種文件空間並對其進行管理。',
+      },
+      addCouchdbWorkspace: {
+        name: '建立CouchDB文件空間',
+        description: '使用文件空間選單建立CouchDB文件空間。',
+      },
+      addGithubWorkspace: {
+        name: '建立GitHub文件空間',
+        description: '使用文件空間選單建立GitHub文件空間。',
+      },
+      addGiteeWorkspace: {
+        name: '建立Gitee文件空間',
+        description: '使用文件空間選單建立Gitee文件空間。',
+      },
+      addGitlabWorkspace: {
+        name: '建立Gitlab文件空間',
+        description: '使用文件空間選單建立GitLab文件空間。',
+      },
+      addGiteaWorkspace: {
+        name: '建立Gitea文件空間',
+        description: '使用文件空間選單建立Gitea文件空間。',
+      },
+      addGoogleDriveWorkspace: {
+        name: '建立Google Drive文件空間',
+        description: '使用文件空間選單建立Google Drive文件空間。',
+      },
+      renameWorkspace: {
+        name: '文件空間重新命名',
+        description: '使用「管理文件空間」對話方塊重新命名文件空間。',
+      },
+      removeWorkspace: {
+        name: '文件空間刪除',
+        description: '使用「管理文件空間」對話方塊在本機刪除文件空間。',
+      },
+      autoSyncWorkspace: {
+        name: '文件空間啟用自動同步',
+        description: '使用「管理文件空間」對話方塊啟用自動同步。',
+      },
+      stopAutoSyncWorkspace: {
+        name: '文件空間關閉自動同步',
+        description: '使用「管理文件空間」對話方塊關閉自動同步。',
+      },
+      manageAccounts: {
+        name: '帳號管理',
+        description: '連結各種外部帳號，並使用「帳號」對話方塊來管理它們。',
+      },
+      addBloggerAccount: {
+        name: 'Blogger帳號',
+        description: '將您的Blogger帳號連結到StackEdit。',
+      },
+      addDropboxAccount: {
+        name: 'Dropbox帳號',
+        description: '將您的Dropbox帳號連結到StackEdit。',
+      },
+      addGitHubAccount: {
+        name: 'GitHub帳號',
+        description: '將您的Github帳號連結到StackEdit。',
+      },
+      addGiteeAccount: {
+        name: 'Gitee帳號',
+        description: '將您的Gitee帳號連結到StackEdit。',
+      },
+      addGitLabAccount: {
+        name: 'GitLab帳號',
+        description: '將您的Gitlab帳號連結到StackEdit。',
+      },
+      addGiteaAccount: {
+        name: 'Gitea帳號',
+        description: '將您的Gitea帳號連結到StackEdit。',
+      },
+      addGoogleDriveAccount: {
+        name: 'Google Drive帳號',
+        description: '將您的Google Drive帳號連結到StackEdit。',
+      },
+      addGooglePhotosAccount: {
+        name: 'Google Photos帳號',
+        description: '將您的Google Photos帳號連結到StackEdit。',
+      },
+      addWordpressAccount: {
+        name: 'WordPress帳號',
+        description: '將您的WordPress帳號連結到StackEdit。',
+      },
+      addZendeskAccount: {
+        name: 'Zendesk帳號',
+        description: '將您的Zendesk帳號連結到StackEdit。',
+      },
+      addSmmsAccount: {
+        name: 'SM.MS帳號',
+        description: '將您的SM.MS帳號連結到StackEdit。',
+      },
+      addCustomAccount: {
+        name: '自訂圖床帳號',
+        description: '將您的自訂圖床帳號連結到StackEdit。',
+      },
+      removeAccount: {
+        name: '移除帳號',
+        description: '使用「帳號」對話方塊刪除對外部帳號的存取。',
+      },
+      syncFiles: {
+        name: '檔案同步器',
+        description: '透過開啟和儲存各種外部帳號的檔案來掌握「同步」選單。',
+      },
+      openFromDropbox: {
+        name: 'Dropbox閱讀器',
+        description: '使用「同步」選單從您的Dropbox帳號開啟檔案。',
+      },
+      saveOnDropbox: {
+        name: 'Dropbox儲存',
+        description: '使用「同步」選單將檔案儲存在您的Dropbox帳號中。',
+      },
+      openFromGithub: {
+        name: 'Github閱讀器',
+        description: '使用「同步」選單從GitHub儲存庫開啟檔案。',
+      },
+      saveOnGithub: {
+        name: 'GitHub儲存',
+        description: '使用「同步」選單將檔案儲存在GitHub儲存庫中。',
+      },
+      saveOnGist: {
+        name: 'GitHubGist儲存',
+        description: '使用「同步」選單將檔案儲存在GitHubGist中。',
+      },
+      openFromGitee: {
+        name: 'Gitee閱讀器',
+        description: '使用「同步」選單從Gitee儲存庫開啟檔案。',
+      },
+      saveOnGitee: {
+        name: 'Gitee儲存',
+        description: '使用「同步」選單將檔案儲存在Gitee儲存庫中。',
+      },
+      saveOnGiteeGist: {
+        name: 'GiteeGist儲存',
+        description: '使用「同步」選單將檔案儲存在GiteeGist中。',
+      },
+      openFromGitlab: {
+        name: 'GitLab閱讀器',
+        description: '使用「同步」選單從GitLab儲存庫開啟檔案。',
+      },
+      saveOnGitlab: {
+        name: 'GitLab儲存',
+        description: '使用「同步」選單將檔案儲存在GitLab儲存庫中。',
+      },
+      openFromGitea: {
+        name: 'Gitea閱讀器',
+        description: '使用「同步」選單從Gitea儲存庫開啟檔案。',
+      },
+      saveOnGitea: {
+        name: 'Gitea儲存',
+        description: '使用「同步」選單將檔案儲存在Gitea儲存庫中。',
+      },
+      openFromGoogleDrive: {
+        name: 'Google Drive閱讀器',
+        description: '使用「同步」選單從您的Google Drive帳號開啟檔案。',
+      },
+      saveOnGoogleDrive: {
+        name: 'Google Drive儲存',
+        description: '使用「同步」選單將檔案儲存在您的Google Drive帳號中。',
+      },
+      triggerSync: {
+        name: '同步觸發器',
+        description: '使用「同步」選單或導覽列手動觸發同步。',
+      },
+      syncMultipleLocations: {
+        name: '多方同步',
+        description: '使用「同步」選單將檔案與多個外部位置同步。',
+      },
+      removeSyncLocation: {
+        name: '刪除同步',
+        description: '使用「檔案同步」對話方塊刪除同步位置。',
+      },
+      publishFiles: {
+        name: '檔案發佈',
+        description: '透過將檔案發佈到各種外部帳號中來掌握「發佈」選單。',
+      },
+      publishToBlogger: {
+        name: 'Blogger發佈',
+        description: '使用「發佈」選單發佈部落格文章。',
+      },
+      publishToBloggerPage: {
+        name: 'Blogger頁面發佈',
+        description: '使用「發佈」選單發佈Blogger頁面。',
+      },
+      publishToDropbox: {
+        name: 'Dropbox發佈',
+        description: '使用「發佈」選單將檔案發佈到您的Dropbox帳號。',
+      },
+      publishToGithub: {
+        name: 'GitHub發佈',
+        description: '使用「發佈」選單將檔案發佈到GitHub儲存庫。',
+      },
+      publishToGist: {
+        name: 'GitHubGist發佈',
+        description: '使用「發佈」選單將檔案發佈到GitHubGist。',
+      },
+      publishToGitee: {
+        name: 'Gitee發佈',
+        description: '使用「發佈」選單將檔案發佈到Gitee儲存庫。',
+      },
+      publishToGiteeGist: {
+        name: 'GiteeGist發佈',
+        description: '使用「發佈」選單將檔案發佈到GiteeGist。',
+      },
+      publishToGitlab: {
+        name: 'GitLab發佈',
+        description: '使用「發佈」選單將檔案發佈到GitLab儲存庫中。',
+      },
+      publishToGitea: {
+        name: 'Gitea發佈',
+        description: '使用「發佈」選單將檔案發佈到Gitea儲存庫。',
+      },
+      publishToGoogleDrive: {
+        name: 'Google Drive發佈',
+        description: '使用「發佈」選單將檔案發佈到您的Google Drive帳號。',
+      },
+      publishToWordPress: {
+        name: 'WordPress發佈',
+        description: '使用「發佈」選單發佈WordPress文章。',
+      },
+      publishToZendesk: {
+        name: 'Zendesk發佈',
+        description: '使用「發佈」選單發佈Zendesk說明中心文章。',
+      },
+      triggerPublish: {
+        name: '更新發佈',
+        description: '使用「發佈」選單或導覽列手動更新發佈。',
+      },
+      publishMultipleLocations: {
+        name: '多方發佈',
+        description: '使用「發佈」選單將檔案發佈到多個外部位置。',
+      },
+      removePublishLocation: {
+        name: '刪除發佈',
+        description: '使用「檔案發佈」對話方塊刪除發佈位置。',
+      },
+      manageHistory: {
+        name: '檔案歷史記錄',
+        description: '使用「檔案歷史記錄」選單檢視版本歷史記錄並還原目前檔案的舊版本。',
+      },
+      restoreVersion: {
+        name: '還原',
+        description: '使用「檔案歷史記錄」選單來還原目前檔案的舊版本。',
+      },
+      chooseHistory: {
+        name: '歷史版本選擇',
+        description: '選擇與多個外部位置同步的檔案的不同歷史記錄。',
+      },
+      manageProperties: {
+        name: '檔案屬性',
+        description: '使用「檔案屬性」對話方塊更改目前檔案的屬性。',
+      },
+      setMetadata: {
+        name: '中繼資料設定',
+        description: '使用「檔案屬性」對話方塊為目前檔案設定中繼資料。',
+      },
+      changePreset: {
+        name: '預設更改',
+        description: '使用「檔案屬性」對話方塊更改Markdown引擎預設。',
+      },
+      changeExtension: {
+        name: '擴充功能設定',
+        description: '使用「檔案屬性」對話方塊啟用、停用或設定Markdown引擎擴充功能。',
+      },
+      comment: {
+        name: '評論',
+        description: '新增和刪除批註，新增和刪除評論。',
+      },
+      createDiscussion: {
+        name: '新增批註',
+        description: '使用「批註」按鈕圖示新增新的批註。',
+      },
+      addComment: {
+        name: '新增批註評論',
+        description: '使用「評論」按鈕在現有批註中新增評論。',
+      },
+      removeComment: {
+        name: '刪除批註評論',
+        description: '使用「刪除評論」按鈕圖示刪除批註評論。',
+      },
+      removeDiscussion: {
+        name: '刪除批註',
+        description: '使用「刪除批註」按鈕圖示刪除批註。',
+      },
+      importExport: {
+        name: '匯入/匯出',
+        description: '使用「匯入/匯出」選單以匯入和匯出檔案。',
+      },
+      importMarkdown: {
+        name: 'Markdown匯入',
+        description: '使用「匯入/匯出」選單從磁碟匯入Markdown檔案。',
+      },
+      exportMarkdown: {
+        name: 'Markdown匯出',
+        description: '使用「匯入/匯出」選單將Markdown檔案匯出到磁碟。',
+      },
+      importHtml: {
+        name: 'HTML匯入',
+        description: '使用「匯入/匯出」選單從磁碟匯入HTML檔案，然後將其轉換為Markdown。',
+      },
+      exportHtml: {
+        name: 'HTML匯出',
+        description: '使用「匯入/匯出」選單和Handlebars範本將檔案匯出到磁碟作為HTML檔案。',
+      },
+      manageSettings: {
+        name: '管理設定',
+        description: '使用「設定」對話方塊調整應用程式行為並更改鍵盤快捷鍵。',
+      },
+      changeSettings: {
+        name: '更新設定',
+        description: '使用「設定」對話方塊調整應用程式行為。',
+      },
+      switchTheme: {
+        name: '切換主題',
+        description: '使用「主題切換」按鈕切換主題。',
+      },
+      changeShortcuts: {
+        name: '編輯快捷鍵',
+        description: '使用「設定」對話方塊更改鍵盤快捷鍵。',
+      },
+      manageTemplates: {
+        name: '管理範本',
+        description: '使用「範本」對話方塊建立、刪除或修改Handlebars範本。',
+      },
+      addTemplate: {
+        name: '範本建立',
+        description: '使用「範本」對話方塊建立一個Handlebars範本。',
+      },
+      removeTemplate: {
+        name: '範本刪除',
+        description: '使用「範本」對話方塊刪除Handlebars範本。',
+      },
+    },
+  },
 };
