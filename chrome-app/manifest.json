@@ -1,9 +1,9 @@
 {
-  "name": "StackEdit",
-  "description": "支持Gitee仓库/粘贴图片自动上传的浏览器内 Markdown 编辑器",
-  "version": "5.15.17",
+  "name": "GitPen",
+  "description": "免费、开源、无服务器架构的 Markdown 编辑器，支持 GitHub 和 Gitee 同步",
+  "version": "1.0.0",
   "manifest_version": 2,
-  "container" : "GITEE",
+  "container" : "GITHUB",
   "api_console_project_id" : "241271498917",
   "icons": {
     "16": "icon-16.png",
@@ -15,10 +15,10 @@
   },
   "app": {
     "urls": [
-      "https://stackedit.cn/"
+      "https://github.com/Syntheticlight/GitPen"
     ],
     "launch": {
-      "web_url": "https://stackedit.cn/app"
+      "web_url": "https://github.com/Syntheticlight/GitPen"
     }
   },
   "offline_enabled": true,

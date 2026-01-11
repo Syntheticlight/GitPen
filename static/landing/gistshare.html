@@ -1,19 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>文章分享 - StackEdit</title>
+	<title>文章分享 - GitPen</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="canonical" href="https://stackedit.cn/">
+    <link rel="canonical" href="https://github.com/Syntheticlight/GitPen">
     <link rel="icon" href="static/landing/favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="static/landing/favicon.ico" type="image/x-icon">
     <meta charset="UTF-8">
-    <meta name="keywords" content="Markdown编辑器,StackEdit,StackEdit汉化版,StackEdit,在线Markdown,笔记利器,Markdown笔记">
+    <meta name="keywords" content="Markdown编辑器,GitPen,在线Markdown,笔记利器,Markdown笔记,GitHub,Gitee">
     <meta name="description"
-          content="支持直接将码云（Gitee）、GitHub、Gitea等仓库作为笔记存储仓库且支持拖拽/粘贴上传图片，并且可以直接在页面编辑同步和管理的Markdown编辑器。">
+          content="GitPen - 免费、开源、无服务器架构的 Markdown 编辑器，支持 GitHub 和 Gitee 同步。">
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="baidu-site-verification" content="code-tGpn2BT069" />
-    <meta name="msvalidate.01" content="90A9558158543277BD284CFA054E7F5B" />
     <link rel="stylesheet" href="style.css">
 	<style>
 		.share-header {
@@ -112,11 +110,8 @@
                     newdoc.documentElement.innerHTML = body.files[key].content;
                 }
                 const currHead = document.head;
-                // head
                 appendTagHtml(newdoc, 'style', currHead);
-                // title
-                document.title = newdoc.title + ' - StackEdit';
-                // 内容
+                document.title = newdoc.title + ' - GitPen';
                 const shareContent = document.getElementsByClassName('share-content')[0];
                 shareContent.innerHTML = newdoc.body.innerHTML;
                 document.body.className = newdoc.body.className;
@@ -126,6 +121,7 @@
                 document.getElementById('div_info').innerHTML = `${rateLimit ? "请求太过频繁" : "无权限访问"}，请使用GitHub登录 <a href="${appUri}" target="_brank">主文档空间</a> 后再刷新此页面!`;
             } else {
                 console.error('An error occurred: ' + xhr.status);
+                const appUri = `${window.location.protocol}//${window.location.host}/app`;
                 document.getElementById('div_info').innerHTML = `分享内容获取失败或已失效！请使用GitHub登录 <a href="${appUri}" target="_brank">主文档空间</a> 后再刷新此页面!`;
             }
         };
@@ -136,12 +132,12 @@
 <body>
 	<div class="share-header">
 		<nav>
-			<a class="logo" href="https://stackedit.cn" target="_blank">
+			<a class="logo" href="/" target="_blank">
 				<img src="static/landing/logo.svg" height="30px"/>
 			</a>
 			<ul>
-				<li><a href="https://stackedit.cn" target="_blank">首页</a></li>
-				<li><a href="https://stackedit.cn/app" target="_blank">写笔记</a></li>
+				<li><a href="/" target="_blank">首页</a></li>
+				<li><a href="/app" target="_blank">写笔记</a></li>
 			</ul>
 		</nav>
 	</div>
@@ -150,16 +146,5 @@
 	</div>
 
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-
-    <!-- built files will be auto injected -->
-    <script>
-        var _hmt = _hmt || [];
-        (function() {
-            var hm = document.createElement("script");
-            hm.src = "https://hm.baidu.com/hm.js?20a1e7a201b42702c49074c87a1f1035";
-            var s = document.getElementsByTagName("script")[0]; 
-            s.parentNode.insertBefore(hm, s);
-        })();
-    </script>
 </body>
 </html>

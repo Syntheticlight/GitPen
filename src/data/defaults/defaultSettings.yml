@@ -110,16 +110,16 @@ turndown:
 
 # GitHub/GitLab/Gitee/Gitea commit messages
 git:
-  createFileMessage: '{{path}} created from https://stackedit.cn/'
-  updateFileMessage: '{{path}} updated from https://stackedit.cn/'
-  deleteFileMessage: '{{path}} deleted from https://stackedit.cn/'
+  createFileMessage: '{{path}} created from GitPen'
+  updateFileMessage: '{{path}} updated from GitPen'
+  deleteFileMessage: '{{path}} deleted from GitPen'
 
 # Default content for new files
 newFileContent: |
 
 
 
-  > Written with [StackEdit](https://stackedit.cn/).
+  > Written with [GitPen](https://github.com/Syntheticlight/GitPen).
 
 # Default properties for new files
 newFileProperties: |
