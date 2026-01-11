@@ -3,7 +3,7 @@ import utils from './utils';
 import constants from '../data/constants';
 import badgeSvc from './badgeSvc';
 
-const forbiddenFolderNameMatcher = /^\.stackedit-data$|^\.stackedit-trash$|\.md$|\.sync$|\.publish$/;
+const forbiddenFolderNameMatcher = /^\.gitpen-data$|^\.gitpen-trash$|\.md$|\.sync$|\.publish$/;
 
 export default {
 

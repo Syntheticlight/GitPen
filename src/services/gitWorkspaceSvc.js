@@ -155,7 +155,7 @@ export default {
     const syncDataById = store.getters['data/syncDataById'];
     Object.keys(treeDataMap).forEach((path) => {
       // Only settings、workspaces、template data are stored
-      const [, id] = path.match(/^\.stackedit-data\/(settings|workspaces|badgeCreations|templates)\.json$/) || [];
+      const [, id] = path.match(/^\.gitpen-data\/(settings|workspaces|badgeCreations|templates)\.json$/) || [];
       if (id) {
         idsByPath[path] = id;
         idsByPath[id] = id;

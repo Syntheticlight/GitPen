@@ -128,7 +128,7 @@ export default new Provider({
     if (!syncData) {
       return {};
     }
-    const path = `.stackedit-data/${syncData.id}.json`;
+    const path = `.gitpen-data/${syncData.id}.json`;
     // const path = store.getters.gitPathsByItemId[syncData.id];
     // const path = syncData.id;
     const { sha, data } = await giteeHelper.downloadFile({
@@ -198,7 +198,7 @@ export default new Provider({
     item,
     syncData,
   }) {
-    const path = `.stackedit-data/${item.id}.json`;
+    const path = `.gitpen-data/${item.id}.json`;
     // const path = store.getters.gitPathsByItemId[item.id];
     // const path = syncData.id;
     const res = await giteeHelper.uploadFile({
