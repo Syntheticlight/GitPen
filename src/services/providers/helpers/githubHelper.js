@@ -169,7 +169,7 @@ export default {
       if (err.status === 404) {
         await request(token, {
           method: 'POST',
-          url: 'https://api.github.com/repos/Syntheticlight/gitpen-appdata-template/generate',
+          url: 'https://api.github.com/repos/Syntheticlight/GitPen-appdata-template/generate',
           body: {
             owner: token.name,
             name: appDataRepo,
