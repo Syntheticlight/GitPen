@@ -22,6 +22,16 @@ const getWelcomeFileByLocale = (locale) => {
   return welcomeFiles[locale] || welcomeFileEn;
 };
 
+/**
+ * All welcome files with their names and content
+ */
+const allWelcomeFiles = [
+  { name: 'Welcome (English)', content: welcomeFileEn, locale: 'en' },
+  { name: '欢迎 (简体中文)', content: welcomeFile, locale: 'zh-CN' },
+  { name: '歡迎 (繁體中文)', content: welcomeFileZhTW, locale: 'zh-TW' },
+  { name: 'ようこそ (日本語)', content: welcomeFileJa, locale: 'ja' },
+];
+
 const deleteMarkerMaxAge = 1000;
 const dbVersion = 3;
 const dbStoreName = 'objects';
@@ -453,15 +463,31 @@ const localDbSvc = {
           if (recentFile.id) {
             store.commit('file/setCurrentId', recentFile.id);
           } else {
-            // If still no ID, create a new file with locale-specific welcome content
+            // If still no ID, create all welcome files in different languages
             const currentLocale = i18nSvc.currentLocale;
-            const welcomeContent = getWelcomeFileByLocale(currentLocale);
-            const newFile = await workspaceSvc.createFile({
-              name: 'Welcome file',
-              text: welcomeContent,
-            }, true);
-            // Set it as the current file
-            store.commit('file/setCurrentId', newFile.id);
+            let firstFileId = null;
+            
+            // Create all welcome files
+            for (const welcomeFileInfo of allWelcomeFiles) {
+              const newFile = await workspaceSvc.createFile({
+                name: welcomeFileInfo.name,
+                text: welcomeFileInfo.content,
+              }, true);
+              
+              // Set the file matching current locale as the first file to open
+              if (welcomeFileInfo.locale === currentLocale) {
+                firstFileId = newFile.id;
+              }
+              // If no match yet, use the first created file
+              if (!firstFileId) {
+                firstFileId = newFile.id;
+              }
+            }
+            
+            // Set the current locale's welcome file as the current file
+            if (firstFileId) {
+              store.commit('file/setCurrentId', firstFileId);
+            }
           }
         } else {
           try {
