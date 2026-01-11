@@ -306,8 +306,8 @@ export default {
         data: !isImg ? utils.decodeBase64(tempContent) : tempContent,
       };
     } catch (err) {
-      // not .stackedit-data  throw err
-      if (err.status === 404 && path.indexOf('.stackedit-data') >= 0) {
+      // not .gitpen-data  throw err
+      if (err.status === 404 && path.indexOf('.gitpen-data') >= 0) {
         return {};
       }
       throw err;
