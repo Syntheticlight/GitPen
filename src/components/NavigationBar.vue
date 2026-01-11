@@ -3,13 +3,13 @@
     <!-- Explorer -->
     <div class="navigation-bar__inner navigation-bar__inner--left navigation-bar__inner--button">
       <button class="navigation-bar__button navigation-bar__button--close button" v-if="light" @click="close()" :v-title="$t('navigation.closeStackEdit')"><icon-check-circle></icon-check-circle></button>
-      <button class="navigation-bar__button navigation-bar__button--explorer-toggler button" v-else tour-step-anchor="explorer" @click="toggleExplorer()" :v-title="$t('navigation.toggleExplorer')"><icon-folder></icon-folder></button>
+      <button class="navigation-bar__button navigation-bar__button--explorer-toggler button" v-else @click="toggleExplorer()" :v-title="$t('navigation.toggleExplorer')"><icon-folder></icon-folder></button>
     </div>
     <!-- Side bar -->
     <div class="navigation-bar__inner navigation-bar__inner--right navigation-bar__inner--button">
       <language-switcher></language-switcher>
       <a class="navigation-bar__button navigation-bar__button--stackedit button" v-if="light" href="app" target="_blank" :v-title="$t('navigation.openStackEdit')"><icon-provider provider-id="stackedit"></icon-provider></a>
-      <button class="navigation-bar__button navigation-bar__button--stackedit button" v-else tour-step-anchor="menu" @click="toggleSideBar()" :v-title="$t('navigation.toggleSideBar')"><icon-provider provider-id="stackedit"></icon-provider></button>
+      <button class="navigation-bar__button navigation-bar__button--stackedit button" v-else @click="toggleSideBar()" :v-title="$t('navigation.toggleSideBar')"><icon-provider provider-id="stackedit"></icon-provider></button>
     </div>
     <div class="navigation-bar__inner navigation-bar__inner--right navigation-bar__inner--title flex flex--row">
       <!-- Spinner -->

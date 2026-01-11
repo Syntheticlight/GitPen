@@ -4,7 +4,7 @@
       <div class="layout__panel layout__panel--explorer" v-show="styles.showExplorer" :aria-hidden="!styles.showExplorer" :style="{width: styles.layoutOverflow ? '100%' : constants.explorerWidth + 'px'}">
         <explorer></explorer>
       </div>
-      <div class="layout__panel flex flex--column" tour-step-anchor="welcome,end" :style="{width: styles.innerWidth + 'px'}">
+      <div class="layout__panel flex flex--column" :style="{width: styles.innerWidth + 'px'}">
         <div class="layout__panel layout__panel--navigation-bar" v-show="styles.showNavigationBar" :style="{height: constants.navigationBarHeight + 'px'}">
           <navigation-bar></navigation-bar>
         </div>
@@ -44,7 +44,6 @@
         <side-bar></side-bar>
       </div>
     </div>
-    <tour v-if="!light && !layoutSettings.welcomeTourFinished"></tour>
   </div>
 </template>
 
@@ -57,7 +56,7 @@ import Explorer from './Explorer';
 import SideBar from './SideBar';
 import Editor from './Editor';
 import Preview from './Preview';
-import Tour from './Tour';
+
 import StickyComment from './gutters/StickyComment';
 import CurrentDiscussion from './gutters/CurrentDiscussion';
 import FindReplace from './FindReplace';
@@ -74,7 +73,6 @@ export default {
     SideBar,
     Editor,
     Preview,
-    Tour,
     StickyComment,
     CurrentDiscussion,
     FindReplace,
