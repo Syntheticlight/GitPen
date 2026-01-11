@@ -4,7 +4,7 @@ import Provider from './common/Provider';
 import gitWorkspaceSvc from '../gitWorkspaceSvc';
 import userSvc from '../userSvc';
 
-const appDataRepo = 'stackedit-app-data';
+const appDataRepo = 'gitpen-app-data';
 const appDataBranch = 'master';
 
 export default new Provider({

@@ -426,7 +426,7 @@ export default {
       },
       syncMainWorkspace: {
         name: '主文件空間已同步',
-        description: '使用 Gitee 登入以將您的主文件空間與您的預設空間stackedit-app-data儲存庫資料同步。',
+        description: '使用 Gitee 登入以將您的主文件空間與您的預設空間 gitpen-app-data 儲存庫資料同步。',
       },
       sponsor: {
         name: '贊助',
@@ -438,7 +438,7 @@ export default {
       },
       githubSyncMainWorkspace: {
         name: '主文件空間已同步',
-        description: '使用 GitHub 登入以將您的主文件空間與您的預設空間stackedit-app-data儲存庫資料同步。',
+        description: '使用 GitHub 登入以將您的主文件空間與您的預設空間 gitpen-app-data 儲存庫資料同步。',
       },
       workspaces: {
         name: '文件空間選單',

@@ -426,7 +426,7 @@ export default {
       },
       syncMainWorkspace: {
         name: 'メインワークスペース同期済み',
-        description: 'Giteeでサインインしてメインワークスペースをデフォルトのstackedit-app-dataリポジトリと同期します。',
+        description: 'Giteeでサインインしてメインワークスペースをデフォルトの gitpen-app-data リポジトリと同期します。',
       },
       sponsor: {
         name: 'スポンサー',
@@ -438,7 +438,7 @@ export default {
       },
       githubSyncMainWorkspace: {
         name: 'メインワークスペース同期済み',
-        description: 'GitHubでサインインしてメインワークスペースをデフォルトのstackedit-app-dataリポジトリと同期します。',
+        description: 'GitHubでサインインしてメインワークスペースをデフォルトの gitpen-app-data リポジトリと同期します。',
       },
       workspaces: {
         name: 'ワークスペースメニュー',

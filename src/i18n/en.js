@@ -426,7 +426,7 @@ export default {
       },
       syncMainWorkspace: {
         name: 'Main Workspace Synced',
-        description: 'Sign in with Gitee to sync your main workspace with your default stackedit-app-data repository.',
+        description: 'Sign in with Gitee to sync your main workspace with your default gitpen-app-data repository.',
       },
       sponsor: {
         name: 'Sponsor',
@@ -438,7 +438,7 @@ export default {
       },
       githubSyncMainWorkspace: {
         name: 'Main Workspace Synced',
-        description: 'Sign in with GitHub to sync your main workspace with your default stackedit-app-data repository.',
+        description: 'Sign in with GitHub to sync your main workspace with your default gitpen-app-data repository.',
       },
       workspaces: {
         name: 'Workspace Menu',

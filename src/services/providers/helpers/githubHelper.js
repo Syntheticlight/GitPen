@@ -6,7 +6,7 @@ import badgeSvc from '../../badgeSvc';
 
 const getScopes = token => [token.repoFullAccess ? 'repo' : 'public_repo', 'gist'];
 
-const appDataRepo = 'stackedit-app-data';
+const appDataRepo = 'gitpen-app-data';
 
 const request = (token, options) => networkSvc.request({
   ...options,
@@ -122,7 +122,7 @@ export default {
 
     if (isMain) {
       token.providerId = 'githubAppData';
-      // check stackedit-app-data repo exist?
+      // check gitpen-app-data repo exist?
       await this.checkAndCreateRepo(token);
     }
     // Add token to github tokens
