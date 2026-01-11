@@ -8,10 +8,17 @@ import App from './components/App.vue';
 import store from './store';
 import localDbSvc from './services/localDbSvc';
 import timeSvc from './services/timeSvc';
+import i18nSvc from './services/i18nSvc';
 
 if (!indexedDB) {
   throw new Error('不支持您的浏览器，请升级到最新版本。');
 }
+
+// Initialize i18n synchronously before Vue app mounts
+// This ensures all components have access to the correct locale
+const initialLocale = i18nSvc.init();
+console.log('[main.js] i18n initialized with locale:', initialLocale);
+store.commit('i18n/setLocale', initialLocale);
 
 registerSW({
   onRegistered: (registration) => {

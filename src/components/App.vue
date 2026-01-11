@@ -86,8 +86,8 @@ export default {
   async created() {
     window.viewFileByPath = this.viewFileByPath;
     try {
-      // Initialize i18n first
-      await store.dispatch('i18n/initLocale');
+      // i18n is already initialized in main.js before Vue app mounts
+      // No need to call initLocale here
       
       await syncSvc.init();
       await networkSvc.init();
