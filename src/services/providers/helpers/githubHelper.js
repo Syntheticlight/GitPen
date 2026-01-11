@@ -169,11 +169,11 @@ export default {
       if (err.status === 404) {
         await request(token, {
           method: 'POST',
-          url: 'https://api.github.com/repos/mafgwo/stackedit-appdata-template/generate',
+          url: 'https://api.github.com/repos/Syntheticlight/gitpen-appdata-template/generate',
           body: {
             owner: token.name,
             name: appDataRepo,
-            description: 'StackEdit默认空间.',
+            description: 'GitPen默认空间.',
             include_all_branches: false,
             private: true,
           },
