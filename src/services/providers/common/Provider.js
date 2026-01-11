@@ -4,7 +4,7 @@ import utils from '../../utils';
 import store from '../../../store';
 import workspaceSvc from '../../workspaceSvc';
 
-const dataExtractor = /<!--stackedit_data:([A-Za-z0-9+/=\s]+)-->\s*$/;
+const dataExtractor = /<!--gitpen_data:([A-Za-z0-9+/=\s]+)-->\s*$/;
 
 export default class Provider {
   prepareChanges = changes => changes
@@ -35,7 +35,7 @@ export default class Provider {
     }
     if (Object.keys(data).length) {
       const serializedData = utils.encodeBase64(JSON.stringify(data)).replace(/(.{50})/g, '$1\n');
-      result += `<!--stackedit_data:\n${serializedData}\n-->`;
+      result += `<!--gitpen_data:\n${serializedData}\n-->`;
     }
     return result;
   }
@@ -48,7 +48,7 @@ export default class Provider {
     const extractedData = dataExtractor.exec(serializedContent);
     let result;
     if (!extractedData) {
-      // In case stackedit's data has been manually removed, try to restore them
+      // In case gitpen's data has been manually removed, try to restore them
       result = utils.deepCopy(store.state.content.itemsById[id]) || emptyContent(id);
     } else {
       result = emptyContent(id);

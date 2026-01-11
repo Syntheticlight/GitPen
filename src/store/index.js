@@ -81,7 +81,7 @@ const store = createStore({
         if (node.item.id) {
           path += node.item.name;
           if (node.isTrash) {
-            path = '.stackedit-trash/';
+            path = '.gitpen-trash/';
           } else if (node.isFolder) {
             path += '/';
           }
@@ -110,7 +110,7 @@ const store = createStore({
       const result = {};
       Object.entries(allItemsById).forEach(([id, item]) => {
         if (item.type === 'data') {
-          result[id] = `.stackedit-data/${id}.json`;
+          result[id] = `.gitpen-data/${id}.json`;
         } else if (item.type === 'file') {
           const filePath = pathsByItemId[id];
           result[id] = `${filePath}.md`;

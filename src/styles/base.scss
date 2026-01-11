@@ -226,7 +226,7 @@ img {
   overflow-x: auto !important;
 }
 
-.stackedit__html {
+.gitpen__html {
   margin-bottom: 180px;
   margin-left: auto;
   margin-right: auto;
@@ -235,7 +235,7 @@ img {
   max-width: 750px;
 }
 
-.stackedit__toc {
+.gitpen__toc {
   ul {
     padding: 0;
 
@@ -273,7 +273,7 @@ img {
   }
 }
 
-.stackedit__left {
+.gitpen__left {
   position: fixed;
   display: none;
   width: 250px;
@@ -290,7 +290,7 @@ img {
   }
 }
 
-.stackedit__right {
+.gitpen__right {
   position: absolute;
   right: 0;
   top: 0;
@@ -301,8 +301,8 @@ img {
   }
 }
 
-.stackedit--pdf {
-  .stackedit__html {
+.gitpen--pdf {
+  .gitpen__html {
     padding-left: 0;
     padding-right: 0;
     max-width: none;

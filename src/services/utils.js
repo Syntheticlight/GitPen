@@ -161,7 +161,7 @@ export default {
     return Math.abs(this.hash(this.serializeObject(params))).toString(36);
   },
   getDbName(workspaceId) {
-    let dbName = 'stackedit-db';
+    let dbName = 'gitpen-db';
     if (workspaceId !== 'main') {
       dbName += `-${workspaceId}`;
     }

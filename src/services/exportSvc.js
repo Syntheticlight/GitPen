@@ -176,8 +176,7 @@ export default {
             resolve(`${result}`);
           }
         } catch (error) {
-          console.log('event-listener...');
-          console.log(error);
+          console.error('Template worker error:', error);
         }
       });
       worker.postMessage([template.value, view, template.helpers]);

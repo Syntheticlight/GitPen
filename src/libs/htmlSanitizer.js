@@ -57,7 +57,7 @@ var blockElements = {
   "h6,header,hgroup,hr,ins,map,menu,nav,ol,pre,script,section,table,ul")
 };
 
-// benweet: Add iframe
+// Add iframe support
 blockElements.iframe = true;
 
 // Inline Elements - HTML5
@@ -120,7 +120,7 @@ var validAttrs = {
   ...htmlAttrs,
 };
 
-// benweet: Add id and allowfullscreen (YouTube iframe)
+// Add id and allowfullscreen (YouTube iframe)
 validAttrs.id = true;
 validAttrs.allowfullscreen = true;
 
@@ -239,7 +239,7 @@ function htmlParser(html, handler) {
     }
 
     if (html == last) {
-      // benweet
+      // Handle unparseable HTML gracefully instead of throwing error
       // throw $sanitizeMinErr('badparse', "The sanitizer was unable to parse the following block " +
       // 	"of html: {0}", html);
       stack.reverse();

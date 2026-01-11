@@ -4,7 +4,7 @@
       <div class="modal__image">
         <icon-provider provider-id="smms"></icon-provider>
       </div>
-      <p>将您的<b>SM.MS</b>账号链接到<b>StackEdit</b>。</p>
+      <p>将您的<b>SM.MS</b>账号链接到<b>GitPen</b>。</p>
       <form-entry label="跨域代理URL" error="proxyUrl">
         <template v-slot:field><input class="textfield" type="text" v-model.trim="proxyUrl" @keydown.enter="resolve()"></template>
         <div class="form-entry__info">

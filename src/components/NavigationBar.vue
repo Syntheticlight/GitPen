@@ -2,14 +2,14 @@
   <nav class="navigation-bar" :class="{'navigation-bar--editor': styles.showEditor && !revisionContent, 'navigation-bar--light': light}">
     <!-- Explorer -->
     <div class="navigation-bar__inner navigation-bar__inner--left navigation-bar__inner--button">
-      <button class="navigation-bar__button navigation-bar__button--close button" v-if="light" @click="close()" :v-title="$t('navigation.closeStackEdit')"><icon-check-circle></icon-check-circle></button>
+      <button class="navigation-bar__button navigation-bar__button--close button" v-if="light" @click="close()" :v-title="$t('navigation.closeGitPen')"><icon-check-circle></icon-check-circle></button>
       <button class="navigation-bar__button navigation-bar__button--explorer-toggler button" v-else @click="toggleExplorer()" :v-title="$t('navigation.toggleExplorer')"><icon-folder></icon-folder></button>
     </div>
     <!-- Side bar -->
     <div class="navigation-bar__inner navigation-bar__inner--right navigation-bar__inner--button">
       <language-switcher></language-switcher>
-      <a class="navigation-bar__button navigation-bar__button--stackedit button" v-if="light" href="app" target="_blank" :v-title="$t('navigation.openStackEdit')"><icon-provider provider-id="stackedit"></icon-provider></a>
-      <button class="navigation-bar__button navigation-bar__button--stackedit button" v-else @click="toggleSideBar()" :v-title="$t('navigation.toggleSideBar')"><icon-provider provider-id="stackedit"></icon-provider></button>
+      <a class="navigation-bar__button navigation-bar__button--gitpen button" v-if="light" href="app" target="_blank" :v-title="$t('navigation.openGitPen')"><icon-provider provider-id="gitpen"></icon-provider></a>
+      <button class="navigation-bar__button navigation-bar__button--gitpen button" v-else @click="toggleSideBar()" :v-title="$t('navigation.toggleSideBar')"><icon-provider provider-id="gitpen"></icon-provider></button>
     </div>
     <div class="navigation-bar__inner navigation-bar__inner--right navigation-bar__inner--title flex flex--row">
       <!-- Spinner -->
@@ -329,7 +329,7 @@ export default {
     padding: 0 4px;
     width: 38px;
 
-    &.navigation-bar__button--stackedit {
+    &.navigation-bar__button--gitpen {
       opacity: 0.85;
 
       &:active,

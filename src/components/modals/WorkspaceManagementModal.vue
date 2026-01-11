@@ -9,7 +9,7 @@
         <div class="flex flex--column">
           <div class="workspace-entry__header flex flex--row flex--align-center">
             <div class="workspace-entry__icon">
-              <icon-provider v-if="id === 'main' && !workspace.sub" :provider-id="'stackedit'"></icon-provider>
+              <icon-provider v-if="id === 'main' && !workspace.sub" :provider-id="'gitpen'"></icon-provider>
               <icon-provider v-else :provider-id="workspace.providerId"></icon-provider>
             </div>
             <input class="text-input" type="text" v-if="editedId === id" v-focus @blur="submitEdit()" @keydown.enter="submitEdit()" @keydown.esc.stop="submitEdit(true)" v-model="editingName">

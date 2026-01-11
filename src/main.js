@@ -17,7 +17,6 @@ if (!indexedDB) {
 // Initialize i18n synchronously before Vue app mounts
 // This ensures all components have access to the correct locale
 const initialLocale = i18nSvc.init();
-console.log('[main.js] i18n initialized with locale:', initialLocale);
 store.commit('i18n/setLocale', initialLocale);
 
 registerSW({
@@ -39,7 +38,7 @@ registerSW({
           })
         );
       });
-      console.log('Service Worker 注册成功:', r);
+      console.log('Service Worker 注册成功:', registration);
     }
   },
   onOfflineReady: () => {
@@ -52,12 +51,11 @@ registerSW({
       console.log('需要刷新页面以更新 Service Worker');
       window.location.reload();
     }
-    console.log('需要刷新页面以更新 Service Worker');
   },
 });
 
 if (localStorage.updated) {
-  store.dispatch('notification/info', 'StackEdit刚刚更新了！');
+  store.dispatch('notification/info', 'GitPen刚刚更新了！');
   setTimeout(() => localStorage.removeItem('updated'), 3000);
 }
 
@@ -67,7 +65,7 @@ if (!localStorage.installPrompted) {
     promptEvent.preventDefault();
 
     try {
-      await store.dispatch('notification/confirm', '将StackEdit添加到您的主屏幕上？');
+      await store.dispatch('notification/confirm', '将GitPen添加到您的主屏幕上？');
       promptEvent.prompt();
       await promptEvent.userChoice;
     } catch (err) {

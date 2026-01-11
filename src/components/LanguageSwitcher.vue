@@ -54,9 +54,7 @@ export default {
       'switchLocale',
     ]),
     toggleDropdown() {
-      console.log('[LanguageSwitcher] toggleDropdown called, current state:', this.showDropdown);
       this.showDropdown = !this.showDropdown;
-      console.log('[LanguageSwitcher] new state:', this.showDropdown);
       if (this.showDropdown) {
         this.$nextTick(() => {
           this.updateDropdownPosition();
@@ -72,7 +70,6 @@ export default {
           left: `${rect.left}px`,
           zIndex: 10000,
         };
-        console.log('[LanguageSwitcher] dropdown position:', this.dropdownStyle);
       }
     },
     closeDropdown(event) {
@@ -86,16 +83,12 @@ export default {
         return;
       }
       if (this.showDropdown) {
-        console.log('[LanguageSwitcher] closeDropdown called');
         this.showDropdown = false;
       }
     },
     async switchLanguage(locale) {
-      console.log('[LanguageSwitcher] switchLanguage called with:', locale);
       try {
         const success = await this.switchLocale(locale);
-        console.log('[LanguageSwitcher] switchLocale result:', success);
-        console.log('[LanguageSwitcher] localStorage check:', localStorage.getItem('gitpen-locale'));
         if (success) {
           this.showDropdown = false;
           // Small delay to ensure localStorage is written before reload
@@ -109,8 +102,6 @@ export default {
     },
   },
   mounted() {
-    console.log('[LanguageSwitcher] mounted, currentLocale:', this.currentLocale);
-    console.log('[LanguageSwitcher] supportedLocales:', this.supportedLocales);
     document.addEventListener('click', this.closeDropdown);
   },
   beforeUnmount() {

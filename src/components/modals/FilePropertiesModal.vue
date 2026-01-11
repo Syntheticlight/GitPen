@@ -74,7 +74,7 @@
   <span class="token key atrule">katex</span><span class="token punctuation">:</span>
     <span class="token key atrule">enabled</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
 </code></pre>
-          <p>有关选项的完整列表，请参阅 <a href="https://gitee.com/mafgwo/stackedit/blob/master/src/data/presets.js" target="_blank">这里</a>.</p>
+          <p>有关选项的完整列表，请参阅 <a href="https://github.com/user/gitpen/blob/master/src/data/presets.js" target="_blank">这里</a>.</p>
         </div>
       </div>
     </div>

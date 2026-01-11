@@ -130,8 +130,6 @@ const i18nSvc = {
    * @returns {boolean} True if locale was set successfully
    */
   setLocale(locale) {
-    console.log('[i18n] setLocale called with:', locale);
-    
     // Validate locale
     const isValid = SUPPORTED_LOCALES.some(l => l.code === locale);
     if (!isValid) {
@@ -140,12 +138,10 @@ const i18nSvc = {
     }
 
     this.currentLocale = locale;
-    console.log('[i18n] currentLocale set to:', this.currentLocale);
 
     // Persist to localStorage
     try {
       localStorage.setItem(LOCALE_STORAGE_KEY, locale);
-      console.log('[i18n] Saved to localStorage:', localStorage.getItem(LOCALE_STORAGE_KEY));
     } catch (e) {
       console.warn('[i18n] Failed to save locale to localStorage:', e);
     }
@@ -239,15 +235,11 @@ const i18nSvc = {
    * @returns {string} The initialized locale
    */
   init() {
-    console.log('[i18n] init() called');
-    
     // Try to load saved locale first
     const savedLocale = this.loadSavedLocale();
-    console.log('[i18n] savedLocale from localStorage:', savedLocale);
     
     if (savedLocale) {
       this.currentLocale = savedLocale;
-      console.log('[i18n] Using saved locale:', savedLocale);
       return savedLocale;
     }
 
@@ -256,7 +248,6 @@ const i18nSvc = {
     // - No saved locale exists
     // - Saved locale is invalid or corrupted
     const detectedLocale = this.detectBrowserLanguage();
-    console.log('[i18n] Detected browser locale:', detectedLocale);
     this.setLocale(detectedLocale);
     return detectedLocale;
   },

@@ -8,7 +8,7 @@
     <hr>
     <div class="workspace" v-for="(workspace, id) in workspacesById" :key="id">
       <menu-entry :href="workspace.url" target="_blank">
-        <template v-if="id === 'main' && !workspace.sub" slot="icon" v-slot:icon><icon-provider :provider-id="'stackedit'"></icon-provider></template>
+        <template v-if="id === 'main' && !workspace.sub" slot="icon" v-slot:icon><icon-provider :provider-id="'gitpen'"></icon-provider></template>
         <template v-else slot="icon" v-slot:icon><icon-provider :provider-id="workspace.providerId"></icon-provider></template>
         <div class="workspace__name"><div class="menu-entry__label" v-if="currentWorkspace === workspace">当前</div>{{workspace.name}}</div>
       </menu-entry>

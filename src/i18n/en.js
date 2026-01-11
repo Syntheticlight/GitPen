@@ -19,8 +19,8 @@ export default {
   navigation: {
     toggleExplorer: 'Toggle Explorer',
     toggleSideBar: 'Toggle Side Bar',
-    closeStackEdit: 'Close StackEdit',
-    openStackEdit: 'Open StackEdit',
+    closeGitPen: 'Close GitPen',
+    openGitPen: 'Open GitPen',
     switchTheme: 'Switch Theme',
     switchLanguage: 'Switch Language',
     syncNow: 'Sync Now',
@@ -490,51 +490,51 @@ export default {
       },
       addBloggerAccount: {
         name: 'Blogger Account',
-        description: 'Link your Blogger account to StackEdit.',
+        description: 'Link your Blogger account to GitPen.',
       },
       addDropboxAccount: {
         name: 'Dropbox Account',
-        description: 'Link your Dropbox account to StackEdit.',
+        description: 'Link your Dropbox account to GitPen.',
       },
       addGitHubAccount: {
         name: 'GitHub Account',
-        description: 'Link your GitHub account to StackEdit.',
+        description: 'Link your GitHub account to GitPen.',
       },
       addGiteeAccount: {
         name: 'Gitee Account',
-        description: 'Link your Gitee account to StackEdit.',
+        description: 'Link your Gitee account to GitPen.',
       },
       addGitLabAccount: {
         name: 'GitLab Account',
-        description: 'Link your GitLab account to StackEdit.',
+        description: 'Link your GitLab account to GitPen.',
       },
       addGiteaAccount: {
         name: 'Gitea Account',
-        description: 'Link your Gitea account to StackEdit.',
+        description: 'Link your Gitea account to GitPen.',
       },
       addGoogleDriveAccount: {
         name: 'Google Drive Account',
-        description: 'Link your Google Drive account to StackEdit.',
+        description: 'Link your Google Drive account to GitPen.',
       },
       addGooglePhotosAccount: {
         name: 'Google Photos Account',
-        description: 'Link your Google Photos account to StackEdit.',
+        description: 'Link your Google Photos account to GitPen.',
       },
       addWordpressAccount: {
         name: 'WordPress Account',
-        description: 'Link your WordPress account to StackEdit.',
+        description: 'Link your WordPress account to GitPen.',
       },
       addZendeskAccount: {
         name: 'Zendesk Account',
-        description: 'Link your Zendesk account to StackEdit.',
+        description: 'Link your Zendesk account to GitPen.',
       },
       addSmmsAccount: {
         name: 'SM.MS Account',
-        description: 'Link your SM.MS account to StackEdit.',
+        description: 'Link your SM.MS account to GitPen.',
       },
       addCustomAccount: {
         name: 'Custom Image Hosting Account',
-        description: 'Link your custom image hosting account to StackEdit.',
+        description: 'Link your custom image hosting account to GitPen.',
       },
       removeAccount: {
         name: 'Remove Account',

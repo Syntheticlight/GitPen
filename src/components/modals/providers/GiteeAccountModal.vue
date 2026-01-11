@@ -4,7 +4,7 @@
       <div class="modal__image">
         <icon-provider provider-id="gitee"></icon-provider>
       </div>
-      <p>将您的<b>Gitee</b>账号链接到<b>StackEdit</b>。</p>
+      <p>将您的<b>Gitee</b>账号链接到<b>GitPen</b>。</p>
     </div>
     <div class="modal__button-bar">
       <button class="button" @click="config.reject()">取消</button>

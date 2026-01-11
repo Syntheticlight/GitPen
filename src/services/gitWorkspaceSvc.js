@@ -23,7 +23,7 @@ export default {
         const path = blobEntry.path.slice(workspacePath.length);
         // Collect blob sha
         this.shaByPath[path] = blobEntry.sha;
-        if (path.indexOf('.stackedit-data/') === 0) {
+        if (path.indexOf('.gitpen-data/') === 0) {
           treeDataMap[path] = true;
         } else {
           // Collect parents path
@@ -76,7 +76,7 @@ export default {
     // Folder creations/updates
     // Assume map entries are sorted from top to bottom
     Object.entries(treeFolderMap).forEach(([path, parentPath]) => {
-      if (path === '.stackedit-trash/') {
+      if (path === '.gitpen-trash/') {
         idsByPath[path] = 'trash';
       } else {
         const item = utils.addItemHash({

@@ -19,8 +19,8 @@ export default {
   navigation: {
     toggleExplorer: 'エクスプローラーの切り替え',
     toggleSideBar: 'サイドバーの切り替え',
-    closeStackEdit: 'StackEditを閉じる',
-    openStackEdit: 'StackEditを開く',
+    closeGitPen: 'GitPenを閉じる',
+    openGitPen: 'GitPenを開く',
     switchTheme: 'テーマの切り替え',
     switchLanguage: '言語の切り替え',
     syncNow: '今すぐ同期',
@@ -490,51 +490,51 @@ export default {
       },
       addBloggerAccount: {
         name: 'Bloggerアカウント',
-        description: 'BloggerアカウントをStackEditにリンクします。',
+        description: 'BloggerアカウントをGitPenにリンクします。',
       },
       addDropboxAccount: {
         name: 'Dropboxアカウント',
-        description: 'DropboxアカウントをStackEditにリンクします。',
+        description: 'DropboxアカウントをGitPenにリンクします。',
       },
       addGitHubAccount: {
         name: 'GitHubアカウント',
-        description: 'GitHubアカウントをStackEditにリンクします。',
+        description: 'GitHubアカウントをGitPenにリンクします。',
       },
       addGiteeAccount: {
         name: 'Giteeアカウント',
-        description: 'GiteeアカウントをStackEditにリンクします。',
+        description: 'GiteeアカウントをGitPenにリンクします。',
       },
       addGitLabAccount: {
         name: 'GitLabアカウント',
-        description: 'GitLabアカウントをStackEditにリンクします。',
+        description: 'GitLabアカウントをGitPenにリンクします。',
       },
       addGiteaAccount: {
         name: 'Giteaアカウント',
-        description: 'GiteaアカウントをStackEditにリンクします。',
+        description: 'GiteaアカウントをGitPenにリンクします。',
       },
       addGoogleDriveAccount: {
         name: 'Google Driveアカウント',
-        description: 'Google DriveアカウントをStackEditにリンクします。',
+        description: 'Google DriveアカウントをGitPenにリンクします。',
       },
       addGooglePhotosAccount: {
         name: 'Google Photosアカウント',
-        description: 'Google PhotosアカウントをStackEditにリンクします。',
+        description: 'Google PhotosアカウントをGitPenにリンクします。',
       },
       addWordpressAccount: {
         name: 'WordPressアカウント',
-        description: 'WordPressアカウントをStackEditにリンクします。',
+        description: 'WordPressアカウントをGitPenにリンクします。',
       },
       addZendeskAccount: {
         name: 'Zendeskアカウント',
-        description: 'ZendeskアカウントをStackEditにリンクします。',
+        description: 'ZendeskアカウントをGitPenにリンクします。',
       },
       addSmmsAccount: {
         name: 'SM.MSアカウント',
-        description: 'SM.MSアカウントをStackEditにリンクします。',
+        description: 'SM.MSアカウントをGitPenにリンクします。',
       },
       addCustomAccount: {
         name: 'カスタム画像ホスティングアカウント',
-        description: 'カスタム画像ホスティングアカウントをStackEditにリンクします。',
+        description: 'カスタム画像ホスティングアカウントをGitPenにリンクします。',
       },
       removeAccount: {
         name: 'アカウント削除',

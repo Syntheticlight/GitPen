@@ -172,7 +172,7 @@ export default modalTemplate({
       return i18nSvc.t(key, params);
     },
     resolve(evt) {
-      evt.preventDefault(); // Fixes https://github.com/mafgwo/stackedit/issues/1503
+      evt.preventDefault(); // Fixes image modal issue
       if (!this.url) {
         this.setError('url');
       } else {

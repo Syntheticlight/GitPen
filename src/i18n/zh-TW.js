@@ -19,8 +19,8 @@ export default {
   navigation: {
     toggleExplorer: '切換資源管理器',
     toggleSideBar: '切換側邊欄',
-    closeStackEdit: '關閉StackEdit',
-    openStackEdit: '開啟StackEdit',
+    closeGitPen: '關閉GitPen',
+    openGitPen: '開啟GitPen',
     switchTheme: '切換主題',
     switchLanguage: '切換語言',
     syncNow: '立即同步',
@@ -490,51 +490,51 @@ export default {
       },
       addBloggerAccount: {
         name: 'Blogger帳號',
-        description: '將您的Blogger帳號連結到StackEdit。',
+        description: '將您的Blogger帳號連結到GitPen。',
       },
       addDropboxAccount: {
         name: 'Dropbox帳號',
-        description: '將您的Dropbox帳號連結到StackEdit。',
+        description: '將您的Dropbox帳號連結到GitPen。',
       },
       addGitHubAccount: {
         name: 'GitHub帳號',
-        description: '將您的Github帳號連結到StackEdit。',
+        description: '將您的Github帳號連結到GitPen。',
       },
       addGiteeAccount: {
         name: 'Gitee帳號',
-        description: '將您的Gitee帳號連結到StackEdit。',
+        description: '將您的Gitee帳號連結到GitPen。',
       },
       addGitLabAccount: {
         name: 'GitLab帳號',
-        description: '將您的Gitlab帳號連結到StackEdit。',
+        description: '將您的Gitlab帳號連結到GitPen。',
       },
       addGiteaAccount: {
         name: 'Gitea帳號',
-        description: '將您的Gitea帳號連結到StackEdit。',
+        description: '將您的Gitea帳號連結到GitPen。',
       },
       addGoogleDriveAccount: {
         name: 'Google Drive帳號',
-        description: '將您的Google Drive帳號連結到StackEdit。',
+        description: '將您的Google Drive帳號連結到GitPen。',
       },
       addGooglePhotosAccount: {
         name: 'Google Photos帳號',
-        description: '將您的Google Photos帳號連結到StackEdit。',
+        description: '將您的Google Photos帳號連結到GitPen。',
       },
       addWordpressAccount: {
         name: 'WordPress帳號',
-        description: '將您的WordPress帳號連結到StackEdit。',
+        description: '將您的WordPress帳號連結到GitPen。',
       },
       addZendeskAccount: {
         name: 'Zendesk帳號',
-        description: '將您的Zendesk帳號連結到StackEdit。',
+        description: '將您的Zendesk帳號連結到GitPen。',
       },
       addSmmsAccount: {
         name: 'SM.MS帳號',
-        description: '將您的SM.MS帳號連結到StackEdit。',
+        description: '將您的SM.MS帳號連結到GitPen。',
       },
       addCustomAccount: {
         name: '自訂圖床帳號',
-        description: '將您的自訂圖床帳號連結到StackEdit。',
+        description: '將您的自訂圖床帳號連結到GitPen。',
       },
       removeAccount: {
         name: '移除帳號',
