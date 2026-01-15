@@ -274,13 +274,16 @@ const editorSvc = Object.assign(mitt() , editorSvcDiscussions, editorSvcUtils, {
     this.emit('previewCtx', this.previewCtx);
     this.makeTextToPreviewDiffs();
 
-    // Wait for images to load
-    const loadedPromises = loadingImages.map(it => new Promise((resolve, reject) => {
+    // Wait for images to load (with timeout to prevent blocking on failed images)
+    const loadedPromises = loadingImages.map(it => new Promise((resolve) => {
       if (!it.imgElt.src && it.uri) {
         getImgUrl(it.uri).then((newUrl) => {
           it.imgElt.src = newUrl;
           resolve();
-        }, () => reject(new Error('加载当前空间图片出错')));
+        }, () => {
+          // Image load failed, resolve anyway to not block scroll sync
+          resolve();
+        });
         return;
       }
       if (!it.imgElt.src) {
@@ -289,10 +292,13 @@ const editorSvc = Object.assign(mitt() , editorSvcDiscussions, editorSvcUtils, {
       }
       const img = new window.Image();
       img.onload = resolve;
-      img.onerror = resolve;
+      img.onerror = resolve; // Resolve on error to not block scroll sync
       img.src = it.imgElt.src;
     }));
-    await Promise.all(loadedPromises);
+    
+    // Add a timeout to ensure measureSectionDimensions is called even if images hang
+    const timeoutPromise = new Promise((resolve) => setTimeout(resolve, 3000));
+    await Promise.race([Promise.all(loadedPromises), timeoutPromise]);
 
     // Debounce if sections have already been measured
     this.measureSectionDimensions(!!this.previewCtxMeasured);
