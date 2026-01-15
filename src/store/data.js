@@ -168,7 +168,7 @@ export default {
         Object.keys(obj).forEach((key) => {
           if (key === 'shortcuts') {
             obj[key] = Object.assign(obj[key], opt[key]);
-          } else {
+          } else if (opt && opt[key] !== undefined) {
             obj[key] = override(obj[key], opt[key]);
           }
         });
