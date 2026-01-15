@@ -52,10 +52,10 @@ export default defineConfig({
         crossorigin: 'use-credentials', // 跨域策略
         icons: [
           {
-            src: '/icons/favicon.png', // 图标路径
-            sizes: '512x512', // 图标尺寸
-            type: 'image/png', // 图标类型
-            purpose: 'any maskable' // 图标用途
+            src: '/landing/favicon.ico', // 使用已有的 favicon
+            sizes: '48x48', // 图标尺寸
+            type: 'image/x-icon', // 图标类型
+            purpose: 'any' // 图标用途
           }
         ]
       },
