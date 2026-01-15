@@ -1,38 +1,50 @@
+// GitPen 黑绿主题 - 灵感来自 Logo
 $font-family-main: Lato, 'Helvetica Neue', Helvetica, sans-serif;
 $font-family-monospace: 'Roboto Mono', 'Lucida Sans Typewriter', 'Lucida Console', monaco, Courrier, monospace;
+
+// 主色调
+$gitpen-green: #2be592;
+$gitpen-green-dim: rgba(43, 229, 146, 0.7);
+$gitpen-green-subtle: rgba(43, 229, 146, 0.15);
+
 $body-color-light: rgba(0, 0, 0, 0.75);
-$body-color-dark: rgba(255, 255, 255, 0.85);
+$body-color-dark: rgba(220, 220, 220, 0.9);
 $code-bg: rgba(0, 0, 0, 0.05);
-$code-dark-bg: #2d2d2d;
+$code-dark-bg: #0a0a0a;
 $line-height-base: 1.67;
 $line-height-title: 1.33;
 $font-size-monospace: 0.85em;
 $highlighting-color: #ff0;
-$dark-highlighting-color: rgba(255, 255, 0, 0.5);
-$selection-highlighting-color: #264f78;
-$info-bg: #3794ff26;
+$dark-highlighting-color: rgba(43, 229, 146, 0.3);
+$selection-highlighting-color: rgba(43, 229, 146, 0.25);
+$info-bg: rgba(43, 229, 146, 0.1);
 $code-border-radius: 3px;
-$link-color: #3794ff;
-$error-color: #f31;
+$link-color: $gitpen-green;
+$error-color: #ff6b6b;
 $border-radius-base: 3px;
-$hr-color: rgba(128, 128, 128, 0.33);
-$navbar-bg: #1e1e1e;
-$navbar-color: mix($navbar-bg, #fff, 33%);
-$navbar-hover-color: #fff;
-$navbar-hover-background: rgba(255, 255, 255, 0.1);
+$hr-color: rgba(43, 229, 146, 0.2);
 
+// 导航栏 - 全黑背景 + 绿色文字
+$navbar-bg: #000;
+$navbar-color: $gitpen-green-dim;
+$navbar-hover-color: $gitpen-green;
+$navbar-hover-background: rgba(43, 229, 146, 0.1);
+
+// 编辑器背景
 $editor-background-light: #fff;
-$editor-background-dark: #1e1e1e;
+$editor-background-dark: #0d0d0d;
 
+// 浅色模式文字
 $editor-color-light: rgba(0, 0, 0, 0.8);
 $editor-color-light-low: rgba(0, 0, 0, 0.75);
 $editor-color-light-high: rgba(0, 0, 0, 0.28);
 $editor-color-light-blockquote: rgba(0, 0, 0, 0.48);
 
-$editor-color-dark: rgba(212, 212, 212, 0.95);
-$editor-color-dark-low: rgba(212, 212, 212, 0.85);
-$editor-color-dark-high: rgba(212, 212, 212, 0.35);
-$editor-color-dark-blockquote: rgba(156, 220, 254, 0.8);
+// 深色模式文字 - 主体用柔和灰白，强调用绿色
+$editor-color-dark: rgba(200, 200, 200, 0.92);
+$editor-color-dark-low: rgba(180, 180, 180, 0.85);
+$editor-color-dark-high: rgba(43, 229, 146, 0.6);
+$editor-color-dark-blockquote: $gitpen-green-dim;
 
 $editor-font-weight-base: 400;
 $editor-font-weight-bold: 600;
