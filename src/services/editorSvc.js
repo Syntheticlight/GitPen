@@ -56,11 +56,20 @@ const getImgUrl = async (uri) => {
     const md5Id = CryptoJS.MD5(absoluteImgPath).toString();
     let imgItem = await localDbSvc.getImgItem(md5Id);
     if (!imgItem) {
-      await syncSvc.syncImg(absoluteImgPath);
-      imgItem = await localDbSvc.getImgItem(md5Id);
+      // Add timeout to prevent syncImg from blocking too long
+      try {
+        const syncPromise = syncSvc.syncImg(absoluteImgPath);
+        const timeoutPromise = new Promise((_, reject) => 
+          setTimeout(() => reject(new Error('Sync timeout')), 5000)
+        );
+        await Promise.race([syncPromise, timeoutPromise]);
+        imgItem = await localDbSvc.getImgItem(md5Id);
+      } catch (e) {
+        // Sync failed or timed out, return empty
+        return '';
+      }
     }
     if (imgItem) {
-      // imgItem 如果不存在 则加载 TODO
       const imgFile = utils.base64ToBlob(imgItem.content, uri);
       const url = URL.createObjectURL(imgFile);
       pathUrlMap[absoluteImgPath] = url;
@@ -276,28 +285,40 @@ const editorSvc = Object.assign(mitt() , editorSvcDiscussions, editorSvcUtils, {
 
     // Wait for images to load (with timeout to prevent blocking on failed images)
     const loadedPromises = loadingImages.map(it => new Promise((resolve) => {
+      // Set a per-image timeout to prevent DNS resolution delays from blocking
+      const imgTimeout = setTimeout(resolve, 1000);
+      
       if (!it.imgElt.src && it.uri) {
         getImgUrl(it.uri).then((newUrl) => {
+          clearTimeout(imgTimeout);
           it.imgElt.src = newUrl;
           resolve();
         }, () => {
           // Image load failed, resolve anyway to not block scroll sync
+          clearTimeout(imgTimeout);
           resolve();
         });
         return;
       }
       if (!it.imgElt.src) {
+        clearTimeout(imgTimeout);
         resolve();
         return;
       }
       const img = new window.Image();
-      img.onload = resolve;
-      img.onerror = resolve; // Resolve on error to not block scroll sync
+      img.onload = () => {
+        clearTimeout(imgTimeout);
+        resolve();
+      };
+      img.onerror = () => {
+        clearTimeout(imgTimeout);
+        resolve();
+      };
       img.src = it.imgElt.src;
     }));
     
-    // Add a timeout to ensure measureSectionDimensions is called even if images hang
-    const timeoutPromise = new Promise((resolve) => setTimeout(resolve, 3000));
+    // Add a global timeout to ensure measureSectionDimensions is called even if images hang
+    const timeoutPromise = new Promise((resolve) => setTimeout(resolve, 2000));
     await Promise.race([Promise.all(loadedPromises), timeoutPromise]);
 
     // Debounce if sections have already been measured
