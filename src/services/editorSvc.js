@@ -586,12 +586,15 @@ const editorSvc = Object.assign(mitt() , editorSvcDiscussions, editorSvcUtils, {
           }
         });
         if (loadImgs.length) {
-          // Wait for images to load
-          const loadWorkspaceImg = loadImgs.map(it => new Promise((resolve, reject) => {
+          // Wait for images to load (resolve on error to not block)
+          const loadWorkspaceImg = loadImgs.map(it => new Promise((resolve) => {
             getImgUrl(it.uri).then((newUrl) => {
               it.imgElt.src = newUrl;
               resolve();
-            }, () => reject(new Error(`加载当前空间图片出错,uri:${it.uri}`)));
+            }, () => {
+              // Image load failed, resolve anyway
+              resolve();
+            });
           }));
           Promise.all(loadWorkspaceImg).then();
         }

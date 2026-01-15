@@ -147,7 +147,7 @@ export default {
     },
     deleteItem({ itemsById }, id) {
       // Only used by localDbSvc to clean itemsById from object moved to localStorage
-      delete itemsById[item.id];
+      delete itemsById[id];
     },
   },
   getters: {

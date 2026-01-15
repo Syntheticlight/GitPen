@@ -101,12 +101,15 @@ export default {
       }
       return { imgElt };
     });
-    const loadedPromises = imgs.map(it => new Promise((resolve, reject) => {
+    const loadedPromises = imgs.map(it => new Promise((resolve) => {
       if (!it.imgElt.src && it.uri) {
         getImgBase64(it.uri).then((newUrl) => {
           it.imgElt.src = newUrl;
           resolve();
-        }, () => reject(new Error('加载当前空间图片出错')));
+        }, () => {
+          // Image load failed, resolve anyway to not block export
+          resolve();
+        });
         return;
       }
       resolve();
