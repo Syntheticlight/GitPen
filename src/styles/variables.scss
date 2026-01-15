@@ -1,69 +1,38 @@
-// GitPen 深空黑主题 - 科技感配色
 $font-family-main: Lato, 'Helvetica Neue', Helvetica, sans-serif;
 $font-family-monospace: 'Roboto Mono', 'Lucida Sans Typewriter', 'Lucida Console', monaco, Courrier, monospace;
-
-// 深空黑配色系统
-$space-black-1: #020617;    // 最深 - 主背景
-$space-black-2: #0f172a;    // 深 - 面板背景
-$space-black-3: #1e293b;    // 中深 - 侧边栏
-$space-black-4: #334155;    // 中 - 边框/分隔
-$space-black-5: #475569;    // 浅 - 次要元素
-
-// 文字颜色
-$text-primary: #f8fafc;     // 主文字
-$text-secondary: #94a3b8;   // 次要文字
-
-// 强调色 - GitPen 绿
-$gitpen-green: #2be592;
-$gitpen-green-dim: rgba(43, 229, 146, 0.7);
-$gitpen-green-subtle: rgba(43, 229, 146, 0.15);
-
 $body-color-light: rgba(0, 0, 0, 0.75);
-$body-color-dark: $text-primary;
+$body-color-dark: rgba(255, 255, 255, 0.75);
 $code-bg: rgba(0, 0, 0, 0.05);
-$code-dark-bg: $space-black-1;
+$code-dark-bg: #333;
 $line-height-base: 1.67;
 $line-height-title: 1.33;
 $font-size-monospace: 0.85em;
 $highlighting-color: #ff0;
-$dark-highlighting-color: rgba(43, 229, 146, 0.3);
-$selection-highlighting-color: rgba(43, 229, 146, 0.25);
-$info-bg: rgba(43, 229, 146, 0.1);
+$dark-highlighting-color: rgba(255, 255, 0, 0.6);
+$selection-highlighting-color: #ffb067;
+$info-bg: #ffad3326;
 $code-border-radius: 3px;
-$link-color: $gitpen-green;
-$error-color: #ff6b6b;
+$link-color: #0c93e4;
+$error-color: #f31;
 $border-radius-base: 3px;
-$hr-color: $space-black-4;
+$hr-color: rgba(128, 128, 128, 0.33);
+$navbar-bg: #2c2c2c;
+$navbar-color: mix($navbar-bg, #fff, 33%);
+$navbar-hover-color: #fff;
+$navbar-hover-background: rgba(255, 255, 255, 0.1);
 
-// 导航栏 - 纯黑背景 + 绿色文字
-$navbar-bg: #000;
-$navbar-color: $gitpen-green-dim;
-$navbar-hover-color: $gitpen-green;
-$navbar-hover-background: rgba(43, 229, 146, 0.1);
-
-// 编辑器背景
 $editor-background-light: #fff;
-$editor-background-dark: $space-black-1;
+$editor-background-dark: #36312c;
 
-// 侧边栏/面板背景 (深色模式)
-$sidebar-background-dark: $space-black-2;
-$panel-background-dark: $space-black-3;
-
-// 预览区/按钮栏背景 (深色模式)
-$preview-background-dark: $space-black-2;
-$button-bar-background-dark: $space-black-3;
-
-// 浅色模式文字
 $editor-color-light: rgba(0, 0, 0, 0.8);
 $editor-color-light-low: rgba(0, 0, 0, 0.75);
 $editor-color-light-high: rgba(0, 0, 0, 0.28);
 $editor-color-light-blockquote: rgba(0, 0, 0, 0.48);
 
-// 深色模式文字
-$editor-color-dark: $text-primary;
-$editor-color-dark-low: $text-secondary;
-$editor-color-dark-high: $gitpen-green;
-$editor-color-dark-blockquote: $gitpen-green-dim;
+$editor-color-dark: rgba(255, 255, 255, 0.8);
+$editor-color-dark-low: rgba(255, 255, 255, 0.75);
+$editor-color-dark-high: rgba(255, 255, 255, 0.28);
+$editor-color-dark-blockquote: rgba(255, 255, 255, 0.48);
 
 $editor-font-weight-base: 400;
 $editor-font-weight-bold: 600;
