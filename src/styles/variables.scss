@@ -1,38 +1,38 @@
 $font-family-main: Lato, 'Helvetica Neue', Helvetica, sans-serif;
 $font-family-monospace: 'Roboto Mono', 'Lucida Sans Typewriter', 'Lucida Console', monaco, Courrier, monospace;
 $body-color-light: rgba(0, 0, 0, 0.75);
-$body-color-dark: rgba(200, 230, 200, 0.85);
+$body-color-dark: rgba(255, 255, 255, 0.85);
 $code-bg: rgba(0, 0, 0, 0.05);
-$code-dark-bg: #1a2e1a;
+$code-dark-bg: #2d2d2d;
 $line-height-base: 1.67;
 $line-height-title: 1.33;
 $font-size-monospace: 0.85em;
-$highlighting-color: #90EE90;
-$dark-highlighting-color: rgba(144, 238, 144, 0.4);
-$selection-highlighting-color: #4CAF50;
-$info-bg: #4CAF5026;
+$highlighting-color: #ff0;
+$dark-highlighting-color: rgba(255, 255, 0, 0.5);
+$selection-highlighting-color: #264f78;
+$info-bg: #3794ff26;
 $code-border-radius: 3px;
-$link-color: #4CAF50;
+$link-color: #3794ff;
 $error-color: #f31;
 $border-radius-base: 3px;
-$hr-color: rgba(76, 175, 80, 0.33);
-$navbar-bg: #1a1a1a;
-$navbar-color: mix($navbar-bg, #4CAF50, 33%);
-$navbar-hover-color: #8BC34A;
-$navbar-hover-background: rgba(76, 175, 80, 0.15);
+$hr-color: rgba(128, 128, 128, 0.33);
+$navbar-bg: #1e1e1e;
+$navbar-color: mix($navbar-bg, #fff, 33%);
+$navbar-hover-color: #fff;
+$navbar-hover-background: rgba(255, 255, 255, 0.1);
 
 $editor-background-light: #fff;
-$editor-background-dark: #0d1117;
+$editor-background-dark: #1e1e1e;
 
 $editor-color-light: rgba(0, 0, 0, 0.8);
 $editor-color-light-low: rgba(0, 0, 0, 0.75);
 $editor-color-light-high: rgba(0, 0, 0, 0.28);
 $editor-color-light-blockquote: rgba(0, 0, 0, 0.48);
 
-$editor-color-dark: rgba(200, 230, 200, 0.9);
-$editor-color-dark-low: rgba(200, 230, 200, 0.8);
-$editor-color-dark-high: rgba(76, 175, 80, 0.4);
-$editor-color-dark-blockquote: rgba(139, 195, 74, 0.7);
+$editor-color-dark: rgba(212, 212, 212, 0.95);
+$editor-color-dark-low: rgba(212, 212, 212, 0.85);
+$editor-color-dark-high: rgba(212, 212, 212, 0.35);
+$editor-color-dark-blockquote: rgba(156, 220, 254, 0.8);
 
 $editor-font-weight-base: 400;
 $editor-font-weight-bold: 600;
