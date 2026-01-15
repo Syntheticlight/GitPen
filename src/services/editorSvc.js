@@ -283,46 +283,38 @@ const editorSvc = Object.assign(mitt() , editorSvcDiscussions, editorSvcUtils, {
     this.emit('previewCtx', this.previewCtx);
     this.makeTextToPreviewDiffs();
 
-    // Wait for images to load (with timeout to prevent blocking on failed images)
-    const loadedPromises = loadingImages.map(it => new Promise((resolve) => {
-      // Set a per-image timeout to prevent DNS resolution delays from blocking
-      const imgTimeout = setTimeout(resolve, 1000);
-      
-      if (!it.imgElt.src && it.uri) {
-        getImgUrl(it.uri).then((newUrl) => {
-          clearTimeout(imgTimeout);
-          it.imgElt.src = newUrl;
-          resolve();
-        }, () => {
-          // Image load failed, resolve anyway to not block scroll sync
-          clearTimeout(imgTimeout);
-          resolve();
-        });
-        return;
-      }
-      if (!it.imgElt.src) {
-        clearTimeout(imgTimeout);
-        resolve();
-        return;
-      }
-      const img = new window.Image();
-      img.onload = () => {
-        clearTimeout(imgTimeout);
-        resolve();
-      };
-      img.onerror = () => {
-        clearTimeout(imgTimeout);
-        resolve();
-      };
-      img.src = it.imgElt.src;
-    }));
-    
-    // Add a global timeout to ensure measureSectionDimensions is called even if images hang
-    const timeoutPromise = new Promise((resolve) => setTimeout(resolve, 2000));
-    await Promise.race([Promise.all(loadedPromises), timeoutPromise]);
-
-    // Debounce if sections have already been measured
+    // Measure section dimensions immediately without waiting for images
     this.measureSectionDimensions(!!this.previewCtxMeasured);
+
+    // Load images asynchronously and re-measure when they load or fail
+    if (loadingImages.length > 0) {
+      const remeasure = () => this.measureSectionDimensions(false, true);
+      
+      loadingImages.forEach((it) => {
+        if (!it.imgElt.src && it.uri) {
+          // Local workspace image - load asynchronously
+          getImgUrl(it.uri).then((newUrl) => {
+            if (newUrl) {
+              it.imgElt.onload = remeasure;
+              it.imgElt.onerror = remeasure;
+              it.imgElt.src = newUrl;
+            }
+          }).catch(() => {
+            // Ignore errors for local images
+          });
+        } else if (it.imgElt.src) {
+          // External image - check if already loaded/failed, otherwise listen for events
+          if (it.imgElt.complete) {
+            // Image already loaded or failed, re-measure immediately
+            remeasure();
+          } else {
+            // Image still loading, listen for both load and error events
+            it.imgElt.onload = remeasure;
+            it.imgElt.onerror = remeasure;
+          }
+        }
+      });
+    }
   },
 
   /**
