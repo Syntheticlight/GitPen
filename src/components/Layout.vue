@@ -177,12 +177,13 @@ export default {
     background-color: mix(#000, $editor-background-light, 6.7%);
 
     .app--dark & {
-      background-color: $space-black-2;
+      background-color: mix(#fff, $editor-background-dark, 6.7%);
     }
   }
 }
 
 $preview-background-light: #f3f3f3;
+$preview-background-dark: #444;
 
 .layout__panel--preview,
 .layout__panel--button-bar {
@@ -193,22 +194,12 @@ $preview-background-light: #f3f3f3;
   }
 }
 
-.layout__panel--button-bar {
-  .app--dark & {
-    background-color: $button-bar-background-dark;
-  }
-}
-
 .layout__panel--preview {
   .gutter__background,
   .comment-list__current-discussion,
   .sticky-comment,
   .current-discussion {
     background-color: mix(#000, $preview-background-light, 6.7%);
-
-    .app--dark & {
-      background-color: $space-black-3;
-    }
   }
 }
 
@@ -217,7 +208,7 @@ $preview-background-light: #f3f3f3;
   background-color: #ddd;
 
   .app--dark & {
-    background-color: $sidebar-background-dark;
+    background-color: #383c4a;
   }
 }
 
@@ -231,7 +222,7 @@ $preview-background-light: #f3f3f3;
   border-top-right-radius: $border-radius-base;
 
   .app--dark & {
-    background-color: $space-black-3;
+    background-color: #4d5160;
   }
 }
 </style>
