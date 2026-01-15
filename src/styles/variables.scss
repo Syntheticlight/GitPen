@@ -1,16 +1,27 @@
-// GitPen 黑绿主题 - 灵感来自 Logo
+// GitPen 深空黑主题 - 科技感配色
 $font-family-main: Lato, 'Helvetica Neue', Helvetica, sans-serif;
 $font-family-monospace: 'Roboto Mono', 'Lucida Sans Typewriter', 'Lucida Console', monaco, Courrier, monospace;
 
-// 主色调
+// 深空黑配色系统
+$space-black-1: #020617;    // 最深 - 主背景
+$space-black-2: #0f172a;    // 深 - 面板背景
+$space-black-3: #1e293b;    // 中深 - 侧边栏
+$space-black-4: #334155;    // 中 - 边框/分隔
+$space-black-5: #475569;    // 浅 - 次要元素
+
+// 文字颜色
+$text-primary: #f8fafc;     // 主文字
+$text-secondary: #94a3b8;   // 次要文字
+
+// 强调色 - GitPen 绿
 $gitpen-green: #2be592;
 $gitpen-green-dim: rgba(43, 229, 146, 0.7);
 $gitpen-green-subtle: rgba(43, 229, 146, 0.15);
 
 $body-color-light: rgba(0, 0, 0, 0.75);
-$body-color-dark: rgba(220, 220, 220, 0.9);
+$body-color-dark: $text-primary;
 $code-bg: rgba(0, 0, 0, 0.05);
-$code-dark-bg: #0a0a0a;
+$code-dark-bg: $space-black-1;
 $line-height-base: 1.67;
 $line-height-title: 1.33;
 $font-size-monospace: 0.85em;
@@ -22,9 +33,9 @@ $code-border-radius: 3px;
 $link-color: $gitpen-green;
 $error-color: #ff6b6b;
 $border-radius-base: 3px;
-$hr-color: rgba(43, 229, 146, 0.2);
+$hr-color: $space-black-4;
 
-// 导航栏 - 全黑背景 + 绿色文字
+// 导航栏 - 纯黑背景 + 绿色文字
 $navbar-bg: #000;
 $navbar-color: $gitpen-green-dim;
 $navbar-hover-color: $gitpen-green;
@@ -32,7 +43,15 @@ $navbar-hover-background: rgba(43, 229, 146, 0.1);
 
 // 编辑器背景
 $editor-background-light: #fff;
-$editor-background-dark: #0d0d0d;
+$editor-background-dark: $space-black-1;
+
+// 侧边栏/面板背景 (深色模式)
+$sidebar-background-dark: $space-black-2;
+$panel-background-dark: $space-black-3;
+
+// 预览区/按钮栏背景 (深色模式)
+$preview-background-dark: $space-black-2;
+$button-bar-background-dark: $space-black-3;
 
 // 浅色模式文字
 $editor-color-light: rgba(0, 0, 0, 0.8);
@@ -40,10 +59,10 @@ $editor-color-light-low: rgba(0, 0, 0, 0.75);
 $editor-color-light-high: rgba(0, 0, 0, 0.28);
 $editor-color-light-blockquote: rgba(0, 0, 0, 0.48);
 
-// 深色模式文字 - 主体用柔和灰白，强调用绿色
-$editor-color-dark: rgba(200, 200, 200, 0.92);
-$editor-color-dark-low: rgba(180, 180, 180, 0.85);
-$editor-color-dark-high: rgba(43, 229, 146, 0.6);
+// 深色模式文字
+$editor-color-dark: $text-primary;
+$editor-color-dark-low: $text-secondary;
+$editor-color-dark-high: $gitpen-green;
 $editor-color-dark-blockquote: $gitpen-green-dim;
 
 $editor-font-weight-base: 400;

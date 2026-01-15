@@ -272,7 +272,7 @@ textarea {
   height: 44px;
   line-height: 36px;
   padding: 4px 4px 0;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.2);
   flex: none;
 }
 
@@ -292,7 +292,7 @@ textarea {
   &:focus,
   &:hover {
     opacity: 1;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(43, 229, 146, 0.15);
   }
 }
 
