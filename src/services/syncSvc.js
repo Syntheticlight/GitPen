@@ -658,7 +658,13 @@ const syncWorkspace = async (skipContents = false) => {
         syncSub: syncToken.sub,
       });
     } else if (localSettings.syncSub !== syncToken.sub) {
-      throw new Error('Synchronization failed due to token inconsistency.');
+      // Token 不一致时，提示用户并更新 syncSub
+      // 这可能发生在用户重新登录或切换账号时
+      console.warn('Token inconsistency detected, updating syncSub to match current token.');
+      store.dispatch('data/patchLocalSettings', {
+        syncSub: syncToken.sub,
+      });
+      store.dispatch('notification/info', '检测到账号变更，已自动更新同步配置。');
     }
 
     const changes = await workspaceProvider.getChanges();

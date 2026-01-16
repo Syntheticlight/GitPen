@@ -152,16 +152,25 @@ export default {
     repo,
     branch,
   }) {
-    const { commit } = await repoRequest(token, owner, repo, {
-      url: `commits/${encodeURIComponent(branch)}`,
-    });
-    const { tree, truncated } = await repoRequest(token, owner, repo, {
-      url: `git/trees/${encodeURIComponent(commit.tree.sha)}?recursive=1`,
-    });
-    if (truncated) {
-      throw new Error('Git tree too big. Please remove some files in the repository.');
+    try {
+      const { commit } = await repoRequest(token, owner, repo, {
+        url: `commits/${encodeURIComponent(branch)}`,
+      });
+      const { tree, truncated } = await repoRequest(token, owner, repo, {
+        url: `git/trees/${encodeURIComponent(commit.tree.sha)}?recursive=1`,
+      });
+      if (truncated) {
+        throw new Error('Git tree too big. Please remove some files in the repository.');
+      }
+      return tree;
+    } catch (err) {
+      // 仓库为空或分支不存在时返回空数组
+      if (err.status === 409 || err.status === 404) {
+        console.warn(`Repository ${owner}/${repo} may be empty or branch ${branch} not found.`);
+        return [];
+      }
+      throw err;
     }
-    return tree;
   },
 
   async checkAndCreateRepo(token) {
