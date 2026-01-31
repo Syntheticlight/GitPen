@@ -1,0 +1,3 @@
+# SPA routing - redirect all non-file requests to index.html
+# Static assets are excluded automatically by Cloudflare Pages
+/*    /index.html   200

@@ -1,0 +1,28 @@
+{
+  "name": "GitPen",
+  "description": "免费、开源、无服务器架构的 Markdown 编辑器，支持 GitHub 和 Gitee 同步",
+  "version": "1.0.0",
+  "manifest_version": 2,
+  "container" : "GITHUB",
+  "api_console_project_id" : "241271498917",
+  "icons": {
+    "16": "icon-16.png",
+    "32": "icon-32.png",
+    "64": "icon-64.png",
+    "128": "icon-128.png",
+    "256": "icon-256.png",
+    "512": "icon-512.png"
+  },
+  "app": {
+    "urls": [
+      "https://github.com/Syntheticlight/GitPen"
+    ],
+    "launch": {
+      "web_url": "https://github.com/Syntheticlight/GitPen"
+    }
+  },
+  "offline_enabled": true,
+  "permissions": [
+    "unlimitedStorage"
+  ]
+}
