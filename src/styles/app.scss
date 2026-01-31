@@ -42,7 +42,7 @@ body {
   background-color: #bbb;
 
   .app--dark & {
-    background-color: #666;
+    background-color: #333; // Darker scrollbar for Pro look
   }
 }
 
@@ -271,6 +271,8 @@ textarea {
   align-items: flex-end;
 }
 
+
+
 .user-name {
   font-weight: 600;
 }
@@ -279,7 +281,8 @@ textarea {
   height: 44px;
   line-height: 36px;
   padding: 4px 4px 0;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: transparent; // Clean header
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05); // Subtle separator
   flex: none;
 }
 

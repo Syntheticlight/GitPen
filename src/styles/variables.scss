@@ -1,13 +1,14 @@
-$font-family-main: Lato, 'Helvetica Neue', Helvetica, sans-serif;
-$font-family-monospace: 'Roboto Mono', 'Lucida Sans Typewriter', 'Lucida Console', monaco, Courrier, monospace;
-// Modern Dashboard Theme Palette
-$black: #0a0a0a; // Matte Black Background
-$zinc-900: #18181b; // Dark Grey Panels/Cards
-$zinc-800: #27272a; // Subtle Borders
+$font-family-main: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+$font-family-monospace: 'JetBrains Mono', 'Fira Code', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+
+// Modern "Aura" Theme Palette
+$black: #09090b; // Deepest Zinc Black
+$zinc-900: #18181b; // Panels
+$zinc-800: #27272a; // Borders
 $zinc-700: #3f3f46; // Muted Borders
-$zinc-500: #71717a; // Disabled
+$zinc-500: #71717a; // Icons/Disabled
 $zinc-400: #a1a1aa; // Muted Text
-$zinc-200: #f4f4f5; // Primary Text (White/Off-White)
+$zinc-200: #e4e4e7; // Primary Text (Bright)
 
 // Vibrant Sky Blue Accent (Search Button Blue)
 $primary-green: #0ea5e9; // Sky Blue
