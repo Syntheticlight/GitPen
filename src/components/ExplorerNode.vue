@@ -224,6 +224,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../styles/variables.scss';
+
 $item-font-size: 14px;
 
 .explorer-node--drag-target {
