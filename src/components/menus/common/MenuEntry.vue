@@ -73,15 +73,17 @@
   background-color: #fff;
   border-radius: 3px;
   opacity: 0.6;
+  color: #333;
 
   .app--dark & {
-    background-color: #000;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #f4f4f5; // Zinc-200
   }
 }
 
 .menu-entry__label--warning {
   color: #fff;
-  background-color: darken($error-color, 10);
+  background-color: $error-color;
   opacity: 1;
 }
 
@@ -93,5 +95,18 @@
 .menu-entry__text {
   width: 100%;
   overflow: hidden;
+}
+
+// Hover states for dark mode
+.button.menu-entry {
+  .app--dark & {
+    &:hover, &:focus {
+      background-color: rgba(255, 255, 255, 0.05);
+      color: #fff;
+    }
+    &:active {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+  }
 }
 </style>
