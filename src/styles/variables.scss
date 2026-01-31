@@ -1,38 +1,66 @@
 $font-family-main: Lato, 'Helvetica Neue', Helvetica, sans-serif;
 $font-family-monospace: 'Roboto Mono', 'Lucida Sans Typewriter', 'Lucida Console', monaco, Courrier, monospace;
-$body-color-light: rgba(0, 0, 0, 0.75);
-$body-color-dark: rgba(255, 255, 255, 0.75);
-$code-bg: rgba(0, 0, 0, 0.05);
-$code-dark-bg: #333;
-$line-height-base: 1.67;
-$line-height-title: 1.33;
-$font-size-monospace: 0.85em;
-$highlighting-color: #ff0;
-$dark-highlighting-color: rgba(255, 255, 0, 0.6);
-$selection-highlighting-color: #ffb067;
-$info-bg: #ffad3326;
-$code-border-radius: 3px;
-$link-color: #0c93e4;
-$error-color: #f31;
-$border-radius-base: 3px;
-$hr-color: rgba(128, 128, 128, 0.33);
-$navbar-bg: #2c2c2c;
-$navbar-color: mix($navbar-bg, #fff, 33%);
-$navbar-hover-color: #fff;
-$navbar-hover-background: rgba(255, 255, 255, 0.1);
+// Modern Dashboard Theme Palette
+$black: #0a0a0a; // Matte Black Background
+$zinc-900: #18181b; // Dark Grey Panels/Cards
+$zinc-800: #27272a; // Subtle Borders
+$zinc-700: #3f3f46; // Muted Borders
+$zinc-500: #71717a; // Disabled
+$zinc-400: #a1a1aa; // Muted Text
+$zinc-200: #f4f4f5; // Primary Text (White/Off-White)
 
-$editor-background-light: #fff;
-$editor-background-dark: #36312c;
+// Vibrant Sky Blue Accent (Search Button Blue)
+$primary-green: #0ea5e9; // Sky Blue
+$primary-green-hover: #0284c7; // Darker Blue
+$primary-green-glow: rgba(14, 165, 233, 0.4); // Blue Glow
 
-$editor-color-light: rgba(0, 0, 0, 0.8);
-$editor-color-light-low: rgba(0, 0, 0, 0.75);
-$editor-color-light-high: rgba(0, 0, 0, 0.28);
-$editor-color-light-blockquote: rgba(0, 0, 0, 0.48);
+$body-color-light: #0a0a0a;
+$body-color-dark: $zinc-200;
 
-$editor-color-dark: rgba(255, 255, 255, 0.8);
-$editor-color-dark-low: rgba(255, 255, 255, 0.75);
-$editor-color-dark-high: rgba(255, 255, 255, 0.28);
-$editor-color-dark-blockquote: rgba(255, 255, 255, 0.48);
+$code-bg: rgba(255, 255, 255, 0.05);
+$code-dark-bg: #18181b; // Code blocks match panels
+
+$link-color: #38bdf8; // Light Sky Blue
+$hr-color: $zinc-800;
+
+$navbar-bg: #18181b; // Sidebar/Navbar matches panels
+$navbar-color: #a1a1aa;
+$navbar-height: 60px; // Slightly taller for modern feel
+$navbar-hover-color: #ffffff;
+$navbar-hover-background: rgba(255, 255, 255, 0.05);
+
+// Panel Colors
+$panel-bg-dark: $zinc-900;
+$panel-border-dark: $zinc-800;
+
+$splash-bg: #0a0a0a;
+$preview-background-dark: #18181b; // Preview is a "Card"
+$preview-background-light: #ffffff; // Fallback
+$editor-background-light: #ffffff;
+$editor-background-dark: $black; // Editor is deep black
+
+// Sizes
+$border-radius-base: 8px;
+$line-height-base: 1.6;
+$line-height-title: 1.3;
+$font-size-monospace: 0.9em;
+
+$highlighting-color: #fef08a;
+$dark-highlighting-color: rgba(253, 224, 71, 0.3);
+$selection-highlighting-color: #38bdf8; // Sky Blue
+$info-bg: rgba(56, 189, 248, 0.1);
+$code-border-radius: 6px;
+$error-color: #ef4444;
 
 $editor-font-weight-base: 400;
 $editor-font-weight-bold: 600;
+
+$editor-color-light: #27272a;
+$editor-color-light-low: #52525b;
+$editor-color-light-high: #a1a1aa;
+$editor-color-light-blockquote: #71717a;
+
+$editor-color-dark: #e4e4e7;
+$editor-color-dark-low: #a1a1aa;
+$editor-color-dark-high: #52525b;
+$editor-color-dark-blockquote: #a1a1aa;

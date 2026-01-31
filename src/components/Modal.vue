@@ -227,34 +227,18 @@ export default {
   margin: 40px 10px 100px;
   background-color: #f8f8f8;
   padding: 50px 50px 40px;
-  border-radius: $border-radius-base;
+  border-radius: $border-radius-base; // 8px
   position: relative;
   overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); // Default shadow
 
   .app--dark & {
-    background-color: #383c4a;
-  }
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: $border-radius-base;
-    width: 100%;
-    background-image: linear-gradient(to left, #ffd700, #ffd700 23%, #a5c700 27%, #a5c700 48%, #ff8a00 52%, #ff8a00 73%, #66aefd 77%);
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: $border-radius-base;
-    width: 100%;
-    background-image: linear-gradient(to right, #ffd700, #ffd700 23%, #a5c700 27%, #a5c700 48%, #ff8a00 52%, #ff8a00 73%, #66aefd 77%);
+    background-color: $zinc-900; // #18181b
+    border: 1px solid $zinc-800; // #27272a
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2); // Deep Shadow
   }
 }
+// Gradient pseudo-elements removed
 
 .modal__content > :first-child,
 .modal__content > .modal__image:first-child + * {

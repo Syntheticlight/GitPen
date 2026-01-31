@@ -78,22 +78,36 @@ textarea {
   line-height: inherit;
 }
 
+
 .text-input {
   display: block;
   font-variant-ligatures: no-common-ligatures;
   width: 100%;
-  height: 36px;
-  padding: 3px 12px;
-  font-size: inherit;
+  height: 40px; // Taller for modern feel
+  padding: 5px 16px;
+  font-size: 14px;
   line-height: 1.5;
   color: inherit;
   background-color: rgba(255, 255, 255, 0.8);
   background-image: none;
-  border: 0;
-  border-radius: $border-radius-base;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: $border-radius-base; // 8px
+  transition: all 0.2s ease;
+
+  &:focus {
+    border-color: $primary-green;
+    box-shadow: 0 0 0 3px $primary-green-glow;
+  }
 
   .app--dark & {
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: $zinc-800; // #27272a
+    border: 1px solid transparent;
+    color: $zinc-200;
+
+    &:focus {
+      background-color: $zinc-900;
+      border-color: $primary-green;
+    }
   }
 }
 
@@ -103,126 +117,119 @@ textarea {
   display: inline-block;
   height: auto;
   padding: 8px 16px;
-  font-size: 17px;
-  font-weight: 400;
-  line-height: 1.4;
-  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+  text-transform: none; // Remove uppercase
   overflow: hidden;
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
-  -ms-touch-action: manipulation;
-  touch-action: manipulation;
   cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
   background-image: none;
   border: 0;
-  border-radius: $border-radius-base;
+  border-radius: $border-radius-base; // 8px
   text-decoration: none;
+  transition: all 0.2s;
 
   &:active,
   &:focus,
   &:hover,
-  .hidden-file:focus + & {
+  .hidden-file:focus+& {
     color: #333;
     background-color: rgba(0, 0, 0, 0.05);
     outline: 0;
-    text-decoration: none;
   }
 
   .app--dark & {
-    color: rgba(255, 255, 255, 0.75);
+    color: $zinc-400; // Muted text default
 
     &:active,
     &:focus,
     &:hover,
-    .hidden-file:focus + & {
-      color: rgba(255, 255, 255, 0.75);
-      background-color: rgba(255, 255, 255, 0.05);
-      outline: 0;
-      text-decoration: none;
+    .hidden-file:focus+& {
+      color: #fff;
+      background-color: $zinc-800;
     }
   }
 
   .app--dark .layout__panel--editor &,
   .app--dark .layout__panel--preview & {
-    color: #ccc;
-
-    &:active,
-    &:focus,
-    &:hover {
-      color: #ccc;
-      background-color: rgba(255, 255, 255, 0.067);
-    }
-  }
-
-  &[disabled] {
-    &,
-    &:active,
-    &:focus,
-    &:hover {
-      opacity: 0.33;
-      background-color: transparent;
-      cursor: not-allowed;
-    }
-  }
-}
-
-.button--resolve {
-  background-color: #349be8;
-  color: #fff;
-  margin: -2px 0 -2px 4px;
-  padding: 10px 20px;
-  font-size: 18px;
-
-  &:active,
-  &:focus,
-  &:hover {
-    color: #fff;
-    background-color: darken(#349be8, 8%);
-  }
-
-  .app--dark & {
-    background-color: #567c98;
-    color: rgb(222, 222, 222);
+    color: $zinc-400;
 
     &:active,
     &:focus,
     &:hover {
       color: #fff;
-      background-color: darken(#567c98, 8%);
+      background-color: $zinc-800;
+      transform: translateY(-1px); // Subtle lift
+    }
+  }
+
+  &[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.button--resolve {
+  background-color: $primary-green; // Sky Blue
+  color: #fff;
+  margin: -2px 0 -2px 4px;
+  padding: 8px 20px;
+  font-size: 14px;
+  border-radius: $border-radius-base;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+  &:active,
+  &:focus,
+  &:hover {
+    color: #fff;
+    background-color: $primary-green-hover;
+    transform: translateY(-1px);
+    box-shadow: 0 10px 15px -3px rgba(14, 165, 233, 0.3); // Blue Glow
+  }
+
+  .app--dark & {
+    background-color: $primary-green;
+    color: #fff;
+
+    &:active,
+    &:focus,
+    &:hover {
+      background-color: $primary-green-hover;
     }
   }
 }
 
 .textfield {
   background-color: #fff;
-  border: 0;
+  border: 1px solid rgba(0, 0, 0, 0.1);
   font-family: inherit;
   font-weight: 400;
-  font-size: 1.05em;
-  padding: 0 0.6rem;
+  font-size: 14px;
+  padding: 0 12px;
   box-sizing: border-box;
   width: 100%;
-  max-width: 100%;
-  color: inherit;
-  height: 2.4rem;
+  border-radius: $border-radius-base;
+  height: 40px;
+  transition: all 0.2s;
 
   &:focus {
     outline: none;
-  }
-
-  &[disabled] {
-    cursor: not-allowed;
-    background-color: #f0f0f0;
-    color: #999;
+    border-color: $primary-green;
+    box-shadow: 0 0 0 3px $primary-green-glow;
   }
 
   .app--dark & {
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: $zinc-800;
+    border: 1px solid transparent;
+    color: $zinc-200;
+
+    &:focus {
+      background-color: $zinc-900;
+      border-color: $primary-green;
+    }
 
     &[disabled] {
       cursor: not-allowed;
@@ -412,13 +419,13 @@ textarea {
     }
   }
 
-  body > .app,
-  body > .app > .layout,
-  body > .app > .layout > .layout__panel,
-  body > .app > .layout > .layout__panel > .layout__panel,
-  body > .app > .layout > .layout__panel > .layout__panel > .layout__panel,
-  body > .app > .layout > .layout__panel > .layout__panel > .layout__panel > .layout__panel--preview,
-  body > .app > .layout > .layout__panel > .layout__panel > .layout__panel > .layout__panel--preview div {
+  body>.app,
+  body>.app>.layout,
+  body>.app>.layout>.layout__panel,
+  body>.app>.layout>.layout__panel>.layout__panel,
+  body>.app>.layout>.layout__panel>.layout__panel>.layout__panel,
+  body>.app>.layout>.layout__panel>.layout__panel>.layout__panel>.layout__panel--preview,
+  body>.app>.layout>.layout__panel>.layout__panel>.layout__panel>.layout__panel--preview div {
     background-color: transparent !important;
     display: block !important;
     height: auto !important;
@@ -431,5 +438,6 @@ textarea {
   .preview__inner-2 {
     padding: 0 50px !important;
   }
+
   // scss-lint:enable ImportantRule
 }

@@ -71,3 +71,51 @@
     font-style: italic;
   }
 }
+
+/* Dark Mode Overrides (Modern Oceanic Dark) */
+.app--dark .prism {
+
+  .token.comment,
+  .token.prolog,
+  .token.doctype,
+  .token.cdata {
+    color: #71717a; // Muted Grey
+    font-style: italic;
+  }
+
+  .token.selector,
+  .token.attr-name,
+  .token.builtin,
+  .token.inserted {
+    color: #38bdf8; // Sky Blue
+  }
+
+  .token.string,
+  .token.char {
+    color: #a3e635; // Lime Green
+  }
+
+  .token.atrule,
+  .token.attr-value,
+  .token.keyword {
+    color: #22d3ee; // Cyan
+  }
+
+  .token.function {
+    color: #818cf8; // Indigo
+  }
+
+  .token.regex,
+  .token.important,
+  .token.variable {
+    color: #f472b6; // Pink
+  }
+
+  .token.punctuation {
+    color: #a1a1aa; // Zinc-400
+  }
+
+  .token.operator {
+    color: #e879f9; // Purple
+  }
+}
